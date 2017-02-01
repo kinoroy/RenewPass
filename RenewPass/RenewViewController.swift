@@ -17,6 +17,37 @@ class RenewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if needToShowLoginScreen() {
+            showLoginScreen()
+        }
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    
+    // MARK: - Navigation
+
+    func showLoginScreen() {
+        
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let signInViewController = storyboard.instantiateViewController(withIdentifier: "signInViewController")
+            
+            self.present(signInViewController, animated: true) {
+                
+            }
+        }
+        
+    }
+    
+    func needToShowLoginScreen() -> Bool {
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -31,38 +62,8 @@ class RenewViewController: UIViewController {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
-        for account in accounts {
-            if let school = account.value(forKey: "school") {
-                print("\(school)")
-            }
-            if let username = account.value(forKey: "username") {
-                print("\(username)")
-            }
-            
-        }
+        return accounts.isEmpty
         
-        let keychain = KeychainSwift()
-        if let pass = keychain.get("accountPassword") {
-            print("\(pass)")
-        }
-
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

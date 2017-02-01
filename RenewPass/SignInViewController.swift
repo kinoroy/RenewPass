@@ -20,29 +20,6 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Account")
-        
-        do {
-            let results =
-                try managedContext.fetch(fetchRequest)
-            accounts = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-        if !accounts.isEmpty {
-            
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "submitSegue", sender: nil)
-            }
-            
-        }
-        
-        
 
         // Do any additional setup after loading the view.
     }
@@ -56,19 +33,22 @@ class SignInViewController: UIViewController {
     
     // MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "submitSegue" {
-            
-            saveAccount(username: usernameField.text!)
-            
-            let keychain = KeychainSwift()
-            
-            if !keychain.set(passwordField.text!, forKey: "accountPassword") {
-                fatalError("Couldn't store in the keychain")
-            }
+    @IBAction func clickSubmitButton(_ sender: Any) {
+        
+        saveAccount(username: usernameField.text!)
+        
+        let keychain = KeychainSwift()
+        
+        if !keychain.set(passwordField.text!, forKey: "accountPassword") {
+            fatalError("Couldn't store in the keychain")
+        }
+        
+        self.dismiss(animated: true) {
             
         }
+        
     }
+
  
     // MARK: - Private methods
     private func saveAccount(username: String) {
@@ -90,6 +70,7 @@ class SignInViewController: UIViewController {
         
         //4
         appDelegate.saveContext()
+        
     }
     
 
