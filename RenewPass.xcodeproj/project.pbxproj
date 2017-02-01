@@ -12,28 +12,9 @@
 		382599A91E4172B400349582 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599A81E4172B400349582 /* KeychainHelper.swift */; };
 		382599AF1E417E0500349582 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599AE1E417E0500349582 /* Strings.swift */; };
 		382599B11E41911400349582 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599B01E41911400349582 /* SettingsViewController.swift */; };
-		382599C91E41967500349582 /* ContentFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599B31E41967500349582 /* ContentFetcher.swift */; };
-		382599CA1E41967500349582 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599B41E41967500349582 /* Definitions.swift */; };
-		382599CB1E41967500349582 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599B51E41967500349582 /* Error.swift */; };
-		382599CC1E41967500349582 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599B61E41967500349582 /* Functions.swift */; };
-		382599CD1E41967500349582 /* HTMLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599B71E41967500349582 /* HTMLButton.swift */; };
-		382599CE1E41967500349582 /* HTMLElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599B81E41967500349582 /* HTMLElement.swift */; };
-		382599CF1E41967500349582 /* HTMLFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599B91E41967500349582 /* HTMLFetchable.swift */; };
-		382599D01E41967500349582 /* HTMLForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599BA1E41967500349582 /* HTMLForm.swift */; };
-		382599D11E41967500349582 /* HTMLFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599BB1E41967500349582 /* HTMLFrame.swift */; };
-		382599D21E41967500349582 /* HTMLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599BC1E41967500349582 /* HTMLImage.swift */; };
-		382599D31E41967500349582 /* HTMLLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599BD1E41967500349582 /* HTMLLink.swift */; };
-		382599D41E41967500349582 /* HTMLPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599BE1E41967500349582 /* HTMLPage.swift */; };
-		382599D51E41967500349582 /* HTMLRedirectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599BF1E41967500349582 /* HTMLRedirectable.swift */; };
-		382599D61E41967500349582 /* HTMLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599C01E41967500349582 /* HTMLTable.swift */; };
-		382599D71E41967500349582 /* JSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599C11E41967500349582 /* JSONPage.swift */; };
-		382599D81E41967500349582 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599C21E41967500349582 /* Logger.swift */; };
-		382599D91E41967500349582 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599C31E41967500349582 /* Page.swift */; };
-		382599DA1E41967500349582 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599C41E41967500349582 /* Parser.swift */; };
-		382599DB1E41967500349582 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599C51E41967500349582 /* Renderer.swift */; };
-		382599DC1E41967500349582 /* RenderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599C61E41967500349582 /* RenderOperation.swift */; };
-		382599DD1E41967500349582 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599C71E41967500349582 /* Snapshot.swift */; };
-		382599DE1E41967500349582 /* WKZombie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599C81E41967500349582 /* WKZombie.swift */; };
+		382599E91E41992700349582 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 382599E81E41992700349582 /* Cartfile */; };
+		382599ED1E4199FB00349582 /* WKZombie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382599EB1E4199FB00349582 /* WKZombie.framework */; };
+		382599EE1E4199FB00349582 /* hpple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382599EC1E4199FB00349582 /* hpple.framework */; };
 		389F9ED91E41332B00EF6F88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F9ED81E41332B00EF6F88 /* AppDelegate.swift */; };
 		389F9EDE1E41332B00EF6F88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 389F9EDC1E41332B00EF6F88 /* Main.storyboard */; };
 		389F9EE11E41332B00EF6F88 /* RenewPass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 389F9EDF1E41332B00EF6F88 /* RenewPass.xcdatamodeld */; };
@@ -47,28 +28,9 @@
 		382599A81E4172B400349582 /* KeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		382599AE1E417E0500349582 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		382599B01E41911400349582 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		382599B31E41967500349582 /* ContentFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentFetcher.swift; sourceTree = "<group>"; };
-		382599B41E41967500349582 /* Definitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
-		382599B51E41967500349582 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		382599B61E41967500349582 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		382599B71E41967500349582 /* HTMLButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLButton.swift; sourceTree = "<group>"; };
-		382599B81E41967500349582 /* HTMLElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLElement.swift; sourceTree = "<group>"; };
-		382599B91E41967500349582 /* HTMLFetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLFetchable.swift; sourceTree = "<group>"; };
-		382599BA1E41967500349582 /* HTMLForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLForm.swift; sourceTree = "<group>"; };
-		382599BB1E41967500349582 /* HTMLFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLFrame.swift; sourceTree = "<group>"; };
-		382599BC1E41967500349582 /* HTMLImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLImage.swift; sourceTree = "<group>"; };
-		382599BD1E41967500349582 /* HTMLLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLLink.swift; sourceTree = "<group>"; };
-		382599BE1E41967500349582 /* HTMLPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLPage.swift; sourceTree = "<group>"; };
-		382599BF1E41967500349582 /* HTMLRedirectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLRedirectable.swift; sourceTree = "<group>"; };
-		382599C01E41967500349582 /* HTMLTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLTable.swift; sourceTree = "<group>"; };
-		382599C11E41967500349582 /* JSONPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONPage.swift; sourceTree = "<group>"; };
-		382599C21E41967500349582 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		382599C31E41967500349582 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
-		382599C41E41967500349582 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		382599C51E41967500349582 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		382599C61E41967500349582 /* RenderOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderOperation.swift; sourceTree = "<group>"; };
-		382599C71E41967500349582 /* Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
-		382599C81E41967500349582 /* WKZombie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKZombie.swift; sourceTree = "<group>"; };
+		382599E81E41992700349582 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		382599EB1E4199FB00349582 /* WKZombie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WKZombie.framework; path = Carthage/Build/iOS/WKZombie.framework; sourceTree = "<group>"; };
+		382599EC1E4199FB00349582 /* hpple.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = hpple.framework; path = Carthage/Build/iOS/hpple.framework; sourceTree = "<group>"; };
 		389F9ED51E41332B00EF6F88 /* RenewPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RenewPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		389F9ED81E41332B00EF6F88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		389F9EDD1E41332B00EF6F88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,47 +45,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				382599ED1E4199FB00349582 /* WKZombie.framework in Frameworks */,
+				382599EE1E4199FB00349582 /* hpple.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		382599B21E41967500349582 /* WKZombie */ = {
+		382599EA1E4199FB00349582 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				382599B31E41967500349582 /* ContentFetcher.swift */,
-				382599B41E41967500349582 /* Definitions.swift */,
-				382599B51E41967500349582 /* Error.swift */,
-				382599B61E41967500349582 /* Functions.swift */,
-				382599B71E41967500349582 /* HTMLButton.swift */,
-				382599B81E41967500349582 /* HTMLElement.swift */,
-				382599B91E41967500349582 /* HTMLFetchable.swift */,
-				382599BA1E41967500349582 /* HTMLForm.swift */,
-				382599BB1E41967500349582 /* HTMLFrame.swift */,
-				382599BC1E41967500349582 /* HTMLImage.swift */,
-				382599BD1E41967500349582 /* HTMLLink.swift */,
-				382599BE1E41967500349582 /* HTMLPage.swift */,
-				382599BF1E41967500349582 /* HTMLRedirectable.swift */,
-				382599C01E41967500349582 /* HTMLTable.swift */,
-				382599C11E41967500349582 /* JSONPage.swift */,
-				382599C21E41967500349582 /* Logger.swift */,
-				382599C31E41967500349582 /* Page.swift */,
-				382599C41E41967500349582 /* Parser.swift */,
-				382599C51E41967500349582 /* Renderer.swift */,
-				382599C61E41967500349582 /* RenderOperation.swift */,
-				382599C71E41967500349582 /* Snapshot.swift */,
-				382599C81E41967500349582 /* WKZombie.swift */,
+				382599EB1E4199FB00349582 /* WKZombie.framework */,
+				382599EC1E4199FB00349582 /* hpple.framework */,
 			);
-			path = WKZombie;
-			sourceTree = SOURCE_ROOT;
+			name = Frameworks;
+			sourceTree = "<group>";
 		};
 		389F9ECC1E41332B00EF6F88 = {
 			isa = PBXGroup;
 			children = (
-				382599B21E41967500349582 /* WKZombie */,
+				382599E81E41992700349582 /* Cartfile */,
 				389F9ED71E41332B00EF6F88 /* RenewPass */,
 				389F9ED61E41332B00EF6F88 /* Products */,
+				382599EA1E4199FB00349582 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +108,7 @@
 				389F9ED11E41332B00EF6F88 /* Sources */,
 				389F9ED21E41332B00EF6F88 /* Frameworks */,
 				389F9ED31E41332B00EF6F88 /* Resources */,
+				382599EF1E419A0100349582 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -215,45 +161,42 @@
 			files = (
 				389F9EE61E41332B00EF6F88 /* LaunchScreen.storyboard in Resources */,
 				389F9EE31E41332B00EF6F88 /* Assets.xcassets in Resources */,
+				382599E91E41992700349582 /* Cartfile in Resources */,
 				389F9EDE1E41332B00EF6F88 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		382599EF1E419A0100349582 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/WKZombie.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/hpple.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		389F9ED11E41332B00EF6F88 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				382599CD1E41967500349582 /* HTMLButton.swift in Sources */,
-				382599CE1E41967500349582 /* HTMLElement.swift in Sources */,
-				382599D91E41967500349582 /* Page.swift in Sources */,
 				382599A71E41675100349582 /* RenewViewController.swift in Sources */,
-				382599D41E41967500349582 /* HTMLPage.swift in Sources */,
-				382599CA1E41967500349582 /* Definitions.swift in Sources */,
-				382599D61E41967500349582 /* HTMLTable.swift in Sources */,
 				389F9ED91E41332B00EF6F88 /* AppDelegate.swift in Sources */,
 				382599B11E41911400349582 /* SettingsViewController.swift in Sources */,
-				382599D71E41967500349582 /* JSONPage.swift in Sources */,
-				382599D81E41967500349582 /* Logger.swift in Sources */,
-				382599CC1E41967500349582 /* Functions.swift in Sources */,
-				382599C91E41967500349582 /* ContentFetcher.swift in Sources */,
-				382599DD1E41967500349582 /* Snapshot.swift in Sources */,
-				382599D31E41967500349582 /* HTMLLink.swift in Sources */,
 				389F9EE11E41332B00EF6F88 /* RenewPass.xcdatamodeld in Sources */,
-				382599D21E41967500349582 /* HTMLImage.swift in Sources */,
-				382599DE1E41967500349582 /* WKZombie.swift in Sources */,
-				382599D51E41967500349582 /* HTMLRedirectable.swift in Sources */,
-				382599DA1E41967500349582 /* Parser.swift in Sources */,
-				382599DB1E41967500349582 /* Renderer.swift in Sources */,
 				382599A91E4172B400349582 /* KeychainHelper.swift in Sources */,
-				382599D11E41967500349582 /* HTMLFrame.swift in Sources */,
 				382599A51E41671600349582 /* SignInViewController.swift in Sources */,
-				382599D01E41967500349582 /* HTMLForm.swift in Sources */,
-				382599DC1E41967500349582 /* RenderOperation.swift in Sources */,
-				382599CF1E41967500349582 /* HTMLFetchable.swift in Sources */,
-				382599CB1E41967500349582 /* Error.swift in Sources */,
 				382599AF1E417E0500349582 /* Strings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +319,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7ZNE25EY4B;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RenewPass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kroy.RenewPass;
@@ -389,6 +336,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7ZNE25EY4B;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RenewPass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kroy.RenewPass;

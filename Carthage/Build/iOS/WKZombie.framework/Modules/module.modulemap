@@ -1,0 +1,10 @@
+framework module WKZombie {
+  umbrella header "WKZombie.h"
+
+  export *
+  module * { export * }
+}
+
+module WKZombie.Swift {
+    header "WKZombie-Swift.h"
+}
