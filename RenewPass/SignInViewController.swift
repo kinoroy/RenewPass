@@ -17,6 +17,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     var accounts:[NSManagedObject]!
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,13 +25,6 @@ class SignInViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    
     // MARK: - Navigation
 
     @IBAction func clickSubmitButton(_ sender: Any) {

@@ -14,25 +14,20 @@ class RenewViewController: UIViewController {
     // MARK: - Proporties
     var accounts:[NSManagedObject]!
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Checks if there is login data stored. If not, asks the user for login data by showing the login screen.
         if needToShowLoginScreen() {
             showLoginScreen()
         }
-
-        // Do any additional setup after loading the view.
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    
     // MARK: - Navigation
 
+    /// Displays the login screen
     func showLoginScreen() {
         
         DispatchQueue.main.async {
@@ -46,6 +41,8 @@ class RenewViewController: UIViewController {
         
     }
     
+    /// Determines if the login screen needs to be shown
+    ///     Returns: A boolean describing whether to show the login screen or not
     func needToShowLoginScreen() -> Bool {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
