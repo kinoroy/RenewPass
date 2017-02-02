@@ -15,22 +15,28 @@ class RenewViewController: UIViewController {
     // MARK: - Proporties
     var accounts:[NSManagedObject]!
     var webview:UIWebView!
+    var username:String!
+    @IBOutlet weak var reloadButton: UIButton!
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.reloadButton.isEnabled = false
         
         // Checks if there is login data stored. If not, asks the user for login data by showing the login screen.
         if needToShowLoginScreen() {
             showLoginScreen()
         }
         
-        //webview = UIWebView(frame: CGRect(x: 0, y: 30, width: 250, height: 250))
-        //self.view.addSubview(webview)
+        webview = UIWebView(frame: self.view.frame)
         
         let url = URL(string: "https://upassbc.translink.ca")
         let urlRequest = URLRequest(url: url!)
         webview.loadRequest(urlRequest)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+            self.reloadButton.isEnabled = true
+        })
 
     }
 
@@ -75,19 +81,59 @@ class RenewViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func renewButtonTouchUpInside(_ sender: Any) {
+        self.view.addSubview(webview)
         
+        let school = Schools.SFU
         
-        let js = "document.querySelector(\"form\").querySelector(\"#PsiId\").options[9].selected = true; document.querySelector(\"form\").submit();"
-        print(js)
+        //Get auth values
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        webview.stringByEvaluatingJavaScript(from: js)
+        let managedContext = appDelegate.persistentContainer.viewContext
         
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Account")
+        
+        do {
+            let results =
+                try managedContext.fetch(fetchRequest)
+            accounts = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        username = accounts[0].value(forKey: "username") as! String!
+        
+        selectSchool(school: school)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+            self.authenticate(school: school)
+        })
         
         
     }
     
 
+    func selectSchool(school:String) {
+        let js = "document.querySelector(\"form\").querySelector(\"#PsiId\").options[9].selected = true; document.querySelector(\"form\").submit();"
+        
+        
+        webview.stringByEvaluatingJavaScript(from: js)
+    }
     
+    func authenticate(school:String) {
+        
+        if school == "9" { //SFU
+        
+            let password = KeychainSwift().get("accountPassword")!
+            
+            
+            let js = "document.querySelector(\"#fm1\"); document.querySelector(\"#username\").value = \"\(username!)\"; document.querySelector(\"#password\").value = \"\(password)\"; document.querySelector(\"#fm1\").submit();"
+           
+            webview.stringByEvaluatingJavaScript(from: js)
+            
+
+        }
+        
+    }
 
 
 }
