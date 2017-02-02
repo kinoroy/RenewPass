@@ -12,5 +12,5 @@ public class Schools {
     
     // MARK: - Proporties
     
-    public static let SFU:String = "SFU"
+    public static let SFU:String = "9"
 }

@@ -8,11 +8,13 @@
 
 import UIKit
 import CoreData
+import WebKit
 
 class RenewViewController: UIViewController {
     
     // MARK: - Proporties
     var accounts:[NSManagedObject]!
+    var webview:UIWebView!
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -23,6 +25,13 @@ class RenewViewController: UIViewController {
             showLoginScreen()
         }
         
+        //webview = UIWebView(frame: CGRect(x: 0, y: 30, width: 250, height: 250))
+        //self.view.addSubview(webview)
+        
+        let url = URL(string: "https://upassbc.translink.ca")
+        let urlRequest = URLRequest(url: url!)
+        webview.loadRequest(urlRequest)
+
     }
 
     // MARK: - Navigation
@@ -62,5 +71,23 @@ class RenewViewController: UIViewController {
         return accounts.isEmpty
         
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func renewButtonTouchUpInside(_ sender: Any) {
+        
+        
+        let js = "document.querySelector(\"form\").querySelector(\"#PsiId\").options[9].selected = true; document.querySelector(\"form\").submit();"
+        print(js)
+        
+        webview.stringByEvaluatingJavaScript(from: js)
+        
+        
+        
+    }
+    
+
+    
+
 
 }

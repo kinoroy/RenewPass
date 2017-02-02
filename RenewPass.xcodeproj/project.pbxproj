@@ -12,9 +12,6 @@
 		382599A91E4172B400349582 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599A81E4172B400349582 /* KeychainHelper.swift */; };
 		382599AF1E417E0500349582 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599AE1E417E0500349582 /* Strings.swift */; };
 		382599B11E41911400349582 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599B01E41911400349582 /* SettingsViewController.swift */; };
-		382599E91E41992700349582 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 382599E81E41992700349582 /* Cartfile */; };
-		382599ED1E4199FB00349582 /* WKZombie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382599EB1E4199FB00349582 /* WKZombie.framework */; };
-		382599EE1E4199FB00349582 /* hpple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382599EC1E4199FB00349582 /* hpple.framework */; };
 		389F9ED91E41332B00EF6F88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F9ED81E41332B00EF6F88 /* AppDelegate.swift */; };
 		389F9EDE1E41332B00EF6F88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 389F9EDC1E41332B00EF6F88 /* Main.storyboard */; };
 		389F9EE11E41332B00EF6F88 /* RenewPass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 389F9EDF1E41332B00EF6F88 /* RenewPass.xcdatamodeld */; };
@@ -28,9 +25,9 @@
 		382599A81E4172B400349582 /* KeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		382599AE1E417E0500349582 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		382599B01E41911400349582 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		382599E81E41992700349582 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		382599EB1E4199FB00349582 /* WKZombie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WKZombie.framework; path = Carthage/Build/iOS/WKZombie.framework; sourceTree = "<group>"; };
 		382599EC1E4199FB00349582 /* hpple.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = hpple.framework; path = Carthage/Build/iOS/hpple.framework; sourceTree = "<group>"; };
+		382599FA1E4267F400349582 /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/iOS/Kanna.framework; sourceTree = "<group>"; };
 		389F9ED51E41332B00EF6F88 /* RenewPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RenewPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		389F9ED81E41332B00EF6F88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		389F9EDD1E41332B00EF6F88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,8 +42,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				382599ED1E4199FB00349582 /* WKZombie.framework in Frameworks */,
-				382599EE1E4199FB00349582 /* hpple.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +51,7 @@
 		382599EA1E4199FB00349582 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				382599FA1E4267F400349582 /* Kanna.framework */,
 				382599EB1E4199FB00349582 /* WKZombie.framework */,
 				382599EC1E4199FB00349582 /* hpple.framework */,
 			);
@@ -65,7 +61,6 @@
 		389F9ECC1E41332B00EF6F88 = {
 			isa = PBXGroup;
 			children = (
-				382599E81E41992700349582 /* Cartfile */,
 				389F9ED71E41332B00EF6F88 /* RenewPass */,
 				389F9ED61E41332B00EF6F88 /* Products */,
 				382599EA1E4199FB00349582 /* Frameworks */,
@@ -108,7 +103,6 @@
 				389F9ED11E41332B00EF6F88 /* Sources */,
 				389F9ED21E41332B00EF6F88 /* Frameworks */,
 				389F9ED31E41332B00EF6F88 /* Resources */,
-				382599EF1E419A0100349582 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -161,30 +155,11 @@
 			files = (
 				389F9EE61E41332B00EF6F88 /* LaunchScreen.storyboard in Resources */,
 				389F9EE31E41332B00EF6F88 /* Assets.xcassets in Resources */,
-				382599E91E41992700349582 /* Cartfile in Resources */,
 				389F9EDE1E41332B00EF6F88 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		382599EF1E419A0100349582 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/WKZombie.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/hpple.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		389F9ED11E41332B00EF6F88 /* Sources */ = {
@@ -317,6 +292,7 @@
 		389F9EEB1E41332B00EF6F88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7ZNE25EY4B;
@@ -335,6 +311,7 @@
 		389F9EEC1E41332B00EF6F88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7ZNE25EY4B;
