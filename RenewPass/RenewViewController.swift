@@ -36,6 +36,7 @@ class RenewViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
             self.reloadButton.isEnabled = true
+            
         })
 
     }
@@ -108,6 +109,16 @@ class RenewViewController: UIViewController {
             self.authenticate(school: school)
         })
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+            self.authenticate(school: school)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(6), execute: {
+                self.checkUpass()
+            })
+        })
+        
+        
+        
+        
         
     }
     
@@ -134,6 +145,17 @@ class RenewViewController: UIViewController {
         }
         
     }
+    
+    func checkUpass() {
+        let js = "var form = document.querySelector(\"#form-request\"); function checkUpass() { if (form.querySelector(\"[type=checkbox]\")==null){ return \"null\"} else {return \"checkbox\"} } checkUpass()"
+        
+        let result = webview.stringByEvaluatingJavaScript(from: js)
+       
+        if result == "null" {
+            print("ALREADY HAS UPASS")
+        }
+    }
 
 
+    
 }
