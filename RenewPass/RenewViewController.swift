@@ -18,6 +18,7 @@ class RenewViewController: UIViewController, UIWebViewDelegate {
     var username:String!
     var school:Schools!
     @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet weak var statusLabel: UILabel!
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -35,11 +36,6 @@ class RenewViewController: UIViewController, UIWebViewDelegate {
         let url = URL(string: "https://upassbc.translink.ca")
         let urlRequest = URLRequest(url: url!)
         webview.loadRequest(urlRequest)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            self.reloadButton.isEnabled = true
-            
-        })
 
     }
 
@@ -115,11 +111,14 @@ class RenewViewController: UIViewController, UIWebViewDelegate {
     
     func selectSchool(school:Int16) {
         
+        statusLabel.text = "Selecting school"
         webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "SelectSchool"))
 
     }
     
     func authenticate(school:Int16) throws {
+        
+        statusLabel.text = "Authenticating"
         
         switch school {
         case 9: // SFU
@@ -131,6 +130,8 @@ class RenewViewController: UIViewController, UIWebViewDelegate {
     }
     
     func checkUpass() throws {
+        
+        statusLabel.text = "Checking UPass"
         
         guard !(webview.request?.url?.absoluteString.contains("cas"))! else {
             throw RenewPassException.authenticationFailedException
@@ -167,21 +168,24 @@ class RenewViewController: UIViewController, UIWebViewDelegate {
         }
         
         do {
-            if currentURL.contains("cas") { // SFU authentication screen
-                try authenticate(school: school.rawValue)
+            if currentURL == "https://upassbc.translink.ca/" {
+                reloadButton.isEnabled = true
+                statusLabel.text = "Waiting on button click"
+            } else if currentURL.contains("cas") { // SFU authentication screen
+                try authenticate(school: getSchoolID(school: school))
             } else if currentURL.contains("fs") { // post-auth Upass site
                 try checkUpass()
             }
         } catch RenewPassException.authenticationFailedException {
-             print("Authentication failed")
+            statusLabel.text = "Authentication failed"
         } catch RenewPassException.alreadyHasLatestUPassException {
-             print("ALREADY HAS LATEST UPASS")
+             statusLabel.text = "You already have the latest UPass"
         } catch RenewPassException.schoolNotFoundException {
-            print("School Not Found Exception")
+            statusLabel.text = "School Not Found"
         } catch RenewPassException.unknownException {
-            print("Unknown Exception")
+            statusLabel.text = "Unknown Error"
         } catch {
-            print("Unknown Exception")
+            statusLabel.text = "Unknown Error"
         }
         
     }
