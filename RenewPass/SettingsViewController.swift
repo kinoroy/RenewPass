@@ -10,10 +10,18 @@ import UIKit
 import CoreData
 
 class SettingsViewController: UIViewController {
+    
+    // MARK: - Proporties 
+    
+    @IBOutlet weak var showWebviewSwitch: UISwitch!
+    
+    
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        showWebviewSwitch.isOn = UserDefaults.standard.bool(forKey: "showWebview")
         // Do any additional setup after loading the view.
     }
 
@@ -55,6 +63,16 @@ class SettingsViewController: UIViewController {
         
     }
     
+    
+    @IBAction func showWebviewSwitchValueChanged(_ sender: Any) {
+        if let webviewSwitch = sender as? UISwitch {
+            if webviewSwitch.isOn {
+                UserDefaults.standard.set(true, forKey: "showWebview")
+            } else {
+                UserDefaults.standard.set(false, forKey: "showWebview")
+            }
+        }
+    }
     
     /*
     // MARK: - Navigation

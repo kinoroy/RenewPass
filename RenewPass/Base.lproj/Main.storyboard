@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,6 +30,13 @@
                                     <action selector="renewButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gMs-wi-hTt"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting for translink.ca to load" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iby-ue-Quo">
+                                <rect key="frame" x="16" y="443" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -41,6 +49,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="reloadButton" destination="Ipt-dd-54D" id="tgu-mP-x92"/>
+                        <outlet property="statusLabel" destination="Iby-ue-Quo" id="8uf-fC-0F1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -59,17 +68,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7l7-o0-D1m">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7l7-o0-D1m">
                                 <rect key="frame" x="118" y="104" width="138" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="138" id="QR3-nL-Diq"/>
+                                </constraints>
                                 <state key="normal" title="Reset Account"/>
                                 <connections>
                                     <action selector="clickResetAccountButton:" destination="akJ-MO-2mI" eventType="touchUpInside" id="TOB-rn-7xX"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SxS-nj-N8L">
+                                <rect key="frame" x="163" y="194" width="51" height="31"/>
+                                <connections>
+                                    <action selector="showWebviewSwitchValueChanged:" destination="akJ-MO-2mI" eventType="valueChanged" id="ozz-Qn-o6x"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show WebView (DEBUG)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmv-1X-LpA">
+                                <rect key="frame" x="93" y="238" width="198" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wmv-1X-LpA" firstAttribute="leading" secondItem="f8n-ZV-eQZ" secondAttribute="leadingMargin" constant="77" id="CzN-w8-Or0"/>
+                            <constraint firstItem="wmv-1X-LpA" firstAttribute="top" secondItem="SxS-nj-N8L" secondAttribute="bottom" constant="13" id="F6C-RX-e3p"/>
+                            <constraint firstItem="7l7-o0-D1m" firstAttribute="centerX" secondItem="SxS-nj-N8L" secondAttribute="centerX" id="Fgf-Bf-XgM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wmv-1X-LpA" secondAttribute="trailing" constant="68" id="GS5-4K-FzO"/>
+                            <constraint firstItem="7l7-o0-D1m" firstAttribute="top" secondItem="wZd-CY-Cnf" secondAttribute="bottom" constant="40" id="r0e-DK-P52"/>
+                            <constraint firstItem="SxS-nj-N8L" firstAttribute="top" secondItem="7l7-o0-D1m" secondAttribute="bottom" constant="60" id="uNJ-7Z-iIv"/>
+                            <constraint firstItem="7l7-o0-D1m" firstAttribute="centerX" secondItem="f8n-ZV-eQZ" secondAttribute="centerX" id="zIt-y8-p1i"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="showWebviewSwitch" destination="SxS-nj-N8L" id="BUw-D2-Frm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eih-mP-leE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

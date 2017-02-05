@@ -84,7 +84,10 @@ class RenewViewController: UIViewController, UIWebViewDelegate {
     // MARK: - Actions
     
     @IBAction func renewButtonTouchUpInside(_ sender: Any) {
-        self.view.addSubview(webview)
+        
+        if UserDefaults.standard.bool(forKey: "showWebview") {
+            self.view.addSubview(webview)
+        }
         
         school = Schools.SFU
         
