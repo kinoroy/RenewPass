@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pk9-Zo-kUf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pk9-Zo-kUf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -90,7 +90,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tZc-hL-TeB" userLabel="usernameField">
                                 <rect key="frame" x="139" y="116" width="97" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="L4h-QE-kDq"/>
+                                    <constraint firstAttribute="width" constant="97" id="gvY-I2-kIQ"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -99,7 +99,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zg6-tS-2TD">
                                 <rect key="frame" x="143" y="66" width="89" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="89" id="X39-gF-1hb"/>
+                                    <constraint firstAttribute="width" constant="89" id="H3C-CD-Ivk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -118,30 +118,37 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzZ-uo-uwt">
-                                <rect key="frame" x="163" y="318" width="49" height="30"/>
+                                <rect key="frame" x="163" y="529" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="clickSubmitButton:" destination="0Me-Ry-yaI" eventType="touchUpInside" id="XJe-20-B46"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kIU-Vp-0SB">
+                                <rect key="frame" x="0.0" y="276" width="375" height="216"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="taO-Ri-113" firstAttribute="top" secondItem="SR3-jJ-oOj" secondAttribute="bottom" constant="27" id="5RS-QK-Huh"/>
-                            <constraint firstItem="tZc-hL-TeB" firstAttribute="trailing" secondItem="taO-Ri-113" secondAttribute="trailing" id="Axc-3M-SV7"/>
-                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="centerX" secondItem="tZc-hL-TeB" secondAttribute="centerX" id="Iwd-Ae-AD2"/>
-                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="centerX" secondItem="taO-Ri-113" secondAttribute="centerX" id="NlF-oL-RnI"/>
-                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="centerX" secondItem="aMK-Hf-lhW" secondAttribute="centerX" id="ZkO-hZ-8jM"/>
-                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="top" secondItem="yGF-pT-H26" secondAttribute="bottom" constant="46" id="aW3-dH-vNi"/>
-                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="top" secondItem="tZc-hL-TeB" secondAttribute="bottom" constant="44" id="diM-eB-Vlv"/>
-                            <constraint firstItem="tZc-hL-TeB" firstAttribute="top" secondItem="Zg6-tS-2TD" secondAttribute="bottom" constant="29" id="nRA-V5-yE2"/>
-                            <constraint firstItem="gzZ-uo-uwt" firstAttribute="centerY" secondItem="aMK-Hf-lhW" secondAttribute="centerY" id="rTE-d8-uao"/>
-                            <constraint firstItem="tZc-hL-TeB" firstAttribute="leading" secondItem="taO-Ri-113" secondAttribute="leading" id="t8J-KH-uwi"/>
-                            <constraint firstItem="taO-Ri-113" firstAttribute="centerX" secondItem="gzZ-uo-uwt" secondAttribute="centerX" id="vsd-ar-5hd"/>
+                            <constraint firstItem="gzZ-uo-uwt" firstAttribute="top" secondItem="kIU-Vp-0SB" secondAttribute="bottom" constant="37" id="1UY-jE-opa"/>
+                            <constraint firstItem="kIU-Vp-0SB" firstAttribute="top" secondItem="taO-Ri-113" secondAttribute="bottom" constant="8" symbolic="YES" id="617-H7-xOd"/>
+                            <constraint firstItem="taO-Ri-113" firstAttribute="centerX" secondItem="kIU-Vp-0SB" secondAttribute="centerX" id="84a-tM-3Nq"/>
+                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="top" secondItem="yGF-pT-H26" secondAttribute="bottom" constant="46" id="BeF-R6-TZf"/>
+                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="centerX" secondItem="tZc-hL-TeB" secondAttribute="centerX" id="Js5-3e-yHa"/>
+                            <constraint firstItem="tZc-hL-TeB" firstAttribute="leading" secondItem="taO-Ri-113" secondAttribute="leading" id="LWx-Cw-1Ia"/>
+                            <constraint firstItem="tZc-hL-TeB" firstAttribute="trailing" secondItem="taO-Ri-113" secondAttribute="trailing" id="X0l-Bb-VSb"/>
+                            <constraint firstItem="tZc-hL-TeB" firstAttribute="top" secondItem="Zg6-tS-2TD" secondAttribute="bottom" constant="29" id="XeV-pH-MCw"/>
+                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="centerX" secondItem="taO-Ri-113" secondAttribute="centerX" id="aoA-4A-qFJ"/>
+                            <constraint firstAttribute="trailing" secondItem="kIU-Vp-0SB" secondAttribute="trailing" id="btz-Ir-fZ0"/>
+                            <constraint firstItem="kIU-Vp-0SB" firstAttribute="leading" secondItem="aMK-Hf-lhW" secondAttribute="leading" id="gvT-t0-mKu"/>
+                            <constraint firstItem="kIU-Vp-0SB" firstAttribute="centerX" secondItem="gzZ-uo-uwt" secondAttribute="centerX" id="kIO-XA-G2p"/>
+                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="top" secondItem="tZc-hL-TeB" secondAttribute="bottom" constant="44" id="rhX-2e-e2J"/>
+                            <constraint firstItem="taO-Ri-113" firstAttribute="top" secondItem="SR3-jJ-oOj" secondAttribute="bottom" constant="27" id="tlx-Dy-Doa"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="taO-Ri-113" id="TU0-yu-Asy"/>
+                        <outlet property="pickerview" destination="kIU-Vp-0SB" id="Lcf-Mp-w0o"/>
                         <outlet property="usernameField" destination="tZc-hL-TeB" id="Cdv-cC-YFZ"/>
                     </connections>
                 </viewController>

@@ -16,6 +16,7 @@ class RenewViewController: UIViewController {
     var accounts:[NSManagedObject]!
     var webview:UIWebView!
     var username:String!
+    var school:Schools!
     @IBOutlet weak var reloadButton: UIButton!
 
     // MARK: - Life Cycle
@@ -84,7 +85,7 @@ class RenewViewController: UIViewController {
     @IBAction func renewButtonTouchUpInside(_ sender: Any) {
         self.view.addSubview(webview)
         
-        let school = Schools.SFU
+        school = Schools.SFU
         
         //Get auth values
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -103,14 +104,14 @@ class RenewViewController: UIViewController {
         
         username = accounts[0].value(forKey: "username") as! String!
         
-        selectSchool(school: school)
+        selectSchool(school: getSchoolID(school: school))
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            self.authenticate(school: school)
+            self.authenticate(school: getSchoolID(school: self.school))
         })
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            self.authenticate(school: school)
+            self.authenticate(school: getSchoolID(school: self.school))
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(6), execute: {
                 self.checkUpass()
             })
@@ -123,15 +124,15 @@ class RenewViewController: UIViewController {
     }
     
 
-    func selectSchool(school:String) {
+    func selectSchool(school:Int16) {
         
         webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "SelectSchool"))
 
     }
     
-    func authenticate(school:String) {
+    func authenticate(school:Int16) {
         
-        if school == "9" { //SFU
+        if school == 9 { //SFU
            
             webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "Authenticate_SFU"))
             
@@ -158,6 +159,7 @@ class RenewViewController: UIViewController {
             js = js.replacingOccurrences(of: "\n", with: "")
             js = js.replacingOccurrences(of: "storedUsername", with: username)
             js = js.replacingOccurrences(of: "storedPassword", with: KeychainSwift().get("accountPassword")! as String)
+            js = js.replacingOccurrences(of: "_SCHOOL_ID_", with: "\(getSchoolID(school: school))")
             return js
         } catch {
             fatalError("Could not read the JavaScript file \"\(filename).js\"")

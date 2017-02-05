@@ -9,10 +9,11 @@
 import UIKit
 import CoreData
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     // MARK: - Proporties
     
+    @IBOutlet weak var pickerview: UIPickerView!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     var accounts:[NSManagedObject]!
@@ -21,10 +22,24 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        pickerview.delegate = self
+        pickerview.dataSource = self
         // Do any additional setup after loading the view.
     }
 
+    // MARK: - Pickerview 
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "SFU"
+    }
+    
     // MARK: - Navigation
 
     @IBAction func clickSubmitButton(_ sender: Any) {
@@ -60,11 +75,15 @@ class SignInViewController: UIViewController {
         
         //3
         account.setValue(username, forKey: "username")
-        account.setValue(Schools.SFU, forKey: "school")
+        account.setValue(schoolForPickerView(row: pickerview.selectedRow(inComponent: 0)), forKey: "schoolRaw")
         
         //4
         appDelegate.saveContext()
         
+    }
+    
+    private func schoolForPickerView(row:Int) -> Int16 {
+        return Schools.SFU.rawValue
     }
     
 
