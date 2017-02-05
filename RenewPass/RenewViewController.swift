@@ -107,18 +107,38 @@ class RenewViewController: UIViewController {
         selectSchool(school: getSchoolID(school: school))
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            self.authenticate(school: getSchoolID(school: self.school))
+            do {
+                try self.authenticate(school: getSchoolID(school: self.school))
+            } catch RenewPassException.schoolNotFoundException {
+                print("School Not Found")
+            } catch {
+                print("Unknown Error")
+            }
         })
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            self.authenticate(school: getSchoolID(school: self.school))
+            do {
+                try self.authenticate(school: getSchoolID(school: self.school))
+            } catch RenewPassException.schoolNotFoundException {
+                print("School Not Found")
+            } catch {
+                print("Unknown Error")
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(6), execute: {
-                self.checkUpass()
+                do {
+                    try self.checkUpass()
+                } catch RenewPassException.alreadyHasLatestUPassException {
+                    print("ALREADY HAS LATEST UPASS")
+                } catch RenewPassException.authenticationFailedException {
+                    print("Authentication Failed")
+                } catch {
+                    print("Unknown Error")
+                }
             })
+            
+            
         })
-        
-        
-        
         
         
     }
@@ -130,23 +150,27 @@ class RenewViewController: UIViewController {
 
     }
     
-    func authenticate(school:Int16) {
+    func authenticate(school:Int16) throws {
         
-        if school == 9 { //SFU
-           
+        switch school {
+        case 9: // SFU
             webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "Authenticate_SFU"))
-            
-
+        default:
+            throw RenewPassException.schoolNotFoundException
         }
         
     }
     
-    func checkUpass() {
+    func checkUpass() throws {
+        
+        guard (webview.request?.url?.absoluteString.contains("upassbc"))! else {
+            throw RenewPassException.authenticationFailedException
+        }
         
         let result = webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "CheckUPass"))
        
-        if result == "null" {
-            print("ALREADY HAS UPASS")
+        guard result != "null" else {
+            throw RenewPassException.alreadyHasLatestUPassException
         }
     }
 
@@ -166,4 +190,11 @@ class RenewViewController: UIViewController {
         }
     }
     
+}
+
+enum RenewPassException: Error {
+    case authenticationFailedException
+    case schoolNotFoundException
+    case alreadyHasLatestUPassException
+    case unknownException
 }
