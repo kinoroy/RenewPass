@@ -38,6 +38,12 @@ class RenewViewController: UIViewController, UIWebViewDelegate {
         webview.loadRequest(urlRequest)
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if needToShowLoginScreen() {
+            showLoginScreen()
+        }
+    }
 
     // MARK: - Navigation
 
