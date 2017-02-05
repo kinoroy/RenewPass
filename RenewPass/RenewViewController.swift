@@ -124,22 +124,16 @@ class RenewViewController: UIViewController {
     
 
     func selectSchool(school:String) {
-        let js = "document.querySelector(\"form\").querySelector(\"#PsiId\").options[9].selected = true; document.querySelector(\"form\").submit();"
         
-        
-        webview.stringByEvaluatingJavaScript(from: js)
+        webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "SelectSchool"))
+
     }
     
     func authenticate(school:String) {
         
         if school == "9" { //SFU
-        
-            let password = KeychainSwift().get("accountPassword")!
-            
-            
-            let js = "document.querySelector(\"#fm1\"); document.querySelector(\"#username\").value = \"\(username!)\"; document.querySelector(\"#password\").value = \"\(password)\"; document.querySelector(\"#fm1\").submit();"
            
-            webview.stringByEvaluatingJavaScript(from: js)
+            webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "Authenticate_SFU"))
             
 
         }
@@ -147,9 +141,8 @@ class RenewViewController: UIViewController {
     }
     
     func checkUpass() {
-        let js = "var form = document.querySelector(\"#form-request\"); function checkUpass() { if (form.querySelector(\"[type=checkbox]\")==null){ return \"null\"} else {return \"checkbox\"} } checkUpass()"
         
-        let result = webview.stringByEvaluatingJavaScript(from: js)
+        let result = webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "CheckUPass"))
        
         if result == "null" {
             print("ALREADY HAS UPASS")
@@ -157,5 +150,18 @@ class RenewViewController: UIViewController {
     }
 
 
+    func getJavaScript(filename: String) -> String {
+        let path = Bundle.main.path(forResource: filename, ofType: "js")
+        let url = URL(fileURLWithPath: path!)
+        do {
+            var js = try String(contentsOf: url, encoding: String.Encoding.utf8)
+            js = js.replacingOccurrences(of: "\n", with: "")
+            js = js.replacingOccurrences(of: "storedUsername", with: username)
+            js = js.replacingOccurrences(of: "storedPassword", with: KeychainSwift().get("accountPassword")! as String)
+            return js
+        } catch {
+            fatalError("Could not read the JavaScript file \"\(filename).js\"")
+        }
+    }
     
 }
