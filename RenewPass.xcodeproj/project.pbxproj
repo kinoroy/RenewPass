@@ -12,6 +12,7 @@
 		382599A91E4172B400349582 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599A81E4172B400349582 /* KeychainHelper.swift */; };
 		382599AF1E417E0500349582 /* Schools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599AE1E417E0500349582 /* Schools.swift */; };
 		382599B11E41911400349582 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599B01E41911400349582 /* SettingsViewController.swift */; };
+		385EE1C21E47E01000E83373 /* AuthenticationError_SFU.js in Resources */ = {isa = PBXBuildFile; fileRef = 385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */; };
 		388C42F21E46A79F00BD1A56 /* SelectSchool.js in Resources */ = {isa = PBXBuildFile; fileRef = 388C42F11E46A79F00BD1A56 /* SelectSchool.js */; };
 		388C42F41E46AE3300BD1A56 /* Authenticate_SFU.js in Resources */ = {isa = PBXBuildFile; fileRef = 388C42F31E46AE3300BD1A56 /* Authenticate_SFU.js */; };
 		388C42F61E46B05300BD1A56 /* CheckUPass.js in Resources */ = {isa = PBXBuildFile; fileRef = 388C42F51E46B05300BD1A56 /* CheckUPass.js */; };
@@ -31,6 +32,7 @@
 		382599EB1E4199FB00349582 /* WKZombie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WKZombie.framework; path = Carthage/Build/iOS/WKZombie.framework; sourceTree = "<group>"; };
 		382599EC1E4199FB00349582 /* hpple.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = hpple.framework; path = Carthage/Build/iOS/hpple.framework; sourceTree = "<group>"; };
 		382599FA1E4267F400349582 /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/iOS/Kanna.framework; sourceTree = "<group>"; };
+		385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AuthenticationError_SFU.js; sourceTree = "<group>"; };
 		388C42F11E46A79F00BD1A56 /* SelectSchool.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = SelectSchool.js; sourceTree = "<group>"; };
 		388C42F31E46AE3300BD1A56 /* Authenticate_SFU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Authenticate_SFU.js; sourceTree = "<group>"; };
 		388C42F51E46B05300BD1A56 /* CheckUPass.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = CheckUPass.js; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				382599A61E41675100349582 /* RenewViewController.swift */,
 				388C42F11E46A79F00BD1A56 /* SelectSchool.js */,
 				388C42F31E46AE3300BD1A56 /* Authenticate_SFU.js */,
+				385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */,
 				388C42F51E46B05300BD1A56 /* CheckUPass.js */,
 				389F9EDC1E41332B00EF6F88 /* Main.storyboard */,
 				382599B01E41911400349582 /* SettingsViewController.swift */,
@@ -167,6 +170,7 @@
 				388C42F21E46A79F00BD1A56 /* SelectSchool.js in Resources */,
 				388C42F41E46AE3300BD1A56 /* Authenticate_SFU.js in Resources */,
 				388C42F61E46B05300BD1A56 /* CheckUPass.js in Resources */,
+				385EE1C21E47E01000E83373 /* AuthenticationError_SFU.js in Resources */,
 				389F9EDE1E41332B00EF6F88 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -122,6 +122,10 @@ class RenewViewController: UIViewController, UIWebViewDelegate {
         
         switch school {
         case 9: // SFU
+            let result = webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "AuthenticationError_SFU"))
+            if result == "failure" {
+                throw RenewPassException.authenticationFailedException
+            }
             webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "Authenticate_SFU"))
         default:
             throw RenewPassException.schoolNotFoundException
@@ -181,7 +185,7 @@ class RenewViewController: UIViewController, UIWebViewDelegate {
         } catch RenewPassException.alreadyHasLatestUPassException {
              statusLabel.text = "You already have the latest UPass"
         } catch RenewPassException.schoolNotFoundException {
-            statusLabel.text = "School Not Found"
+            statusLabel.text = "School Not Found / Not Supported"
         } catch RenewPassException.unknownException {
             statusLabel.text = "Unknown Error"
         } catch {
