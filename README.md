@@ -8,5 +8,5 @@ RenewPass does the work of renewing your UPass for you. Enter your school creden
 
 Your school credentials are stored locally on your phone, and your password is encrypted before being saved, so only RenewPass can see it.
 
-Currently supported schools:
+Currently supported schools (checking only, not renewing):
 - SFU (Pre-Alpha)
