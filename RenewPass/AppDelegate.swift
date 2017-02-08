@@ -93,5 +93,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if let navigationViewController = self.window?.rootViewController as! UINavigationController? {
+            let renewVC = navigationViewController.viewControllers[0] as! RenewViewController
+            renewVC.fetch() {
+                (success) in
+                if success {
+                    print("Got the new UPass!")
+                    completionHandler(UIBackgroundFetchResult.newData)
+                } else {
+                    print("Something went wrong!: Maybe you already have the latest Upass?")
+                    completionHandler(UIBackgroundFetchResult.noData)
+                }
+            }
+        } else {
+            print("Something went wrong! there was no root view controller")
+            completionHandler(UIBackgroundFetchResult.noData)
+        }
+    }
 }
 

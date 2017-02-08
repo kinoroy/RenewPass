@@ -10,33 +10,31 @@ import UIKit
 import CoreData
 import WebKit
 
-class RenewViewController: UIViewController, UIWebViewDelegate {
+class RenewViewController: UIViewController {
     
     // MARK: - Proporties
     var accounts:[NSManagedObject]!
-    var webview:UIWebView!
+    var webview:CustomWebView!
     var username:String!
     var school:Schools!
+    var completionHandlers:[(Bool) -> Void] = []
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.reloadButton.isEnabled = false
+        statusLabel.text = "Waiting on button click...."
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name("webViewDidFinishLoading"), object: nil, queue: nil, using: webViewDidFinishLoad)
+        
+        self.reloadButton.isEnabled = true
         
         // Checks if there is login data stored. If not, asks the user for login data by showing the login screen.
         if needToShowLoginScreen() {
             showLoginScreen()
         }
         
-        webview = UIWebView(frame: self.view.frame)
-        self.webview.delegate = self
-        
-        let url = URL(string: "https://upassbc.translink.ca")
-        let urlRequest = URLRequest(url: url!)
-        webview.loadRequest(urlRequest)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,31 +84,21 @@ class RenewViewController: UIViewController, UIWebViewDelegate {
     // MARK: - Actions
     
     @IBAction func renewButtonTouchUpInside(_ sender: Any) {
+        reloadButton.isEnabled = false
         
         if UserDefaults.standard.bool(forKey: "showWebview") {
             self.view.addSubview(webview)
         }
         
-        school = Schools.SFU
+        statusLabel.text = "Waiting for translink.ca"
         
-        //Get auth values
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Account")
-        
-        do {
-            let results =
-                try managedContext.fetch(fetchRequest)
-            accounts = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
+        fetch() { (success) in
+            if success {
+                print("success")
+            } else {
+                print("didn't get the latest upass, maybe you have the latest?")
+            }
         }
-        
-        username = accounts[0].value(forKey: "username") as! String!
-        
-        selectSchool(school: getSchoolID(school: school))
         
         
     }
@@ -171,16 +159,17 @@ class RenewViewController: UIViewController, UIWebViewDelegate {
     }
     
     // MARK: - Webview
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        
-        guard let currentURL = webView.request?.url?.absoluteString else {
+    func webViewDidFinishLoad(notification:Notification) {
+        //let webView = notification.object as! UIWebView
+        guard let currentURL = webview.request?.url?.absoluteString else {
             fatalError("Webview did not load a URL")
         }
         
         do {
             if currentURL == "https://upassbc.translink.ca/" {
-                reloadButton.isEnabled = true
-                statusLabel.text = "Waiting on button click"
+                //reloadButton.isEnabled = true
+                //statusLabel.text = "Waiting on button click"
+                selectSchool(school: getSchoolID(school: school))
             } else if currentURL.contains("cas") { // SFU authentication screen
                 try authenticate(school: getSchoolID(school: school))
             } else if currentURL.contains("fs") { // post-auth Upass site
@@ -188,18 +177,103 @@ class RenewViewController: UIViewController, UIWebViewDelegate {
             }
         } catch RenewPassException.authenticationFailedException {
             statusLabel.text = "Authentication failed"
+            completionHandlers[0](false)
         } catch RenewPassException.alreadyHasLatestUPassException {
-             statusLabel.text = "You already have the latest UPass"
+            statusLabel.text = "You already have the latest UPass"
+            completionHandlers[0](false)
         } catch RenewPassException.schoolNotFoundException {
             statusLabel.text = "School Not Found / Not Supported"
+            completionHandlers[0](false)
         } catch RenewPassException.unknownException {
             statusLabel.text = "Unknown Error"
+            completionHandlers[0](false)
         } catch {
             statusLabel.text = "Unknown Error"
+            completionHandlers[0](false)
         }
         
     }
+    
+    func fetch(completion: @escaping (_ success:Bool) -> Void) {
+        completionHandlers.append(completion)
+        
+        if webview == nil {
+            webview = CustomWebView(frame: self.view.frame)
+            
+            let url = URL(string: "https://upassbc.translink.ca")
+            let urlRequest = URLRequest(url: url!)
+            webview.loadRequest(urlRequest)
+        
+        }
+        
+        school = Schools.SFU
+        
+        //Get auth values
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Account")
+        
+        do {
+            let results =
+                try managedContext.fetch(fetchRequest)
+            accounts = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        username = accounts[0].value(forKey: "username") as! String!
+        
+        //selectSchool(school: getSchoolID(school: school))
+        
+        
+    }
 }
+
+class CustomWebView: UIWebView
+{
+    var uiView = UIView()
+    
+    override init(frame: CGRect)
+    {
+        super.init(frame: frame)
+        self.delegate = self
+    }
+    
+    convenience init(frame:CGRect, request:URLRequest)
+    {
+        self.init(frame: frame)
+        uiView.addSubview(self)
+        loadRequest(request)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension CustomWebView: UIWebViewDelegate
+{
+    func webViewDidStartLoad(_ webView: UIWebView)
+    {
+        //print("webViewDidStartLoad")
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView)
+    {
+        //print("webViewDidFinishLoad")
+        NotificationCenter.default.post(name: Notification.Name("webViewDidFinishLoading"), object: nil)
+    }
+    
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error)
+    {
+        //print("An error occurred while loading the webview")
+        print(error)
+    }
+}
+
+// MARK: - Enum
 
 enum RenewPassException: Error {
     case authenticationFailedException
