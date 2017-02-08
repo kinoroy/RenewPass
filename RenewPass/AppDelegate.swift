@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import os.log
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -94,12 +95,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        os_log("Performing a background fetch", log: .default, type: .debug)
         if let navigationViewController = self.window?.rootViewController as! UINavigationController? {
             let renewVC = navigationViewController.viewControllers[0] as! RenewViewController
             renewVC.fetch() {
                 (error) in
                 if error != nil {
-                    print("Something went wrong!: Maybe you already have the latest Upass?")
+                    os_log("There was an error renewing the UPass. (Maybe the user already has the latest?)", log: .default, type: .debug)
+                    if let e = error! as RenewPassException? {
+                        print(e.description)
+                    } else {
+                        print("\(error)")
+                    }
                     completionHandler(UIBackgroundFetchResult.noData)
                 } else {
                     print("Got the new UPass!")
@@ -107,6 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         } else {
+            os_log("There was an error renewing the UPass. (No root view controller)", log: .default, type: .debug)
             print("Something went wrong! there was no root view controller")
             completionHandler(UIBackgroundFetchResult.noData)
         }

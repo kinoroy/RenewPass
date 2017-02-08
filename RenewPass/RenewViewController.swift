@@ -176,18 +176,9 @@ class RenewViewController: UIViewController {
             } else if currentURL.contains("fs") { // post-auth Upass site
                 try checkUpass()
             }
-        } catch RenewPassException.authenticationFailedException {
-            statusLabel.text = "Authentication failed"
-            completionHandlers[0](RenewPassException.authenticationFailedException)
-        } catch RenewPassException.alreadyHasLatestUPassException {
-            statusLabel.text = "You already have the latest UPass"
-            completionHandlers[0](RenewPassException.alreadyHasLatestUPassException)
-        } catch RenewPassException.schoolNotFoundException {
-            statusLabel.text = "School Not Found / Not Supported"
-            completionHandlers[0](RenewPassException.schoolNotFoundException)
-        } catch RenewPassException.unknownException {
-            statusLabel.text = "Unknown Error"
-            completionHandlers[0](RenewPassException.unknownException)
+        } catch let error as RenewPassException {
+            statusLabel.text = error.title
+            completionHandlers[0](error)
         } catch {
             statusLabel.text = "Unknown Error"
             completionHandlers[0](RenewPassException.unknownException)
@@ -234,14 +225,4 @@ class RenewViewController: UIViewController {
         
         
     }
-}
-
-// MARK: - Enum
-
-enum RenewPassException: Error {
-    case authenticationFailedException
-    case schoolNotFoundException
-    case alreadyHasLatestUPassException
-    case webViewFailedException
-    case unknownException
 }
