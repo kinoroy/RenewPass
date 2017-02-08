@@ -97,13 +97,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let navigationViewController = self.window?.rootViewController as! UINavigationController? {
             let renewVC = navigationViewController.viewControllers[0] as! RenewViewController
             renewVC.fetch() {
-                (success) in
-                if success {
-                    print("Got the new UPass!")
-                    completionHandler(UIBackgroundFetchResult.newData)
-                } else {
+                (error) in
+                if error != nil {
                     print("Something went wrong!: Maybe you already have the latest Upass?")
                     completionHandler(UIBackgroundFetchResult.noData)
+                } else {
+                    print("Got the new UPass!")
+                    completionHandler(UIBackgroundFetchResult.newData)
                 }
             }
         } else {

@@ -14,10 +14,10 @@ class RenewViewController: UIViewController {
     
     // MARK: - Proporties
     var accounts:[NSManagedObject]!
-    var webview:CustomWebView!
+    var webview:WebView!
     var username:String!
     var school:Schools!
-    var completionHandlers:[(Bool) -> Void] = []
+    var completionHandlers:[(RenewPassException) -> Void] = []
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
 
@@ -26,7 +26,8 @@ class RenewViewController: UIViewController {
         super.viewDidLoad()
         statusLabel.text = "Waiting on button click...."
         
-        NotificationCenter.default.addObserver(forName: Notification.Name("webViewDidFinishLoading"), object: nil, queue: nil, using: webViewDidFinishLoad)
+        NotificationCenter.default.addObserver(forName: Notification.Name("webViewDidFinishLoad"), object: nil, queue: nil, using: webViewDidFinishLoad)
+        NotificationCenter.default.addObserver(forName: Notification.Name("webViewDidFailLoadWithError"), object: nil, queue: nil, using: webViewDidFailLoadWithError)
         
         self.reloadButton.isEnabled = true
         
@@ -92,11 +93,11 @@ class RenewViewController: UIViewController {
         
         statusLabel.text = "Waiting for translink.ca"
         
-        fetch() { (success) in
-            if success {
-                print("success")
+        fetch() { (error) in
+            if error != nil {
+                print("\(error)")
             } else {
-                print("didn't get the latest upass, maybe you have the latest?")
+                print("Success")
             }
         }
         
@@ -177,28 +178,32 @@ class RenewViewController: UIViewController {
             }
         } catch RenewPassException.authenticationFailedException {
             statusLabel.text = "Authentication failed"
-            completionHandlers[0](false)
+            completionHandlers[0](RenewPassException.authenticationFailedException)
         } catch RenewPassException.alreadyHasLatestUPassException {
             statusLabel.text = "You already have the latest UPass"
-            completionHandlers[0](false)
+            completionHandlers[0](RenewPassException.alreadyHasLatestUPassException)
         } catch RenewPassException.schoolNotFoundException {
             statusLabel.text = "School Not Found / Not Supported"
-            completionHandlers[0](false)
+            completionHandlers[0](RenewPassException.schoolNotFoundException)
         } catch RenewPassException.unknownException {
             statusLabel.text = "Unknown Error"
-            completionHandlers[0](false)
+            completionHandlers[0](RenewPassException.unknownException)
         } catch {
             statusLabel.text = "Unknown Error"
-            completionHandlers[0](false)
+            completionHandlers[0](RenewPassException.unknownException)
         }
         
     }
     
-    func fetch(completion: @escaping (_ success:Bool) -> Void) {
+    func webViewDidFailLoadWithError(notification:Notification) {
+        completionHandlers[0](RenewPassException.webViewFailedException)
+    }
+    
+    func fetch(completion: @escaping (_ error:RenewPassException?) -> Void) {
         completionHandlers.append(completion)
         
         if webview == nil {
-            webview = CustomWebView(frame: self.view.frame)
+            webview = WebView(frame: self.view.frame)
             
             let url = URL(string: "https://upassbc.translink.ca")
             let urlRequest = URLRequest(url: url!)
@@ -231,53 +236,12 @@ class RenewViewController: UIViewController {
     }
 }
 
-class CustomWebView: UIWebView
-{
-    var uiView = UIView()
-    
-    override init(frame: CGRect)
-    {
-        super.init(frame: frame)
-        self.delegate = self
-    }
-    
-    convenience init(frame:CGRect, request:URLRequest)
-    {
-        self.init(frame: frame)
-        uiView.addSubview(self)
-        loadRequest(request)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension CustomWebView: UIWebViewDelegate
-{
-    func webViewDidStartLoad(_ webView: UIWebView)
-    {
-        //print("webViewDidStartLoad")
-    }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView)
-    {
-        //print("webViewDidFinishLoad")
-        NotificationCenter.default.post(name: Notification.Name("webViewDidFinishLoading"), object: nil)
-    }
-    
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error)
-    {
-        //print("An error occurred while loading the webview")
-        print(error)
-    }
-}
-
 // MARK: - Enum
 
 enum RenewPassException: Error {
     case authenticationFailedException
     case schoolNotFoundException
     case alreadyHasLatestUPassException
+    case webViewFailedException
     case unknownException
 }
