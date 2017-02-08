@@ -15,6 +15,7 @@
 		385EE1C21E47E01000E83373 /* AuthenticationError_SFU.js in Resources */ = {isa = PBXBuildFile; fileRef = 385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */; };
 		387A1E451E4ACE8800650D32 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387A1E441E4ACE8800650D32 /* WebView.swift */; };
 		387A1E471E4ADAA000650D32 /* RenewPassException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387A1E461E4ADAA000650D32 /* RenewPassException.swift */; };
+		387A1E491E4B959700650D32 /* Authenticate_UBC.js in Resources */ = {isa = PBXBuildFile; fileRef = 387A1E481E4B959700650D32 /* Authenticate_UBC.js */; };
 		388C42F21E46A79F00BD1A56 /* SelectSchool.js in Resources */ = {isa = PBXBuildFile; fileRef = 388C42F11E46A79F00BD1A56 /* SelectSchool.js */; };
 		388C42F41E46AE3300BD1A56 /* Authenticate_SFU.js in Resources */ = {isa = PBXBuildFile; fileRef = 388C42F31E46AE3300BD1A56 /* Authenticate_SFU.js */; };
 		388C42F61E46B05300BD1A56 /* CheckUPass.js in Resources */ = {isa = PBXBuildFile; fileRef = 388C42F51E46B05300BD1A56 /* CheckUPass.js */; };
@@ -37,6 +38,7 @@
 		385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = AuthenticationError_SFU.js; path = JavaScript/AuthenticationError_SFU.js; sourceTree = "<group>"; };
 		387A1E441E4ACE8800650D32 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		387A1E461E4ADAA000650D32 /* RenewPassException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenewPassException.swift; sourceTree = "<group>"; };
+		387A1E481E4B959700650D32 /* Authenticate_UBC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Authenticate_UBC.js; path = JavaScript/Authenticate_UBC.js; sourceTree = "<group>"; };
 		388C42F11E46A79F00BD1A56 /* SelectSchool.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = SelectSchool.js; path = JavaScript/SelectSchool.js; sourceTree = "<group>"; };
 		388C42F31E46AE3300BD1A56 /* Authenticate_SFU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Authenticate_SFU.js; path = JavaScript/Authenticate_SFU.js; sourceTree = "<group>"; };
 		388C42F51E46B05300BD1A56 /* CheckUPass.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = CheckUPass.js; path = JavaScript/CheckUPass.js; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			children = (
 				388C42F11E46A79F00BD1A56 /* SelectSchool.js */,
 				388C42F31E46AE3300BD1A56 /* Authenticate_SFU.js */,
+				387A1E481E4B959700650D32 /* Authenticate_UBC.js */,
 				385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */,
 				388C42F51E46B05300BD1A56 /* CheckUPass.js */,
 			);
@@ -191,6 +194,7 @@
 				388C42F41E46AE3300BD1A56 /* Authenticate_SFU.js in Resources */,
 				388C42F61E46B05300BD1A56 /* CheckUPass.js in Resources */,
 				385EE1C21E47E01000E83373 /* AuthenticationError_SFU.js in Resources */,
+				387A1E491E4B959700650D32 /* Authenticate_UBC.js in Resources */,
 				389F9EDE1E41332B00EF6F88 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
