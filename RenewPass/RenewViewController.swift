@@ -41,6 +41,8 @@ class RenewViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if needToShowLoginScreen() {
             showLoginScreen()
+            webview = nil
+            self.reloadButton.isEnabled = true
         }
     }
 
