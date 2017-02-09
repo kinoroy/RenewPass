@@ -16,7 +16,7 @@ class RenewViewController: UIViewController {
     var accounts:[NSManagedObject]!
     var webview:WebView!
     var username:String!
-    var school:Schools!
+    var school:School!
     var completionHandlers:[(RenewPassException) -> Void] = []
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
@@ -114,17 +114,21 @@ class RenewViewController: UIViewController {
     func authenticate(school:Int16) throws {
         
         statusLabel.text = "Authenticating"
-        
-        switch school {
-        case 9: // SFU
-            let result = webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "AuthenticationError_SFU"))
-            if result == "failure" {
-                throw RenewPassException.authenticationFailedException
-            }
-            webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "Authenticate_SFU"))
-        default:
+        guard let schoolEnum = Schools(rawValue: school) else {
             throw RenewPassException.schoolNotFoundException
         }
+        let schoolObj = School(school: schoolEnum)
+        
+        let authenticateFileName = "Authenticate_\(schoolObj.shortName)"
+        let authErrorFileName = "AuthenticationError_\(schoolObj.shortName)"
+        
+        let result = webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: authErrorFileName))
+        if result == "failure" {
+            throw RenewPassException.authenticationFailedException
+        }
+        
+        webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: authenticateFileName))
+        
         
     }
     
@@ -152,7 +156,7 @@ class RenewViewController: UIViewController {
             js = js.replacingOccurrences(of: "\n", with: "")
             js = js.replacingOccurrences(of: "storedUsername", with: username)
             js = js.replacingOccurrences(of: "storedPassword", with: KeychainSwift().get("accountPassword")! as String)
-            js = js.replacingOccurrences(of: "_SCHOOL_ID_", with: "\(getSchoolID(school: school))")
+            js = js.replacingOccurrences(of: "_SCHOOL_ID_", with: "\(getSchoolID(school: school.school))")
             return js
         } catch {
             fatalError("Could not read the JavaScript file \"\(filename).js\"")
@@ -170,9 +174,9 @@ class RenewViewController: UIViewController {
             if currentURL == "https://upassbc.translink.ca/" {
                 //reloadButton.isEnabled = true
                 //statusLabel.text = "Waiting on button click"
-                selectSchool(school: getSchoolID(school: school))
-            } else if currentURL.contains("cas") { // SFU authentication screen
-                try authenticate(school: getSchoolID(school: school))
+                selectSchool(school: getSchoolID(school: school.school))
+            } else if currentURL.contains(school.authPageURLIdentifier) { // School authentication screen
+                try authenticate(school: getSchoolID(school: school.school))
             } else if currentURL.contains("fs") { // post-auth Upass site
                 try checkUpass()
             }
@@ -202,8 +206,6 @@ class RenewViewController: UIViewController {
         
         }
         
-        school = Schools.SFU
-        
         //Get auth values
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
@@ -221,7 +223,9 @@ class RenewViewController: UIViewController {
         
         username = accounts[0].value(forKey: "username") as! String!
         
-        //selectSchool(school: getSchoolID(school: school))
+        let schoolRaw:Int16 = accounts[0].value(forKey: "SchoolRaw") as! Int16
+        
+        school = School(school: Schools(rawValue: schoolRaw)!)
         
         
     }
