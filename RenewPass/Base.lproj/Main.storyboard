@@ -78,13 +78,13 @@
                                     <action selector="clickResetAccountButton:" destination="akJ-MO-2mI" eventType="touchUpInside" id="TOB-rn-7xX"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SxS-nj-N8L">
+                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SxS-nj-N8L">
                                 <rect key="frame" x="163" y="194" width="51" height="31"/>
                                 <connections>
                                     <action selector="showWebviewSwitchValueChanged:" destination="akJ-MO-2mI" eventType="valueChanged" id="ozz-Qn-o6x"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show WebView (DEBUG)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmv-1X-LpA">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show WebView (DEBUG)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmv-1X-LpA">
                                 <rect key="frame" x="93" y="238" width="198" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -103,6 +103,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="showWebViewLabel" destination="wmv-1X-LpA" id="Fw4-b0-OK7"/>
                         <outlet property="showWebviewSwitch" destination="SxS-nj-N8L" id="BUw-D2-Frm"/>
                     </connections>
                 </viewController>

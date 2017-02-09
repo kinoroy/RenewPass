@@ -14,6 +14,7 @@ class SettingsViewController: UIViewController {
     // MARK: - Proporties 
     
     @IBOutlet weak var showWebviewSwitch: UISwitch!
+    @IBOutlet weak var showWebViewLabel: UILabel!
     
     
     // MARK: - Life Cycle
@@ -22,6 +23,12 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         showWebviewSwitch.isOn = UserDefaults.standard.bool(forKey: "showWebview")
+        // Show the debug menu if the build is debug
+        #if DEBUG
+            showWebviewSwitch.isHidden = false
+            showWebViewLabel.isHidden = false
+        #endif
+        
         // Do any additional setup after loading the view.
     }
 
