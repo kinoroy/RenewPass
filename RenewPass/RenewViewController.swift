@@ -97,7 +97,8 @@ class RenewViewController: UIViewController {
             if error != nil {
                 print("\(error)")
             } else {
-                print("Success")
+                // MARK: to-do
+                self.statusLabel.text = "You don't have the latest UPass."
             }
         }
         
