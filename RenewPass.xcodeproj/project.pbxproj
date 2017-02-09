@@ -16,6 +16,13 @@
 		387A1E451E4ACE8800650D32 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387A1E441E4ACE8800650D32 /* WebView.swift */; };
 		387A1E471E4ADAA000650D32 /* RenewPassException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387A1E461E4ADAA000650D32 /* RenewPassException.swift */; };
 		387A1E491E4B959700650D32 /* Authenticate_UBC.js in Resources */ = {isa = PBXBuildFile; fileRef = 387A1E481E4B959700650D32 /* Authenticate_UBC.js */; };
+		387A1E4B1E4C0B1F00650D32 /* Authenticate_KPU.js in Resources */ = {isa = PBXBuildFile; fileRef = 387A1E4A1E4C0B1F00650D32 /* Authenticate_KPU.js */; };
+		387A1E4D1E4C0C4200650D32 /* Authenticate_DC.js in Resources */ = {isa = PBXBuildFile; fileRef = 387A1E4C1E4C0C4200650D32 /* Authenticate_DC.js */; };
+		387A1E4F1E4C0E1D00650D32 /* Authenticate_BCIT.js in Resources */ = {isa = PBXBuildFile; fileRef = 387A1E4E1E4C0E1D00650D32 /* Authenticate_BCIT.js */; };
+		387A1E511E4C0FF600650D32 /* Authenticate_CU.js in Resources */ = {isa = PBXBuildFile; fileRef = 387A1E501E4C0FF600650D32 /* Authenticate_CU.js */; };
+		387A1E531E4C10AC00650D32 /* Authenticate_EC.js in Resources */ = {isa = PBXBuildFile; fileRef = 387A1E521E4C10AC00650D32 /* Authenticate_EC.js */; };
+		387A1E551E4C11E100650D32 /* Authenticate_LC.js in Resources */ = {isa = PBXBuildFile; fileRef = 387A1E541E4C11E100650D32 /* Authenticate_LC.js */; };
+		387A1E571E4C12A600650D32 /* Authenticate_VCC.js in Resources */ = {isa = PBXBuildFile; fileRef = 387A1E561E4C12A600650D32 /* Authenticate_VCC.js */; };
 		388C42F21E46A79F00BD1A56 /* SelectSchool.js in Resources */ = {isa = PBXBuildFile; fileRef = 388C42F11E46A79F00BD1A56 /* SelectSchool.js */; };
 		388C42F41E46AE3300BD1A56 /* Authenticate_SFU.js in Resources */ = {isa = PBXBuildFile; fileRef = 388C42F31E46AE3300BD1A56 /* Authenticate_SFU.js */; };
 		388C42F61E46B05300BD1A56 /* CheckUPass.js in Resources */ = {isa = PBXBuildFile; fileRef = 388C42F51E46B05300BD1A56 /* CheckUPass.js */; };
@@ -39,6 +46,13 @@
 		387A1E441E4ACE8800650D32 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		387A1E461E4ADAA000650D32 /* RenewPassException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenewPassException.swift; sourceTree = "<group>"; };
 		387A1E481E4B959700650D32 /* Authenticate_UBC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Authenticate_UBC.js; path = JavaScript/Authenticate_UBC.js; sourceTree = "<group>"; };
+		387A1E4A1E4C0B1F00650D32 /* Authenticate_KPU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Authenticate_KPU.js; sourceTree = "<group>"; };
+		387A1E4C1E4C0C4200650D32 /* Authenticate_DC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Authenticate_DC.js; sourceTree = "<group>"; };
+		387A1E4E1E4C0E1D00650D32 /* Authenticate_BCIT.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Authenticate_BCIT.js; sourceTree = "<group>"; };
+		387A1E501E4C0FF600650D32 /* Authenticate_CU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Authenticate_CU.js; sourceTree = "<group>"; };
+		387A1E521E4C10AC00650D32 /* Authenticate_EC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Authenticate_EC.js; sourceTree = "<group>"; };
+		387A1E541E4C11E100650D32 /* Authenticate_LC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Authenticate_LC.js; sourceTree = "<group>"; };
+		387A1E561E4C12A600650D32 /* Authenticate_VCC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Authenticate_VCC.js; sourceTree = "<group>"; };
 		388C42F11E46A79F00BD1A56 /* SelectSchool.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = SelectSchool.js; path = JavaScript/SelectSchool.js; sourceTree = "<group>"; };
 		388C42F31E46AE3300BD1A56 /* Authenticate_SFU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Authenticate_SFU.js; path = JavaScript/Authenticate_SFU.js; sourceTree = "<group>"; };
 		388C42F51E46B05300BD1A56 /* CheckUPass.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = CheckUPass.js; path = JavaScript/CheckUPass.js; sourceTree = "<group>"; };
@@ -78,6 +92,13 @@
 				388C42F11E46A79F00BD1A56 /* SelectSchool.js */,
 				388C42F31E46AE3300BD1A56 /* Authenticate_SFU.js */,
 				387A1E481E4B959700650D32 /* Authenticate_UBC.js */,
+				387A1E4A1E4C0B1F00650D32 /* Authenticate_KPU.js */,
+				387A1E4C1E4C0C4200650D32 /* Authenticate_DC.js */,
+				387A1E4E1E4C0E1D00650D32 /* Authenticate_BCIT.js */,
+				387A1E501E4C0FF600650D32 /* Authenticate_CU.js */,
+				387A1E521E4C10AC00650D32 /* Authenticate_EC.js */,
+				387A1E541E4C11E100650D32 /* Authenticate_LC.js */,
+				387A1E561E4C12A600650D32 /* Authenticate_VCC.js */,
 				385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */,
 				388C42F51E46B05300BD1A56 /* CheckUPass.js */,
 			);
@@ -190,12 +211,19 @@
 			files = (
 				389F9EE61E41332B00EF6F88 /* LaunchScreen.storyboard in Resources */,
 				389F9EE31E41332B00EF6F88 /* Assets.xcassets in Resources */,
+				387A1E4D1E4C0C4200650D32 /* Authenticate_DC.js in Resources */,
 				388C42F21E46A79F00BD1A56 /* SelectSchool.js in Resources */,
+				387A1E4B1E4C0B1F00650D32 /* Authenticate_KPU.js in Resources */,
 				388C42F41E46AE3300BD1A56 /* Authenticate_SFU.js in Resources */,
+				387A1E531E4C10AC00650D32 /* Authenticate_EC.js in Resources */,
+				387A1E4F1E4C0E1D00650D32 /* Authenticate_BCIT.js in Resources */,
 				388C42F61E46B05300BD1A56 /* CheckUPass.js in Resources */,
 				385EE1C21E47E01000E83373 /* AuthenticationError_SFU.js in Resources */,
+				387A1E551E4C11E100650D32 /* Authenticate_LC.js in Resources */,
 				387A1E491E4B959700650D32 /* Authenticate_UBC.js in Resources */,
 				389F9EDE1E41332B00EF6F88 /* Main.storyboard in Resources */,
+				387A1E511E4C0FF600650D32 /* Authenticate_CU.js in Resources */,
+				387A1E571E4C12A600650D32 /* Authenticate_VCC.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
