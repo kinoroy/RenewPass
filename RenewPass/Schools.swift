@@ -19,12 +19,15 @@ public func getSchoolID(school:Schools) -> Int16 {
 // MARK: - Enum
 public enum Schools:Int16 {
     case SFU = 9 // Simon Fraser University
-    case UBC // University of British Columbia
-    case BCIT // British Columbia Institute of Technology
-    case VCC // Vancouver Community College
-    case NVIT // Nicola Valley Institute of Technology
-    case KPU // Kwantlen Polytechnic University
-    case EC // Emily Carr University of Art + Design
+    case UBC = 4 // University of British Columbia
+    case BCIT = 5// British Columbia Institute of Technology
+    case VCC = 10 // Vancouver Community College
+    case NVIT = 3 // Nicola Valley Institute of Technology
+    case KPU = 2 // Kwantlen Polytechnic University
+    case EC = 7 // Emily Carr University of Art + Design
+    case DC = 1 // Douglas College
+    case LC = 8 // Langara College
+    case CU = 6 // Capilano University
     
 }
 
@@ -39,5 +42,32 @@ extension Account {
             schoolRaw = Int16(exactly: newValue.rawValue)!
         }
         
+    }
+}
+
+extension Schools:CustomStringConvertible {
+    public var description:String {
+        switch self {
+        case .SFU:
+            return "Simon Fraser University"
+        case .UBC:
+            return "University of British Columbia"
+        case .BCIT:
+            return "British Columbia Institute of Technology"
+        case .VCC:
+            return "Vancouver Community College"
+        case .NVIT:
+            return "Nicola Valley Institute of Technology"
+        case .KPU:
+            return "Kwantlen Polytechnic University"
+        case .EC:
+            return "Emily Carr University of Art + Design"
+        case .DC:
+            return "Douglas College"
+        case .LC:
+            return "Langara College"
+        case .CU:
+            return "Capilano University"
+        }
     }
 }
