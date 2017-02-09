@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     // MARK: - Proporties
     
@@ -24,7 +24,16 @@ class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         pickerview.delegate = self
         pickerview.dataSource = self
+        self.usernameField.delegate = self
+        self.passwordField.delegate = self
         // Do any additional setup after loading the view.
+    }
+    
+    // MARK: - UITextFields
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return false
     }
 
     // MARK: - Pickerview 
