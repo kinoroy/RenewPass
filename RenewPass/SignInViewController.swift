@@ -49,7 +49,7 @@ class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         let keychain = KeychainSwift()
         
-        if !keychain.set(passwordField.text!, forKey: "accountPassword") {
+        if !keychain.set(passwordField.text!, forKey: "accountPassword", withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
             fatalError("Couldn't store in the keychain")
         }
         
