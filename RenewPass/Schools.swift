@@ -29,6 +29,8 @@ public enum Schools:Int16 {
     case LC = 8 // Langara College
     case CU = 6 // Capilano University
     
+    static let orderedSchools:[Schools] = [DC,KPU,NVIT,UBC,BCIT,CU,EC,LC,SFU,VCC]
+    
 }
 
 // MARK: - Extensions

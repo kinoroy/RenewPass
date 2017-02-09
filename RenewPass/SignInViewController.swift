@@ -17,7 +17,6 @@ class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     var accounts:[NSManagedObject]!
-    let schools = ["SFU"]
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -34,11 +33,11 @@ class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 1
+        return Schools.orderedSchools.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return schools[row]
+        return Schools.orderedSchools[row].description
     }
     
     // MARK: - Navigation
@@ -76,21 +75,11 @@ class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         //3
         account.setValue(username, forKey: "username")
-        account.setValue(schoolForPickerView(row: pickerview.selectedRow(inComponent: 0)), forKey: "schoolRaw")
+        account.setValue(Schools.orderedSchools[pickerview.selectedRow(inComponent: 0)].rawValue, forKey: "schoolRaw")
         
         //4
         appDelegate.saveContext()
         
     }
-    
-    private func schoolForPickerView(row:Int) -> Int16 {
-        switch row {
-        case 0:
-            return Schools.SFU.rawValue
-        default:
-            return 0
-        }
-    }
-    
 
 }
