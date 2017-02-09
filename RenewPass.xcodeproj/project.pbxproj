@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3816342F1E4C318100B76E78 /* AuthenticationError_UBC.js in Resources */ = {isa = PBXBuildFile; fileRef = 3816342E1E4C318100B76E78 /* AuthenticationError_UBC.js */; };
+		381634311E4C322300B76E78 /* AuthenticationError_KPU.js in Resources */ = {isa = PBXBuildFile; fileRef = 381634301E4C322300B76E78 /* AuthenticationError_KPU.js */; };
+		381634331E4C32A100B76E78 /* AuthenticationError_DC.js in Resources */ = {isa = PBXBuildFile; fileRef = 381634321E4C32A100B76E78 /* AuthenticationError_DC.js */; };
+		381634351E4C34E400B76E78 /* AuthenticationError_CU.js in Resources */ = {isa = PBXBuildFile; fileRef = 381634341E4C34E400B76E78 /* AuthenticationError_CU.js */; };
+		381634371E4C380500B76E78 /* AuthenticationError_EC.js in Resources */ = {isa = PBXBuildFile; fileRef = 381634361E4C380500B76E78 /* AuthenticationError_EC.js */; };
+		381634391E4C383800B76E78 /* AuthenticationError_BCIT.js in Resources */ = {isa = PBXBuildFile; fileRef = 381634381E4C383800B76E78 /* AuthenticationError_BCIT.js */; };
+		3816343B1E4C38C200B76E78 /* AuthenticationError_LC.js in Resources */ = {isa = PBXBuildFile; fileRef = 3816343A1E4C38C200B76E78 /* AuthenticationError_LC.js */; };
+		3816343D1E4C39B500B76E78 /* AuthenticationError_VCC.js in Resources */ = {isa = PBXBuildFile; fileRef = 3816343C1E4C39B500B76E78 /* AuthenticationError_VCC.js */; };
 		382599A51E41671600349582 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599A41E41671600349582 /* SignInViewController.swift */; };
 		382599A71E41675100349582 /* RenewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599A61E41675100349582 /* RenewViewController.swift */; };
 		382599A91E4172B400349582 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599A81E4172B400349582 /* KeychainHelper.swift */; };
@@ -34,6 +42,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3816342E1E4C318100B76E78 /* AuthenticationError_UBC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AuthenticationError_UBC.js; sourceTree = "<group>"; };
+		381634301E4C322300B76E78 /* AuthenticationError_KPU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AuthenticationError_KPU.js; sourceTree = "<group>"; };
+		381634321E4C32A100B76E78 /* AuthenticationError_DC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AuthenticationError_DC.js; sourceTree = "<group>"; };
+		381634341E4C34E400B76E78 /* AuthenticationError_CU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AuthenticationError_CU.js; sourceTree = "<group>"; };
+		381634361E4C380500B76E78 /* AuthenticationError_EC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AuthenticationError_EC.js; sourceTree = "<group>"; };
+		381634381E4C383800B76E78 /* AuthenticationError_BCIT.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AuthenticationError_BCIT.js; sourceTree = "<group>"; };
+		3816343A1E4C38C200B76E78 /* AuthenticationError_LC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AuthenticationError_LC.js; sourceTree = "<group>"; };
+		3816343C1E4C39B500B76E78 /* AuthenticationError_VCC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AuthenticationError_VCC.js; sourceTree = "<group>"; };
 		382599A41E41671600349582 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		382599A61E41675100349582 /* RenewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenewViewController.swift; sourceTree = "<group>"; };
 		382599A81E4172B400349582 /* KeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
@@ -91,15 +107,23 @@
 			children = (
 				388C42F11E46A79F00BD1A56 /* SelectSchool.js */,
 				388C42F31E46AE3300BD1A56 /* Authenticate_SFU.js */,
-				387A1E481E4B959700650D32 /* Authenticate_UBC.js */,
-				387A1E4A1E4C0B1F00650D32 /* Authenticate_KPU.js */,
-				387A1E4C1E4C0C4200650D32 /* Authenticate_DC.js */,
-				387A1E4E1E4C0E1D00650D32 /* Authenticate_BCIT.js */,
-				387A1E501E4C0FF600650D32 /* Authenticate_CU.js */,
-				387A1E521E4C10AC00650D32 /* Authenticate_EC.js */,
-				387A1E541E4C11E100650D32 /* Authenticate_LC.js */,
-				387A1E561E4C12A600650D32 /* Authenticate_VCC.js */,
 				385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */,
+				387A1E481E4B959700650D32 /* Authenticate_UBC.js */,
+				3816342E1E4C318100B76E78 /* AuthenticationError_UBC.js */,
+				387A1E4A1E4C0B1F00650D32 /* Authenticate_KPU.js */,
+				381634301E4C322300B76E78 /* AuthenticationError_KPU.js */,
+				387A1E4C1E4C0C4200650D32 /* Authenticate_DC.js */,
+				381634321E4C32A100B76E78 /* AuthenticationError_DC.js */,
+				387A1E4E1E4C0E1D00650D32 /* Authenticate_BCIT.js */,
+				381634381E4C383800B76E78 /* AuthenticationError_BCIT.js */,
+				387A1E501E4C0FF600650D32 /* Authenticate_CU.js */,
+				381634341E4C34E400B76E78 /* AuthenticationError_CU.js */,
+				387A1E521E4C10AC00650D32 /* Authenticate_EC.js */,
+				381634361E4C380500B76E78 /* AuthenticationError_EC.js */,
+				387A1E541E4C11E100650D32 /* Authenticate_LC.js */,
+				3816343A1E4C38C200B76E78 /* AuthenticationError_LC.js */,
+				387A1E561E4C12A600650D32 /* Authenticate_VCC.js */,
+				3816343C1E4C39B500B76E78 /* AuthenticationError_VCC.js */,
 				388C42F51E46B05300BD1A56 /* CheckUPass.js */,
 			);
 			name = JavaScript;
@@ -209,16 +233,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				381634331E4C32A100B76E78 /* AuthenticationError_DC.js in Resources */,
 				389F9EE61E41332B00EF6F88 /* LaunchScreen.storyboard in Resources */,
 				389F9EE31E41332B00EF6F88 /* Assets.xcassets in Resources */,
+				381634351E4C34E400B76E78 /* AuthenticationError_CU.js in Resources */,
 				387A1E4D1E4C0C4200650D32 /* Authenticate_DC.js in Resources */,
+				381634311E4C322300B76E78 /* AuthenticationError_KPU.js in Resources */,
 				388C42F21E46A79F00BD1A56 /* SelectSchool.js in Resources */,
 				387A1E4B1E4C0B1F00650D32 /* Authenticate_KPU.js in Resources */,
 				388C42F41E46AE3300BD1A56 /* Authenticate_SFU.js in Resources */,
+				381634371E4C380500B76E78 /* AuthenticationError_EC.js in Resources */,
 				387A1E531E4C10AC00650D32 /* Authenticate_EC.js in Resources */,
 				387A1E4F1E4C0E1D00650D32 /* Authenticate_BCIT.js in Resources */,
+				3816342F1E4C318100B76E78 /* AuthenticationError_UBC.js in Resources */,
 				388C42F61E46B05300BD1A56 /* CheckUPass.js in Resources */,
+				381634391E4C383800B76E78 /* AuthenticationError_BCIT.js in Resources */,
+				3816343D1E4C39B500B76E78 /* AuthenticationError_VCC.js in Resources */,
 				385EE1C21E47E01000E83373 /* AuthenticationError_SFU.js in Resources */,
+				3816343B1E4C38C200B76E78 /* AuthenticationError_LC.js in Resources */,
 				387A1E551E4C11E100650D32 /* Authenticate_LC.js in Resources */,
 				387A1E491E4B959700650D32 /* Authenticate_UBC.js in Resources */,
 				389F9EDE1E41332B00EF6F88 /* Main.storyboard in Resources */,
