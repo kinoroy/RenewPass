@@ -60,6 +60,9 @@ class SettingsViewController: UIViewController {
         let keychain = KeychainSwift()
         keychain.delete("accountPassword")
         
+        // Sends user back to login screen immediately
+        navigationController?.popViewController(animated: true)
+
         
     }
     
