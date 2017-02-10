@@ -89,10 +89,6 @@ class RenewViewController: UIViewController {
     @IBAction func renewButtonTouchUpInside(_ sender: Any) {
         reloadButton.isEnabled = false
         
-        if UserDefaults.standard.bool(forKey: "showWebview") {
-            self.view.addSubview(webview)
-        }
-        
         statusLabel.text = "Waiting for translink.ca"
         
         fetch() { (error) in
@@ -206,6 +202,10 @@ class RenewViewController: UIViewController {
             let url = URL(string: "https://upassbc.translink.ca")
             let urlRequest = URLRequest(url: url!)
             webview.loadRequest(urlRequest)
+            
+            if UserDefaults.standard.bool(forKey: "showWebview") {
+                self.view.addSubview(webview)
+            }
         
         }
         
