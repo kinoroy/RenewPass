@@ -60,6 +60,14 @@ class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     @IBAction func clickSubmitButton(_ sender: Any) {
         
+        guard !(usernameField.text?.isEmpty)! && (passwordField.text?.isEmpty)! else {
+            let alert = UIAlertController(title: "Error", message: "Username and password can not be empty", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+            return
+        }
+        
         saveAccount(username: usernameField.text!)
         
         let keychain = KeychainSwift()

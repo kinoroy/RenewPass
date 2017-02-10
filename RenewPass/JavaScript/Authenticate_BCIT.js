@@ -6,7 +6,6 @@
  (from the core data storage and keychain respectively) right before injecting the script into the webview
  */
 
-var form = document.querySelector("#login");
 document.querySelector("#username").value = "storedUsername";
 document.querySelector("#password").value = "storedPassword";
-form.submit();
+document.querySelector("[value=LOGIN]").click()
