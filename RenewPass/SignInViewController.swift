@@ -53,6 +53,7 @@ class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let school = School(school: Schools.orderedSchools[row])
         self.usernameLabel.text = school.userNameLabel
+        self.usernameField.placeholder = school.userNamePlaceHolder
     }
     
     // MARK: - Navigation

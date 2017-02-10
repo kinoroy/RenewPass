@@ -110,6 +110,31 @@ public class School {
         }
     }
     
+    var userNamePlaceHolder:String? {
+        switch self.school {
+        case .SFU:
+            return "e.g. jsmith"
+        case .UBC:
+            return nil
+        case .BCIT:
+            return nil
+        case .VCC:
+            return "e.g. 999999999"
+            //case .NVIT:
+        //return "NVIT"
+        case .KPU:
+            return nil
+        case .EC:
+            return "e.g. ecarr"
+        case .DC:
+            return nil
+        case .LC:
+            return "e.g. flastname00@langara.ca"
+        case .CU:
+            return "firstnamelastname@my.capilanou.ca"
+        }
+    }
+    
     // MARK: - Initialization
     
     init(school:Schools) {
