@@ -98,6 +98,7 @@ class RenewViewController: UIViewController {
                 // MARK: to-do
                 self.statusLabel.text = "You don't have the latest UPass."
             }
+            self.webview.removeFromSuperview()
         }
         
         
