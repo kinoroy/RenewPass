@@ -17,6 +17,7 @@ class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     var accounts:[NSManagedObject]!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -47,6 +48,11 @@ class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return Schools.orderedSchools[row].description
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let school = School(school: Schools.orderedSchools[row])
+        self.usernameLabel.text = school.userNameLabel
     }
     
     // MARK: - Navigation

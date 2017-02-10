@@ -85,6 +85,31 @@ public class School {
         }
     }
     
+    var userNameLabel:String {
+        switch self.school {
+        case .SFU:
+            return "Computing ID"
+        case .UBC:
+            return "CWL Login Name"
+        case .BCIT:
+            return "BCIT ID (A00 NUMBER)"
+        case .VCC:
+            return "Student ID"
+            //case .NVIT:
+        //return "NVIT"
+        case .KPU:
+            return "Student #"
+        case .EC:
+            return "Username"
+        case .DC:
+            return "CNA ID"
+        case .LC:
+            return "Federated ID"
+        case .CU:
+            return "Cap U Email"
+        }
+    }
+    
     // MARK: - Initialization
     
     init(school:Schools) {
