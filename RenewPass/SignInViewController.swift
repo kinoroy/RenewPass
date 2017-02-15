@@ -28,13 +28,14 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
         self.usernameField.delegate = self
         self.passwordField.delegate = self
-        // Do any additional setup after loading the view.
+        
     }
 
     override func viewDidLayoutSubviews() {
         //scrollView.translatesAutoresizingMaskIntoConstraints = false
         let height = self.scrollView.contentSize.height
         self.scrollView.contentSize = CGSize(width: stackView.width, height: height)
+
     }
     
     // MARK: - UITextFields

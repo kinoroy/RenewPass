@@ -22,6 +22,7 @@ class SchoolSelectorStackView: UIStackView {
         setupSchools()
         let newFrame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: width, height: self.frame.size.height)
         self.frame = newFrame
+        schoolSelected(sender: buttons[0])
     }
     
     // MARK: - Private Methods
