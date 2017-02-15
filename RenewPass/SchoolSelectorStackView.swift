@@ -17,17 +17,26 @@ class SchoolSelectorStackView: UIStackView {
     
     // MARK: - Life Cycle 
     
-    override func layoutSubviews() {
-        //translatesAutoresizingMaskIntoConstraints = false
+    override init(frame:CGRect) {
+        super.init(frame: frame)
         setupSchools()
+        
+    }
+    
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+        setupSchools()
+    }
+    
+    override func layoutSubviews() {
         let newFrame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: width, height: self.frame.size.height)
         self.frame = newFrame
-        schoolSelected(sender: buttons[0])
     }
     
     // MARK: - Private Methods
     
     private func setupSchools() {
+        
         for school in Schools.orderedSchools {
             let schoolObj = School(school: school)
             let unSelectedimage = UIImage(named: "\(schoolObj.shortName)_unchecked")
@@ -44,6 +53,10 @@ class SchoolSelectorStackView: UIStackView {
             
             self.addSubview(button)
             width += frame.size.width
+        }
+        
+        if selectedButton == nil {
+            schoolSelected(sender: buttons[0])
         }
     }
 

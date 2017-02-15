@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="pk9-Zo-kUf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="pk9-Zo-kUf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,27 +14,39 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RenewViewController" customModule="RenewPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OoH-Yf-DqB"/>
+                        <viewControllerLayoutGuide type="bottom" id="xGV-bA-2W4"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ipt-dd-54D">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipt-dd-54D">
                                 <rect key="frame" x="139" y="285" width="97" height="96"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="ADk-Uu-IVM"/>
+                                </constraints>
                                 <state key="normal" title="Button" image="requestButton"/>
                                 <connections>
                                     <action selector="renewButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gMs-wi-hTt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for translink.ca to load" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Iby-ue-Quo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for translink.ca to load" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iby-ue-Quo">
                                 <rect key="frame" x="16" y="443" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Iby-ue-Quo" firstAttribute="top" secondItem="Ipt-dd-54D" secondAttribute="bottom" constant="62" id="AZV-YE-tie"/>
+                            <constraint firstItem="Ipt-dd-54D" firstAttribute="centerX" secondItem="Iby-ue-Quo" secondAttribute="centerX" id="Wim-XZ-K2f"/>
+                            <constraint firstItem="Iby-ue-Quo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bUL-Ei-iEP"/>
+                            <constraint firstItem="Ipt-dd-54D" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lSv-Lb-eji"/>
+                            <constraint firstItem="Iby-ue-Quo" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="nWm-YN-8H0"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="RenewPass" id="McH-j2-FND">
                         <barButtonItem key="rightBarButtonItem" image="settings" id="Vmc-4a-Fw1">
@@ -55,34 +68,47 @@
         <scene sceneID="MrA-KS-0xD">
             <objects>
                 <viewController storyboardIdentifier="settings" title="Settings" id="akJ-MO-2mI" customClass="SettingsViewController" customModule="RenewPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aAi-tx-mhj"/>
+                        <viewControllerLayoutGuide type="bottom" id="aiW-Bq-rSQ"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f8n-ZV-eQZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7l7-o0-D1m">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7l7-o0-D1m">
                                 <rect key="frame" x="118" y="104" width="138" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="138" id="jeC-qf-DFw"/>
+                                </constraints>
                                 <state key="normal" title="Reset Account"/>
                                 <connections>
                                     <action selector="clickResetAccountButton:" destination="akJ-MO-2mI" eventType="touchUpInside" id="TOB-rn-7xX"/>
                                 </connections>
                             </button>
-                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="SxS-nj-N8L">
+                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SxS-nj-N8L">
                                 <rect key="frame" x="163" y="194" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="showWebviewSwitchValueChanged:" destination="akJ-MO-2mI" eventType="valueChanged" id="ozz-Qn-o6x"/>
                                 </connections>
                             </switch>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show WebView (DEBUG)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wmv-1X-LpA">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show WebView (DEBUG)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmv-1X-LpA">
                                 <rect key="frame" x="93" y="238" width="198" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7l7-o0-D1m" firstAttribute="centerX" secondItem="SxS-nj-N8L" secondAttribute="centerX" id="Ha4-6R-lsR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wmv-1X-LpA" secondAttribute="trailing" constant="68" id="PUa-dh-3eP"/>
+                            <constraint firstItem="SxS-nj-N8L" firstAttribute="top" secondItem="7l7-o0-D1m" secondAttribute="bottom" constant="60" id="Q0v-z5-dHT"/>
+                            <constraint firstItem="wmv-1X-LpA" firstAttribute="leading" secondItem="f8n-ZV-eQZ" secondAttribute="leadingMargin" constant="77" id="U2O-Ru-4MI"/>
+                            <constraint firstItem="7l7-o0-D1m" firstAttribute="top" secondItem="aAi-tx-mhj" secondAttribute="bottom" constant="40" id="c3Z-9n-vKX"/>
+                            <constraint firstItem="7l7-o0-D1m" firstAttribute="centerX" secondItem="f8n-ZV-eQZ" secondAttribute="centerX" id="oLA-Pn-YBx"/>
+                            <constraint firstItem="wmv-1X-LpA" firstAttribute="top" secondItem="SxS-nj-N8L" secondAttribute="bottom" constant="13" id="rZZ-1G-g0c"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gEC-ol-L2h"/>
                     <connections>
@@ -98,51 +124,58 @@
         <scene sceneID="CLY-LF-nuD">
             <objects>
                 <viewController storyboardIdentifier="signInViewController" automaticallyAdjustsScrollViewInsets="NO" id="0Me-Ry-yaI" customClass="SignInViewController" customModule="RenewPass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ivi-4v-xed"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zg0-kJ-CgY"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aMK-Hf-lhW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="tZc-hL-TeB" userLabel="usernameField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tZc-hL-TeB" userLabel="usernameField">
                                 <rect key="frame" x="67" y="115" width="237" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zg6-tS-2TD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zg6-tS-2TD">
                                 <rect key="frame" x="67" y="66" width="237" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="taO-Ri-113" userLabel="passwordField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="taO-Ri-113" userLabel="passwordField">
                                 <rect key="frame" x="67" y="237" width="237" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
-                            <scrollView verifyAmbiguity="ignoreSizes" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" canCancelContentTouches="NO" id="nm1-za-lHm">
-                                <rect key="frame" x="0.0" y="366" width="375" height="134"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <scrollView verifyAmbiguity="ignoreSizes" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" canCancelContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nm1-za-lHm">
+                                <rect key="frame" x="0.0" y="331" width="375" height="198"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" id="pWF-i6-GJp" customClass="SchoolSelectorStackView" customModule="RenewPass" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="8" width="367" height="118"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWF-i6-GJp" customClass="SchoolSelectorStackView" customModule="RenewPass" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="8" width="367" height="182"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="367" id="l91-pc-of4"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="pWF-i6-GJp" firstAttribute="trailing" secondItem="nm1-za-lHm" secondAttribute="trailingMargin" id="7Bf-KG-Hch"/>
+                                    <constraint firstItem="pWF-i6-GJp" firstAttribute="leading" secondItem="nm1-za-lHm" secondAttribute="leading" id="7sV-qv-Jyk"/>
+                                    <constraint firstItem="pWF-i6-GJp" firstAttribute="top" secondItem="nm1-za-lHm" secondAttribute="topMargin" id="Foh-5u-lZm"/>
+                                    <constraint firstItem="pWF-i6-GJp" firstAttribute="centerY" secondItem="nm1-za-lHm" secondAttribute="centerY" id="JUK-ks-dKL"/>
+                                    <constraint firstItem="pWF-i6-GJp" firstAttribute="bottom" secondItem="nm1-za-lHm" secondAttribute="bottomMargin" id="ekD-uf-ENA"/>
+                                </constraints>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SR3-jJ-oOj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SR3-jJ-oOj">
                                 <rect key="frame" x="67" y="190" width="237" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gzZ-uo-uwt">
-                                <rect key="frame" x="161" y="537" width="49" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzZ-uo-uwt">
+                                <rect key="frame" x="161" y="569" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="clickSubmitButton:" destination="0Me-Ry-yaI" eventType="touchUpInside" id="XJe-20-B46"/>
@@ -150,6 +183,26 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="taO-Ri-113" firstAttribute="top" secondItem="SR3-jJ-oOj" secondAttribute="bottom" constant="26" id="0fN-9a-PTU"/>
+                            <constraint firstItem="Zg0-kJ-CgY" firstAttribute="top" secondItem="gzZ-uo-uwt" secondAttribute="bottom" constant="68" id="3oR-BI-cUH"/>
+                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="leading" secondItem="aMK-Hf-lhW" secondAttribute="leadingMargin" constant="51" id="4rK-uf-ZIc"/>
+                            <constraint firstItem="gzZ-uo-uwt" firstAttribute="top" secondItem="nm1-za-lHm" secondAttribute="bottom" constant="40" id="C1b-ZP-e1p"/>
+                            <constraint firstItem="nm1-za-lHm" firstAttribute="leading" secondItem="aMK-Hf-lhW" secondAttribute="leading" id="Dq8-Gv-OGs"/>
+                            <constraint firstItem="taO-Ri-113" firstAttribute="centerX" secondItem="gzZ-uo-uwt" secondAttribute="centerX" id="GJC-IA-ZOS"/>
+                            <constraint firstItem="tZc-hL-TeB" firstAttribute="leading" secondItem="SR3-jJ-oOj" secondAttribute="leading" id="LAq-iC-CVC"/>
+                            <constraint firstAttribute="trailing" secondItem="nm1-za-lHm" secondAttribute="trailing" id="MOf-2u-h3E"/>
+                            <constraint firstItem="nm1-za-lHm" firstAttribute="top" secondItem="taO-Ri-113" secondAttribute="bottom" constant="64" id="NAl-wj-eeD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zg6-tS-2TD" secondAttribute="trailing" constant="55" id="Oja-z6-e5F"/>
+                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="top" secondItem="tZc-hL-TeB" secondAttribute="bottom" constant="45" id="XBY-ML-h3e"/>
+                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="leading" secondItem="taO-Ri-113" secondAttribute="leading" id="bWf-4K-0VZ"/>
+                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="leading" secondItem="tZc-hL-TeB" secondAttribute="leading" id="bmf-fO-Ks3"/>
+                            <constraint firstItem="tZc-hL-TeB" firstAttribute="trailing" secondItem="SR3-jJ-oOj" secondAttribute="trailing" id="dUE-jD-LBV"/>
+                            <constraint firstItem="tZc-hL-TeB" firstAttribute="top" secondItem="Zg6-tS-2TD" secondAttribute="bottom" constant="28" id="oI7-pc-nni"/>
+                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="trailing" secondItem="taO-Ri-113" secondAttribute="trailing" id="tbe-13-X9j"/>
+                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="trailing" secondItem="tZc-hL-TeB" secondAttribute="trailing" id="xQf-Ww-fyu"/>
+                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="top" secondItem="Ivi-4v-xed" secondAttribute="bottom" constant="46" id="yqJ-Qt-o4d"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="taO-Ri-113" id="TU0-yu-Asy"/>
