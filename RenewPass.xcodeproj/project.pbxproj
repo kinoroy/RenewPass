@@ -40,6 +40,7 @@
 		389F9EE11E41332B00EF6F88 /* RenewPass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 389F9EDF1E41332B00EF6F88 /* RenewPass.xcdatamodeld */; };
 		389F9EE31E41332B00EF6F88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 389F9EE21E41332B00EF6F88 /* Assets.xcassets */; };
 		389F9EE61E41332B00EF6F88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 389F9EE41E41332B00EF6F88 /* LaunchScreen.storyboard */; };
+		38D99BE41E551B7C00C31637 /* RenewError.js in Resources */ = {isa = PBXBuildFile; fileRef = 38D99BE31E551B7C00C31637 /* RenewError.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		389F9EE21E41332B00EF6F88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		389F9EE51E41332B00EF6F88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		389F9EE71E41332B00EF6F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38D99BE31E551B7C00C31637 /* RenewError.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = RenewError.js; path = JavaScript/RenewError.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				387A1E561E4C12A600650D32 /* Authenticate_VCC.js */,
 				3816343C1E4C39B500B76E78 /* AuthenticationError_VCC.js */,
 				388C42F51E46B05300BD1A56 /* CheckUPass.js */,
+				38D99BE31E551B7C00C31637 /* RenewError.js */,
 			);
 			name = JavaScript;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				385EE1C21E47E01000E83373 /* AuthenticationError_SFU.js in Resources */,
 				3816343B1E4C38C200B76E78 /* AuthenticationError_LC.js in Resources */,
 				387A1E551E4C11E100650D32 /* Authenticate_LC.js in Resources */,
+				38D99BE41E551B7C00C31637 /* RenewError.js in Resources */,
 				387A1E491E4B959700650D32 /* Authenticate_UBC.js in Resources */,
 				389F9EDE1E41332B00EF6F88 /* Main.storyboard in Resources */,
 				387A1E511E4C0FF600650D32 /* Authenticate_CU.js in Resources */,
