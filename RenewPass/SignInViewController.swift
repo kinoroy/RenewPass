@@ -9,11 +9,12 @@
 import UIKit
 import CoreData
 
-class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class SignInViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Proporties
     
-    @IBOutlet weak var pickerview: UIPickerView!
+    @IBOutlet weak var stackView: SchoolSelectorStackView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     var accounts:[NSManagedObject]!
@@ -23,11 +24,17 @@ class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickerview.delegate = self
-        pickerview.dataSource = self
+        NotificationCenter.default.addObserver(forName: Notification.Name("schoolWasSelected"), object: nil, queue: nil, using: schoolWasSelected)
+        
         self.usernameField.delegate = self
         self.passwordField.delegate = self
         // Do any additional setup after loading the view.
+    }
+
+    override func viewDidLayoutSubviews() {
+        //scrollView.translatesAutoresizingMaskIntoConstraints = false
+        let height = self.scrollView.contentSize.height
+        self.scrollView.contentSize = CGSize(width: stackView.width, height: height)
     }
     
     // MARK: - UITextFields
@@ -36,31 +43,12 @@ class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         textField.endEditing(true)
         return false
     }
-
-    // MARK: - Pickerview 
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Schools.orderedSchools.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Schools.orderedSchools[row].description
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let school = School(school: Schools.orderedSchools[row])
-        self.usernameLabel.text = school.userNameLabel
-        self.usernameField.placeholder = school.userNamePlaceHolder
-    }
     
     // MARK: - Navigation
 
     @IBAction func clickSubmitButton(_ sender: Any) {
         
-        guard !(usernameField.text?.isEmpty)! && (passwordField.text?.isEmpty)! else {
+        guard !(usernameField.text?.isEmpty)! && !(passwordField.text?.isEmpty)! else {
             let alert = UIAlertController(title: "Error", message: "Username and password can not be empty", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default)
             alert.addAction(okAction)
@@ -99,11 +87,20 @@ class SignInViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         //3
         account.setValue(username, forKey: "username")
-        account.setValue(Schools.orderedSchools[pickerview.selectedRow(inComponent: 0)].rawValue, forKey: "schoolRaw")
+        account.setValue(Int16((stackView.selectedButton?.tag)!), forKey: "schoolRaw")
         
         //4
         appDelegate.saveContext()
         
+    }
+    
+    func schoolWasSelected(notification:Notification) {
+        if let selectedSchool = stackView.selectedButton?.tag {
+            let school = School(school: Schools(rawValue: Int16(selectedSchool))!)
+            self.usernameLabel.text = school.userNameLabel
+            self.usernameField.placeholder = school.userNamePlaceHolder
+
+        }
     }
 
 }
