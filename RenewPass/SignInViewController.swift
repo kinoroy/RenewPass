@@ -34,7 +34,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLayoutSubviews() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         let height = self.stackView.frame.size.height
-        self.scrollView.contentSize = CGSize(width: stackView.width, height: height)
+        self.scrollView.contentSize = CGSize(width: stackView.width * 1.05, height: height)
 
     }
     
