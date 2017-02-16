@@ -251,6 +251,16 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         
     }
     
+    // MARK: - Status Bar
+    override var prefersStatusBarHidden: Bool {
+        #if DEBUG
+            return true
+        #else
+            return false
+        #endif
+    }
+    
+    // MARK: - CAAnimation
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if shouldContinueReloadAnimation {
             self.reloadButton.rotate360Degrees(completionDelegate: self)

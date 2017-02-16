@@ -104,4 +104,12 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
+    // MARK: - Status Bar
+    override var prefersStatusBarHidden: Bool {
+        #if DEBUG
+            return true
+        #else
+            return false
+        #endif
+    }
 }
