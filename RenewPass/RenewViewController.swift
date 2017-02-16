@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import WebKit
 
-class RenewViewController: UIViewController {
+class RenewViewController: UIViewController, CAAnimationDelegate {
     
     // MARK: - Proporties
     var accounts:[NSManagedObject]!
@@ -21,29 +21,34 @@ class RenewViewController: UIViewController {
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     var numUpass:String = "0"
+    var didStartFetchFromBackground:Bool = false
+    var shouldContinueReloadAnimation:Bool = false
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        statusLabel.text = "Waiting on button click...."
+        self.reloadButton.setImage(#imageLiteral(resourceName: "requestButton"), for: .normal)
+        statusLabel.text = "Connecting to Translink. Just a moment."
         
         NotificationCenter.default.addObserver(forName: Notification.Name("webViewDidFinishLoad"), object: nil, queue: nil, using: webViewDidFinishLoad)
         NotificationCenter.default.addObserver(forName: Notification.Name("webViewDidFailLoadWithError"), object: nil, queue: nil, using: webViewDidFailLoadWithError)
         
-        self.reloadButton.isEnabled = true
-        
-        // Checks if there is login data stored. If not, asks the user for login data by showing the login screen.
-        if needToShowLoginScreen() {
-            showLoginScreen()
-        }
+        self.reloadButton.isEnabled = false
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // Checks if there is login data stored. If not, asks the user for login data by showing the login screen.
         if needToShowLoginScreen() {
             showLoginScreen()
             webview = nil
             self.reloadButton.isEnabled = true
+        }
+        if !didStartFetchFromBackground {
+            webview = WebView(frame: self.view.frame)
+            let url = URL(string: "https://upassbc.translink.ca")
+            let urlRequest = URLRequest(url: url!)
+            webview.loadRequest(urlRequest)
         }
     }
 
@@ -89,14 +94,16 @@ class RenewViewController: UIViewController {
     
     @IBAction func renewButtonTouchUpInside(_ sender: Any) {
         reloadButton.isEnabled = false
+        shouldContinueReloadAnimation = true
+        reloadButton.rotate360Degrees(completionDelegate: self)
         
-        statusLabel.text = "Waiting for translink.ca"
+        statusLabel.text = "Selecting School"
         
         fetch() { (error) in
+            self.shouldContinueReloadAnimation = false
             if error != nil {
                 print("\(error)")
             } else {
-                // MARK: to-do
                 self.statusLabel.text = "You don't have the latest UPass."
             }
             self.webview.removeFromSuperview()
@@ -178,9 +185,11 @@ class RenewViewController: UIViewController {
         
         do {
             if currentURL == "https://upassbc.translink.ca/" {
-                //reloadButton.isEnabled = true
-                //statusLabel.text = "Waiting on button click"
-                selectSchool(school: getSchoolID(school: school.school))
+                reloadButton.isEnabled = true
+                statusLabel.text = "Click away!"
+                if didStartFetchFromBackground {
+                    selectSchool(school: getSchoolID(school: school.school))
+                }
             } else if currentURL.contains(school.authPageURLIdentifier) { // School authentication screen
                 try authenticate(school: getSchoolID(school: school.school))
             } else if currentURL.contains("fs") { // post-auth Upass site
@@ -203,17 +212,16 @@ class RenewViewController: UIViewController {
     func fetch(completion: @escaping (_ error:RenewPassException?) -> Void) {
         completionHandlers.append(completion)
         
-        if webview == nil {
+        if didStartFetchFromBackground {
             webview = WebView(frame: self.view.frame)
-            
+
             let url = URL(string: "https://upassbc.translink.ca")
             let urlRequest = URLRequest(url: url!)
             webview.loadRequest(urlRequest)
-            
-            if UserDefaults.standard.bool(forKey: "showWebview") {
-                self.view.addSubview(webview)
-            }
+        }
         
+        if UserDefaults.standard.bool(forKey: "showWebview") {
+            self.view.addSubview(webview)
         }
         
         //Get auth values
@@ -237,6 +245,30 @@ class RenewViewController: UIViewController {
         
         school = School(school: Schools(rawValue: schoolRaw)!)
         
+        if !didStartFetchFromBackground {
+            selectSchool(school: getSchoolID(school: school.school))
+        }
         
+    }
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if shouldContinueReloadAnimation {
+            self.reloadButton.rotate360Degrees(completionDelegate: self)
+        }
+    }
+    
+}
+
+extension UIView {
+    func rotate360Degrees(duration: CFTimeInterval = 1.0, completionDelegate: AnyObject? = nil) {
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnimation.fromValue = 0.0
+        rotateAnimation.toValue = CGFloat(M_PI * 2.0)
+        rotateAnimation.duration = duration
+        
+        if let delegate: CAAnimationDelegate = completionDelegate as? CAAnimationDelegate {
+            rotateAnimation.delegate = delegate
+        }
+        self.layer.add(rotateAnimation, forKey: nil)
     }
 }

@@ -98,8 +98,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         os_log("Performing a background fetch", log: .default, type: .debug)
         if let navigationViewController = self.window?.rootViewController as! UINavigationController? {
             let renewVC = navigationViewController.viewControllers[0] as! RenewViewController
+            renewVC.didStartFetchFromBackground = true
             renewVC.fetch() {
                 (error) in
+                renewVC.didStartFetchFromBackground = false // Resets the fetch value
                 if error == RenewPassException.alreadyHasLatestUPassException {
                     os_log("We have the latest UPass", log: .default, type: .debug)
                     completionHandler(UIBackgroundFetchResult.newData)
