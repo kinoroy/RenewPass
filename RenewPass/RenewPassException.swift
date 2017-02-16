@@ -27,7 +27,7 @@ extension RenewPassException: CustomStringConvertible {
         case .schoolNotFoundException:
             return "School not supported"
         case.alreadyHasLatestUPassException:
-            return "You already have the latest UPass"
+            return "Sweet! You've snagged the latest UPass."
         case .webViewFailedException:
             return "Failed to establish a connection"
         case .unknownException:

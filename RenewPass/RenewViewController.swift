@@ -20,6 +20,7 @@ class RenewViewController: UIViewController {
     var completionHandlers:[(RenewPassException) -> Void] = []
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
+    var numUpass:String = "0"
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -145,6 +146,10 @@ class RenewViewController: UIViewController {
         guard result != "null" else {
             throw RenewPassException.alreadyHasLatestUPassException
         }
+        
+        statusLabel.text = "Renewing UPass"
+        
+        webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "Renew"))
     }
 
 
@@ -157,6 +162,7 @@ class RenewViewController: UIViewController {
             js = js.replacingOccurrences(of: "storedUsername", with: username)
             js = js.replacingOccurrences(of: "storedPassword", with: KeychainSwift().get("accountPassword")! as String)
             js = js.replacingOccurrences(of: "_SCHOOL_ID_", with: "\(getSchoolID(school: school.school))")
+            js = js.replacingOccurrences(of: "PREV_NUM_UPASS", with: numUpass)
             return js
         } catch {
             fatalError("Could not read the JavaScript file \"\(filename).js\"")

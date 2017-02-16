@@ -100,17 +100,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let renewVC = navigationViewController.viewControllers[0] as! RenewViewController
             renewVC.fetch() {
                 (error) in
-                if error != nil {
-                    os_log("There was an error renewing the UPass. (Maybe the user already has the latest?)", log: .default, type: .debug)
-                    if let e = error! as RenewPassException? {
-                        print(e.description)
-                    } else {
-                        print("\(error)")
-                    }
-                    completionHandler(UIBackgroundFetchResult.noData)
-                } else {
-                    print("Got the new UPass!")
+                if error == RenewPassException.alreadyHasLatestUPassException {
+                    os_log("We have the latest UPass", log: .default, type: .debug)
                     completionHandler(UIBackgroundFetchResult.newData)
+                    
+                } else {
+                    completionHandler(UIBackgroundFetchResult.noData)
                 }
             }
         } else {
