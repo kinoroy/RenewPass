@@ -27,7 +27,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.reloadButton.setImage(#imageLiteral(resourceName: "requestButton"), for: .normal)
+        self.statusLabel.adjustsFontSizeToFitWidth = true
         statusLabel.text = "Connecting to Translink. Just a moment."
         
         NotificationCenter.default.addObserver(forName: Notification.Name("webViewDidFinishLoad"), object: nil, queue: nil, using: webViewDidFinishLoad)

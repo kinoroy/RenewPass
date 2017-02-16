@@ -27,6 +27,7 @@ class SettingsViewController: UIViewController {
         #if DEBUG
             showWebviewSwitch.isHidden = false
             showWebViewLabel.isHidden = false
+            showWebViewLabel.adjustsFontSizeToFitWidth = true
         #endif
         
         // Do any additional setup after loading the view.
