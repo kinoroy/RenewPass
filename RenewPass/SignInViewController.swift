@@ -26,6 +26,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
         NotificationCenter.default.addObserver(forName: Notification.Name("schoolWasSelected"), object: nil, queue: nil, using: schoolWasSelected)
         
+        NotificationCenter.default.post(name: Notification.Name("schoolWasSelected"), object: nil)
+        
         self.usernameField.delegate = self
         self.passwordField.delegate = self
         
@@ -57,13 +59,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        saveAccount(username: usernameField.text!)
-        
-        let keychain = KeychainSwift()
-        
-        if !keychain.set(passwordField.text!, forKey: "accountPassword", withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
-            fatalError("Couldn't store in the keychain")
-        }
+        AccountManager.saveAccount(username: usernameField.text!, password: passwordField.text!, schoolRaw: Int16((stackView.selectedButton?.tag)!))
         
         self.dismiss(animated: true) {
             
@@ -71,31 +67,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
     }
 
- 
     // MARK: - Private methods
-    private func saveAccount(username: String) {
-        //1
-        let appDelegate =
-            UIApplication.shared.delegate as! AppDelegate
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        //2
-        let entity =  NSEntityDescription.entity(forEntityName: "Account",
-                                                 in:managedContext)
-        
-        let account = NSManagedObject(entity: entity!,
-                                     insertInto: managedContext)
-        
-        //3
-        account.setValue(username, forKey: "username")
-        account.setValue(Int16((stackView.selectedButton?.tag)!), forKey: "schoolRaw")
-        
-        //4
-        appDelegate.saveContext()
-        
-    }
     
-    func schoolWasSelected(notification:Notification) {
+    private func schoolWasSelected(notification:Notification) {
         if let selectedSchool = stackView.selectedButton?.tag {
             let school = School(school: Schools(rawValue: Int16(selectedSchool))!)
             self.usernameLabel.text = school.userNameLabel
