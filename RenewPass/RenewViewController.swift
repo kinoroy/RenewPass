@@ -149,7 +149,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         
         statusLabel.text = "Checking UPass"
         
-        guard !(webview.request?.url?.absoluteString.contains("cas"))! else {
+        guard !(webview.request?.url?.absoluteString.contains(school.authPageURLIdentifier))! else {
             throw RenewPassException.authenticationFailedException
         }
         
