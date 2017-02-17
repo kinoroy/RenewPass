@@ -41,11 +41,12 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         // Checks if there is login data stored. If not, asks the user for login data by showing the login screen.
         if needToShowLoginScreen() {
             showLoginScreen()
-            webview = nil
-            self.reloadButton.isEnabled = true
+            webview = WebView(frame: self.view.frame)
         }
         if !didStartFetchFromBackground {
-            webview = WebView(frame: self.view.frame)
+            if webview == nil {
+                webview = WebView(frame: self.view.frame)
+            }
             let url = URL(string: "https://upassbc.translink.ca")
             let urlRequest = URLRequest(url: url!)
             webview.loadRequest(urlRequest)
