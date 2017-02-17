@@ -101,6 +101,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         
         fetch() { (error) in
             self.shouldContinueReloadAnimation = false
+            self.reloadButton.isEnabled = true
             if error != nil {
                 print("\(error)")
             } else {
