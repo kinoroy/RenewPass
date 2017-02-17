@@ -101,7 +101,11 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         
         fetch() { (error) in
             self.shouldContinueReloadAnimation = false
-            self.reloadButton.isEnabled = true
+            
+            let url = URL(string: "https://upassbc.translink.ca")
+            let urlRequest = URLRequest(url: url!)
+            self.webview.loadRequest(urlRequest)
+            
             if error != nil {
                 print("\(error)")
             } else {
@@ -187,7 +191,10 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         do {
             if currentURL == "https://upassbc.translink.ca/" {
                 reloadButton.isEnabled = true
-                statusLabel.text = "Click away!"
+                if statusLabel.text == "Connecting to Translink. Just a moment." {
+                    statusLabel.text = "Click away!"
+                }
+                
                 if didStartFetchFromBackground {
                     selectSchool(school: getSchoolID(school: school.school))
                 }
