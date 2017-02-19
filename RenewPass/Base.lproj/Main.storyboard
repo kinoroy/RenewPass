@@ -79,31 +79,28 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7l7-o0-D1m">
                                 <rect key="frame" x="118" y="104" width="138" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="138" id="E6r-BM-i5u"/>
-                                </constraints>
                                 <state key="normal" title="Reset Account"/>
                                 <connections>
                                     <action selector="clickResetAccountButton:" destination="akJ-MO-2mI" eventType="touchUpInside" id="TOB-rn-7xX"/>
                                 </connections>
                             </button>
                             <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SxS-nj-N8L">
-                                <rect key="frame" x="163" y="194" width="51" height="31"/>
+                                <rect key="frame" x="158" y="269" width="51" height="31"/>
                                 <connections>
                                     <action selector="showWebviewSwitchValueChanged:" destination="akJ-MO-2mI" eventType="valueChanged" id="ozz-Qn-o6x"/>
                                 </connections>
                             </switch>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show WebView (DEBUG)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmv-1X-LpA">
-                                <rect key="frame" x="93" y="238" width="198" height="21"/>
+                                <rect key="frame" x="88" y="313" width="198" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GcB-n1-30Y">
-                                <rect key="frame" x="93" y="374" width="189" height="37"/>
+                                <rect key="frame" x="93" y="374" width="188" height="37"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="qkq-CU-cI7"/>
+                                    <constraint firstAttribute="height" constant="37" id="lV0-h8-LkQ"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="© 2017 Kino Roy ">
@@ -116,11 +113,8 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dwt-sR-QJx">
-                                <rect key="frame" x="57" y="419" width="260" height="57"/>
+                                <rect key="frame" x="57" y="419" width="259" height="57"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="xRC-UO-UpV"/>
-                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="RenewPass">
                                         <attributes>
@@ -146,26 +140,35 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Cl-Iy-uwn">
+                                <rect key="frame" x="119" y="159" width="137" height="30"/>
+                                <state key="normal" title="Enable Notifications"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SxS-nj-N8L" firstAttribute="centerX" secondItem="GcB-n1-30Y" secondAttribute="centerX" id="1lD-Dc-aZA"/>
-                            <constraint firstItem="aiW-Bq-rSQ" firstAttribute="top" secondItem="dwt-sR-QJx" secondAttribute="bottom" constant="191" id="6LL-TO-4xY"/>
-                            <constraint firstItem="dwt-sR-QJx" firstAttribute="leading" secondItem="f8n-ZV-eQZ" secondAttribute="leadingMargin" constant="41" id="7w1-cD-r9g"/>
-                            <constraint firstItem="7l7-o0-D1m" firstAttribute="centerX" secondItem="SxS-nj-N8L" secondAttribute="centerX" id="AAM-op-c7H"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="wmv-1X-LpA" secondAttribute="trailing" constant="68" id="CDo-R8-52k"/>
-                            <constraint firstItem="SxS-nj-N8L" firstAttribute="top" secondItem="7l7-o0-D1m" secondAttribute="bottom" constant="60" id="CYp-o6-nYT"/>
-                            <constraint firstItem="dwt-sR-QJx" firstAttribute="top" secondItem="GcB-n1-30Y" secondAttribute="bottom" constant="8" symbolic="YES" id="FAP-nj-QVC"/>
-                            <constraint firstItem="wmv-1X-LpA" firstAttribute="top" secondItem="SxS-nj-N8L" secondAttribute="bottom" constant="13" id="R6X-MH-dyx"/>
-                            <constraint firstItem="wmv-1X-LpA" firstAttribute="leading" secondItem="f8n-ZV-eQZ" secondAttribute="leadingMargin" constant="77" id="Wua-gI-4DA"/>
-                            <constraint firstItem="7l7-o0-D1m" firstAttribute="centerX" secondItem="f8n-ZV-eQZ" secondAttribute="centerX" id="aIb-nX-7GA"/>
-                            <constraint firstItem="GcB-n1-30Y" firstAttribute="centerX" secondItem="dwt-sR-QJx" secondAttribute="centerX" id="bFH-qH-wOy"/>
-                            <constraint firstItem="7l7-o0-D1m" firstAttribute="top" secondItem="aAi-tx-mhj" secondAttribute="bottom" constant="40" id="bli-ZD-znR"/>
-                            <constraint firstItem="wmv-1X-LpA" firstAttribute="leading" secondItem="GcB-n1-30Y" secondAttribute="leading" id="ofn-9f-Pbe"/>
+                            <constraint firstItem="7l7-o0-D1m" firstAttribute="centerX" secondItem="f8n-ZV-eQZ" secondAttribute="centerX" id="0gy-ZG-pFY"/>
+                            <constraint firstItem="dwt-sR-QJx" firstAttribute="top" secondItem="GcB-n1-30Y" secondAttribute="bottom" constant="8" symbolic="YES" id="6xU-gx-Xcf"/>
+                            <constraint firstItem="wmv-1X-LpA" firstAttribute="centerX" secondItem="GcB-n1-30Y" secondAttribute="centerX" id="8ju-w1-Cjz"/>
+                            <constraint firstItem="7l7-o0-D1m" firstAttribute="trailing" secondItem="9Cl-Iy-uwn" secondAttribute="trailing" id="AGX-E3-PW4"/>
+                            <constraint firstItem="GcB-n1-30Y" firstAttribute="top" secondItem="wmv-1X-LpA" secondAttribute="bottom" constant="40" id="BN1-hb-spv"/>
+                            <constraint firstItem="aiW-Bq-rSQ" firstAttribute="top" secondItem="dwt-sR-QJx" secondAttribute="bottom" constant="191" id="D9A-1L-FZl"/>
+                            <constraint firstItem="9Cl-Iy-uwn" firstAttribute="top" secondItem="7l7-o0-D1m" secondAttribute="bottom" constant="25" id="K3g-yn-qa2"/>
+                            <constraint firstItem="7l7-o0-D1m" firstAttribute="top" secondItem="aAi-tx-mhj" secondAttribute="bottom" constant="40" id="SOF-9b-XxB"/>
+                            <constraint firstItem="9Cl-Iy-uwn" firstAttribute="centerX" secondItem="wmv-1X-LpA" secondAttribute="centerX" id="VE5-af-6dV"/>
+                            <constraint firstItem="GcB-n1-30Y" firstAttribute="centerX" secondItem="dwt-sR-QJx" secondAttribute="centerX" id="Wmh-rb-Vsl"/>
+                            <constraint firstItem="wmv-1X-LpA" firstAttribute="top" secondItem="SxS-nj-N8L" secondAttribute="bottom" constant="13" id="frj-7s-7Wf"/>
+                            <constraint firstItem="GcB-n1-30Y" firstAttribute="leading" secondItem="f8n-ZV-eQZ" secondAttribute="leadingMargin" constant="77" id="gLx-zU-t9I"/>
+                            <constraint firstItem="wmv-1X-LpA" firstAttribute="leading" secondItem="f8n-ZV-eQZ" secondAttribute="leadingMargin" constant="72" id="hjx-bS-sAS"/>
+                            <constraint firstItem="SxS-nj-N8L" firstAttribute="top" secondItem="9Cl-Iy-uwn" secondAttribute="bottom" constant="80" id="jFn-g2-8EZ"/>
+                            <constraint firstItem="7l7-o0-D1m" firstAttribute="centerX" secondItem="9Cl-Iy-uwn" secondAttribute="centerX" id="jyd-U2-2V1"/>
+                            <constraint firstItem="SxS-nj-N8L" firstAttribute="leading" secondItem="f8n-ZV-eQZ" secondAttribute="leading" constant="158" id="mI7-PG-J9f"/>
+                            <constraint firstItem="dwt-sR-QJx" firstAttribute="leading" secondItem="f8n-ZV-eQZ" secondAttribute="leadingMargin" constant="41" id="tyr-dl-cJg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gEC-ol-L2h"/>
                     <connections>
+                        <outlet property="enableNotifButton" destination="9Cl-Iy-uwn" id="Cth-OX-FcA"/>
                         <outlet property="showWebViewLabel" destination="wmv-1X-LpA" id="Fw4-b0-OK7"/>
                         <outlet property="showWebviewSwitch" destination="SxS-nj-N8L" id="BUw-D2-Frm"/>
                     </connections>

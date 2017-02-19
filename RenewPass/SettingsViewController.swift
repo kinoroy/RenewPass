@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import Crashlytics
+import UserNotifications
 
 class SettingsViewController: UIViewController {
     
@@ -15,6 +17,7 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var showWebviewSwitch: UISwitch!
     @IBOutlet weak var showWebViewLabel: UILabel!
+    @IBOutlet weak var enableNotifButton: UIButton!
     
     
     // MARK: - Life Cycle
@@ -23,6 +26,15 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         showWebviewSwitch.isOn = UserDefaults.standard.bool(forKey: "showWebview")
+        
+        let notifAuth = UIApplication.shared.currentUserNotificationSettings
+        
+        if (notifAuth?.types.contains(.alert))! {
+            enableNotifButton.isHidden = true
+        } else {
+            enableNotifButton.addTarget(self, action: #selector(requestNotifAuth), for: .touchUpInside)
+        }
+        
         // Show the debug menu if the build is debug
         #if DEBUG
             showWebviewSwitch.isHidden = false
@@ -83,6 +95,35 @@ class SettingsViewController: UIViewController {
                 UserDefaults.standard.set(false, forKey: "showWebview")
             }
         }
+    }
+    
+    // MARK: - Internal methods 
+    
+    internal func requestNotifAuth() {
+        
+        let alert = UIAlertController(title: "Notifications", message: "RenewPass will try every month to renew your UPass in the background and notify you if successful. That cool?", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "Yeah!", style: .default, handler: {
+            (alert:UIAlertAction) -> Void in
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) {
+                (granted, error) in
+                if granted {
+                    Answers.logCustomEvent(withName: "approvesNotifications", customAttributes: nil)
+                    DispatchQueue.main.async {
+                        // Disable and hide the notification button from settings 
+                        self.enableNotifButton.isEnabled = false
+                        self.enableNotifButton.isHidden = true
+                    }
+                }
+            }
+        })
+        let NOAction = UIAlertAction(title: "No", style: .cancel, handler: {
+            (alert:UIAlertAction) -> Void in
+            Answers.logCustomEvent(withName: "deniesNotifications", customAttributes: nil)
+        } )
+        alert.addAction(OKAction)
+        alert.addAction(NOAction)
+        self.present(alert, animated: true)
+        
     }
     
     // MARK: - Status Bar
