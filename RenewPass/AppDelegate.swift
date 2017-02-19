@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Setup Crashlytics 
+        #if DEBUG
+            Fabric.sharedSDK().debug = true
+        #endif
         Fabric.with([Crashlytics.self])
 
         // Set the background task interval to be 2 weeks/1210000 secconds
@@ -111,6 +114,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     if error == RenewPassError.alreadyHasLatestUPassError {
                         os_log("Already has the latest UPass", log: .default, type: .debug)
+                    } else {
+                        Answers.logCustomEvent(withName: "RenewPassError", customAttributes: ["Error":"\(error!.title)","School":renewVC.school.shortName])
                     }
                     completionHandler(UIBackgroundFetchResult.noData)
 
@@ -122,6 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             os_log("There was an error renewing the UPass. (No root view controller)", log: .default, type: .debug)
             print("Something went wrong! there was no root view controller")
+            Crashlytics.sharedInstance().recordError(RenewPassError.unknownError)
             completionHandler(UIBackgroundFetchResult.failed)
         }
     }

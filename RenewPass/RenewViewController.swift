@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import WebKit
+import os.log
+import Crashlytics
 
 class RenewViewController: UIViewController, CAAnimationDelegate {
     
@@ -108,7 +110,11 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             self.webview.loadRequest(urlRequest)
             
             if error != nil {
-                print("\(error)")
+                if error == RenewPassError.alreadyHasLatestUPassError {
+                    os_log("Already has the latest UPass", log: .default, type: .debug)
+                } else {
+                    Answers.logCustomEvent(withName: "RenewPassError", customAttributes: ["Error":"\(error!.title)","School":self.school.shortName])
+                }
             } else {
                 self.statusLabel.text = "Sweet! You've snagged the latest UPass."
             }
