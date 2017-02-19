@@ -107,18 +107,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             renewVC.fetch() {
                 (error) in
                 renewVC.didStartFetchFromBackground = false // Resets the fetch value
-                if error == RenewPassError.alreadyHasLatestUPassError {
-                    os_log("We have the latest UPass", log: .default, type: .debug)
-                    completionHandler(UIBackgroundFetchResult.newData)
+                if error != nil {
                     
-                } else {
+                    if error == RenewPassError.alreadyHasLatestUPassError {
+                        os_log("Already has the latest UPass", log: .default, type: .debug)
+                    }
                     completionHandler(UIBackgroundFetchResult.noData)
+
+                } else {
+                    os_log("We got the latest UPass!", log: .default, type: .debug)
+                    completionHandler(UIBackgroundFetchResult.newData)
                 }
             }
         } else {
             os_log("There was an error renewing the UPass. (No root view controller)", log: .default, type: .debug)
             print("Something went wrong! there was no root view controller")
-            completionHandler(UIBackgroundFetchResult.noData)
+            completionHandler(UIBackgroundFetchResult.failed)
         }
     }
 }

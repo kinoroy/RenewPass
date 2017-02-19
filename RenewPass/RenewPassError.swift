@@ -14,6 +14,7 @@ enum RenewPassError: Error {
     case schoolNotFoundError
     case alreadyHasLatestUPassError
     case webViewFailedError
+    case verificationFailed
     case unknownError
     
 }
@@ -27,9 +28,11 @@ extension RenewPassError: CustomStringConvertible {
         case .schoolNotFoundError:
             return "School not supported"
         case.alreadyHasLatestUPassError:
-            return "Sweet! You've snagged the latest UPass."
+            return "You already have the latest UPass"
         case .webViewFailedError:
             return "Failed to establish a connection"
+        case .verificationFailed:
+            return "Couldn't verify the renew, check UPassBC"
         case .unknownError:
             return "Unknown error."
             
@@ -46,6 +49,8 @@ extension RenewPassError: CustomStringConvertible {
             return "You have the latest UPass."
         case .webViewFailedError:
             return "RenewPass failed to establish a connection. Check your internet connection. UPass and or you school's login might be down."
+        case .verificationFailed:
+            return "RenewPass couldn't verify that the renew was completed successfully. Check the UPassBC site to verify."
         case .unknownError:
             return "RenewPass encountered an unknown error."
             

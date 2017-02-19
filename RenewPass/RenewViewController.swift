@@ -17,10 +17,10 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     var webview:WebView!
     var username:String!
     var school:School!
-    var completionHandlers:[(RenewPassError) -> Void] = []
+    var completionHandlers:[(RenewPassError?) -> Void] = []
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
-    var numUpass:String = "0"
+    var numUpass:String?
     var didStartFetchFromBackground:Bool = false
     var shouldContinueReloadAnimation:Bool = false
 
@@ -93,6 +93,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     // MARK: - Actions
     
     @IBAction func renewButtonTouchUpInside(_ sender: Any) {
+        numUpass = nil
         reloadButton.isEnabled = false
         shouldContinueReloadAnimation = true
         reloadButton.rotate360Degrees(completionDelegate: self)
@@ -109,7 +110,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             if error != nil {
                 print("\(error)")
             } else {
-                self.statusLabel.text = "You don't have the latest UPass."
+                self.statusLabel.text = "Sweet! You've snagged the latest UPass."
             }
             self.webview.removeFromSuperview()
         }
@@ -147,6 +148,10 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     
     func checkUpass() throws {
         
+        guard !((webview.request?.url?.absoluteString.contains("upassadfs"))!) else {
+            return
+        }
+        
         statusLabel.text = "Checking UPass"
         
         guard !(webview.request?.url?.absoluteString.contains(school.authPageURLIdentifier))! else {
@@ -159,9 +164,25 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             throw RenewPassError.alreadyHasLatestUPassError
         }
         
+        numUpass = result
+        
         statusLabel.text = "Renewing UPass"
         
         webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "Renew"))
+        
+    }
+    
+    func verifyRenew() throws {
+        
+        if numUpass != nil {
+            if let postRenewNumUpass = webview.stringByEvaluatingJavaScript(from: "document.querySelectorAll(\".status\").length")  {
+                guard Int(postRenewNumUpass)! > Int(numUpass!)! else {
+                    throw RenewPassError.verificationFailed
+                }
+                completionHandlers[0](nil)
+            }
+        }
+        
     }
 
 
@@ -174,7 +195,6 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             js = js.replacingOccurrences(of: "storedUsername", with: username)
             js = js.replacingOccurrences(of: "storedPassword", with: KeychainSwift().get("accountPassword")! as String)
             js = js.replacingOccurrences(of: "_SCHOOL_ID_", with: "\(getSchoolID(school: school.school))")
-            js = js.replacingOccurrences(of: "PREV_NUM_UPASS", with: numUpass)
             return js
         } catch {
             fatalError("Could not read the JavaScript file \"\(filename).js\"")
@@ -201,7 +221,12 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             } else if currentURL.contains(school.authPageURLIdentifier) { // School authentication screen
                 try authenticate(school: getSchoolID(school: school.school))
             } else if currentURL.contains("fs") { // post-auth Upass site
-                try checkUpass()
+                if numUpass == nil {
+                    try checkUpass()
+                } else {
+                    try verifyRenew()
+                }
+                
             }
         } catch let error as RenewPassError {
             statusLabel.text = error.title
