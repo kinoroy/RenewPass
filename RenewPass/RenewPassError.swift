@@ -1,5 +1,5 @@
 //
-//  RenewPassException.swift
+//  RenewPassError.swift
 //  RenewPass
 //
 //  Created by Kino Roy on 2017-02-07.
@@ -8,29 +8,29 @@
 
 import Foundation
 
-enum RenewPassException: Error {
+enum RenewPassError: Error {
     
-    case authenticationFailedException
-    case schoolNotFoundException
-    case alreadyHasLatestUPassException
-    case webViewFailedException
-    case unknownException
+    case authenticationFailedError
+    case schoolNotFoundError
+    case alreadyHasLatestUPassError
+    case webViewFailedError
+    case unknownError
     
 }
 
-extension RenewPassException: CustomStringConvertible {
+extension RenewPassError: CustomStringConvertible {
     var title: String {
         switch self {
             
-        case .authenticationFailedException:
+        case .authenticationFailedError:
             return "Authentication failed"
-        case .schoolNotFoundException:
+        case .schoolNotFoundError:
             return "School not supported"
-        case.alreadyHasLatestUPassException:
+        case.alreadyHasLatestUPassError:
             return "Sweet! You've snagged the latest UPass."
-        case .webViewFailedException:
+        case .webViewFailedError:
             return "Failed to establish a connection"
-        case .unknownException:
+        case .unknownError:
             return "Unknown error."
             
         }
@@ -38,15 +38,15 @@ extension RenewPassException: CustomStringConvertible {
     var description: String {
         switch self {
             
-        case .authenticationFailedException:
+        case .authenticationFailedError:
             return "Authentication failed. Double check your username and password and try again."
-        case .schoolNotFoundException:
+        case .schoolNotFoundError:
             return "The school you selected is not currently supported."
-        case.alreadyHasLatestUPassException:
+        case.alreadyHasLatestUPassError:
             return "You have the latest UPass."
-        case .webViewFailedException:
+        case .webViewFailedError:
             return "RenewPass failed to establish a connection. Check your internet connection. UPass and or you school's login might be down."
-        case .unknownException:
+        case .unknownError:
             return "RenewPass encountered an unknown error."
             
         }

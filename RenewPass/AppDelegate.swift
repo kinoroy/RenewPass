@@ -107,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             renewVC.fetch() {
                 (error) in
                 renewVC.didStartFetchFromBackground = false // Resets the fetch value
-                if error == RenewPassException.alreadyHasLatestUPassException {
+                if error == RenewPassError.alreadyHasLatestUPassError {
                     os_log("We have the latest UPass", log: .default, type: .debug)
                     completionHandler(UIBackgroundFetchResult.newData)
                     

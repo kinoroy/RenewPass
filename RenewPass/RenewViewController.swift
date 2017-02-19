@@ -17,7 +17,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     var webview:WebView!
     var username:String!
     var school:School!
-    var completionHandlers:[(RenewPassException) -> Void] = []
+    var completionHandlers:[(RenewPassError) -> Void] = []
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     var numUpass:String = "0"
@@ -128,7 +128,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         
         statusLabel.text = "Authenticating"
         guard let schoolEnum = Schools(rawValue: school) else {
-            throw RenewPassException.schoolNotFoundException
+            throw RenewPassError.schoolNotFoundError
         }
         let schoolObj = School(school: schoolEnum)
         
@@ -137,7 +137,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         
         let result = webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: authErrorFileName))
         if result == "failure" {
-            throw RenewPassException.authenticationFailedException
+            throw RenewPassError.authenticationFailedError
         }
         
         webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: authenticateFileName))
@@ -150,13 +150,13 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         statusLabel.text = "Checking UPass"
         
         guard !(webview.request?.url?.absoluteString.contains(school.authPageURLIdentifier))! else {
-            throw RenewPassException.authenticationFailedException
+            throw RenewPassError.authenticationFailedError
         }
         
         let result = webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "CheckUPass"))
        
         guard result != "null" else {
-            throw RenewPassException.alreadyHasLatestUPassException
+            throw RenewPassError.alreadyHasLatestUPassError
         }
         
         statusLabel.text = "Renewing UPass"
@@ -203,21 +203,21 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             } else if currentURL.contains("fs") { // post-auth Upass site
                 try checkUpass()
             }
-        } catch let error as RenewPassException {
+        } catch let error as RenewPassError {
             statusLabel.text = error.title
             completionHandlers[0](error)
         } catch {
             statusLabel.text = "Unknown Error"
-            completionHandlers[0](RenewPassException.unknownException)
+            completionHandlers[0](RenewPassError.unknownError)
         }
         
     }
     
     func webViewDidFailLoadWithError(notification:Notification) {
-        completionHandlers[0](RenewPassException.webViewFailedException)
+        completionHandlers[0](RenewPassError.webViewFailedError)
     }
     
-    func fetch(completion: @escaping (_ error:RenewPassException?) -> Void) {
+    func fetch(completion: @escaping (_ error:RenewPassError?) -> Void) {
         completionHandlers.append(completion)
         
         if didStartFetchFromBackground {

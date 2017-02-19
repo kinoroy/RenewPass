@@ -23,7 +23,7 @@
 		385EE1C21E47E01000E83373 /* AuthenticationError_SFU.js in Resources */ = {isa = PBXBuildFile; fileRef = 385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */; };
 		386234131E52DA8B006F89D7 /* SchoolSelectorStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386234121E52DA8B006F89D7 /* SchoolSelectorStackView.swift */; };
 		387A1E451E4ACE8800650D32 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387A1E441E4ACE8800650D32 /* WebView.swift */; };
-		387A1E471E4ADAA000650D32 /* RenewPassException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387A1E461E4ADAA000650D32 /* RenewPassException.swift */; };
+		387A1E471E4ADAA000650D32 /* RenewPassError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387A1E461E4ADAA000650D32 /* RenewPassError.swift */; };
 		387A1E491E4B959700650D32 /* Authenticate_UBC.js in Resources */ = {isa = PBXBuildFile; fileRef = 387A1E481E4B959700650D32 /* Authenticate_UBC.js */; };
 		387A1E4B1E4C0B1F00650D32 /* Authenticate_KPU.js in Resources */ = {isa = PBXBuildFile; fileRef = 387A1E4A1E4C0B1F00650D32 /* Authenticate_KPU.js */; };
 		387A1E4D1E4C0C4200650D32 /* Authenticate_DC.js in Resources */ = {isa = PBXBuildFile; fileRef = 387A1E4C1E4C0C4200650D32 /* Authenticate_DC.js */; };
@@ -66,7 +66,7 @@
 		385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = AuthenticationError_SFU.js; path = JavaScript/AuthenticationError_SFU.js; sourceTree = "<group>"; };
 		386234121E52DA8B006F89D7 /* SchoolSelectorStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolSelectorStackView.swift; sourceTree = "<group>"; };
 		387A1E441E4ACE8800650D32 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		387A1E461E4ADAA000650D32 /* RenewPassException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenewPassException.swift; sourceTree = "<group>"; };
+		387A1E461E4ADAA000650D32 /* RenewPassError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenewPassError.swift; sourceTree = "<group>"; };
 		387A1E481E4B959700650D32 /* Authenticate_UBC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Authenticate_UBC.js; path = JavaScript/Authenticate_UBC.js; sourceTree = "<group>"; };
 		387A1E4A1E4C0B1F00650D32 /* Authenticate_KPU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Authenticate_KPU.js; path = JavaScript/Authenticate_KPU.js; sourceTree = "<group>"; };
 		387A1E4C1E4C0C4200650D32 /* Authenticate_DC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Authenticate_DC.js; path = JavaScript/Authenticate_DC.js; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 				386234121E52DA8B006F89D7 /* SchoolSelectorStackView.swift */,
 				382599B01E41911400349582 /* SettingsViewController.swift */,
 				382599A61E41675100349582 /* RenewViewController.swift */,
-				387A1E461E4ADAA000650D32 /* RenewPassException.swift */,
+				387A1E461E4ADAA000650D32 /* RenewPassError.swift */,
 				382599AE1E417E0500349582 /* Schools.swift */,
 				382599A81E4172B400349582 /* KeychainHelper.swift */,
 				385EE1C41E47E59B00E83373 /* JavaScript */,
@@ -326,7 +326,7 @@
 				382599A91E4172B400349582 /* KeychainHelper.swift in Sources */,
 				382599A51E41671600349582 /* SignInViewController.swift in Sources */,
 				382599AF1E417E0500349582 /* Schools.swift in Sources */,
-				387A1E471E4ADAA000650D32 /* RenewPassException.swift in Sources */,
+				387A1E471E4ADAA000650D32 /* RenewPassError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
