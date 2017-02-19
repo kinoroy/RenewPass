@@ -7,13 +7,13 @@ RenewPass does the work of renewing your UPass for you. Enter your school creden
 Your school credentials are stored securely in the iOS keychain, which is encrypted with your iCloud password.
 
 Supported schools (beta testers needed!):
-- SFU 
+- SFU (tested)
 - UBC
 - BCIT
 - VCC
 - KPU
 - Emily Carr
-- Douglas
+- Douglas (tested)
 - Langara
 - CapU
 
