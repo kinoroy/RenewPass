@@ -31,6 +31,24 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         self.usernameField.delegate = self
         self.passwordField.delegate = self
         
+        /* If you're running a debug build, the login screen can auto-populate your testing login, 
+         put your username, password and school code (School code is the raw value of your school enum in Schools.swift), into DebugUserInfo.plist.
+         
+         WARNING: DEBUGUSERINFO.PLIST SHOULD NOT LEAVE YOUR COMPUTER, IT IS GITIGNORED TO PREVENT YOUR LOGIN INFO FROM BEING SENT PUBLICLY TO THE REPO
+         DO NOT ATTEMPT TO COMMIT DEBUGUSERINFO.PLIST */
+        #if DEBUG
+            if let userDataPListURL = Bundle.main.url(forResource: "DebugUserInfo", withExtension: "plist"),
+                let userDataFile = try? Data(contentsOf: userDataPListURL) {
+                if let userDataDict = try? PropertyListSerialization.propertyList(from: userDataFile, options: [], format: nil) as? [String: Any] {
+
+                    self.usernameField.text = userDataDict?["Username"] as? String ?? ""
+                    self.passwordField.text = userDataDict?["Password"] as? String ?? ""
+                    let matchingSchoolButtons = self.stackView.buttons.filter {$0.tag == userDataDict?["School Code"] as? Int ?? 1}
+                    if matchingSchoolButtons.count > 0 { self.stackView.schoolSelected(sender: matchingSchoolButtons[0]) }
+                }
+            }
+        #endif
+        
     }
 
     override func viewDidLayoutSubviews() {
