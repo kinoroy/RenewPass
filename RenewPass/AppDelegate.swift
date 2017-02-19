@@ -11,6 +11,7 @@ import CoreData
 import os.log
 import Fabric
 import Crashlytics
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the background task interval to be 2 weeks/1210000 secconds
         let minimumBackgroundFetchInterval:TimeInterval = TimeInterval(exactly: 1210000.00)!
         UIApplication.shared.setMinimumBackgroundFetchInterval(minimumBackgroundFetchInterval)
+        
+        // Request notification auth
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (granted, error) in
+        }
         
         return true
     }
@@ -121,6 +126,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                 } else {
                     os_log("We got the latest UPass!", log: .default, type: .debug)
+                    let notificationContent = UNMutableNotificationContent()
+                    notificationContent.title = "You've Snagged the Latest UPass!"
+                    notificationContent.body = "RenewPass successfully renewed your UPass for next month. Happy riding!"
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                    
+                    let request = UNNotificationRequest(identifier: "newUPassFromBackground", content: notificationContent, trigger: trigger)
+                    UNUserNotificationCenter.current().add(request) {
+                        (error) in
+                        if error != nil {
+                            os_log("Unable to schedule renewal notification", log: .default, type: .error)
+                        }
+                    }
                     completionHandler(UIBackgroundFetchResult.newData)
                 }
             }
