@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>!!!WARNING!!!</key>
+	<string>RUN &quot;git update-index --assume-unchanged DebugUserInfo.plist&quot; BEFORE MODIFYING THIS FILE</string>
 	<key>Username</key>
 	<string>Your Username Here</string>
 	<key>Password</key>
