@@ -11,6 +11,7 @@ import CoreData
 import WebKit
 import os.log
 import Crashlytics
+import UserNotifications
 
 class RenewViewController: UIViewController, CAAnimationDelegate {
     
@@ -50,6 +51,29 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         // Checks if there is login data stored. If not, asks the user for login data by showing the login screen.
         if needToShowLoginScreen() {
             showLoginScreen()
+        } else {
+            // If the user has not been prompted to enable notifications, ask them now.
+            if !UserDefaults.standard.bool(forKey: "hasAskedUserForNotifAuth") {
+                let alert = UIAlertController(title: "Notifications", message: "RenewPass will try every month to renew your UPass in the background and notify you if successful. That cool?", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "Yeah!", style: .default, handler: {
+                    (alert:UIAlertAction) -> Void in
+                    UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) {
+                        (granted, error) in
+                        if granted {
+                            Answers.logCustomEvent(withName: "approvesNotifications", customAttributes: nil)
+                        }
+                    }
+                })
+                let NOAction = UIAlertAction(title: "No", style: .cancel, handler: {
+                (alert:UIAlertAction) -> Void in
+                    Answers.logCustomEvent(withName: "deniesNotifications", customAttributes: nil)
+                } )
+                alert.addAction(OKAction)
+                alert.addAction(NOAction)
+                self.present(alert, animated: true) {
+                UserDefaults.standard.set(true, forKey: "hasAskedUserForNotifAuth")
+                }
+            }
         }
         
     }
@@ -117,6 +141,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
                 }
             } else {
                 self.statusLabel.text = "Sweet! You've snagged the latest UPass."
+                
             }
             self.webview.removeFromSuperview()
         }

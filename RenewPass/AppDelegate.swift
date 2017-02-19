@@ -30,11 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the background task interval to be 2 weeks/1210000 secconds
         let minimumBackgroundFetchInterval:TimeInterval = TimeInterval(exactly: 1210000.00)!
         UIApplication.shared.setMinimumBackgroundFetchInterval(minimumBackgroundFetchInterval)
-        
-        // Request notification auth
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (granted, error) in
-        }
-        
+            
         return true
     }
 
