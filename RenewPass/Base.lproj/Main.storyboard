@@ -188,6 +188,9 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tZc-hL-TeB" userLabel="usernameField">
                                 <rect key="frame" x="67" y="115" width="237" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="vBS-qu-ePl"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
@@ -200,6 +203,9 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="taO-Ri-113" userLabel="passwordField">
                                 <rect key="frame" x="67" y="237" width="237" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9ih-lU-ooI"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
@@ -210,6 +216,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWF-i6-GJp" customClass="SchoolSelectorStackView" customModule="RenewPass" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="8" width="367" height="182"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="182" id="bYH-D8-duO"/>
                                             <constraint firstAttribute="width" constant="367" id="l91-pc-of4"/>
                                         </constraints>
                                     </stackView>
