@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		381101BE1E5BF25E00A628F9 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 381101BD1E5BF25E00A628F9 /* Cartfile */; };
 		381101C01E5BF42E00A628F9 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381101BF1E5BF42E00A628F9 /* Siren.framework */; };
+		381101C31E5C050000A628F9 /* OnePasswordExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381101C21E5C050000A628F9 /* OnePasswordExtension.framework */; };
+		381101C51E5C05FA00A628F9 /* SchoolCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381101C41E5C05FA00A628F9 /* SchoolCollectionViewController.swift */; };
 		3816342F1E4C318100B76E78 /* AuthenticationError_UBC.js in Resources */ = {isa = PBXBuildFile; fileRef = 3816342E1E4C318100B76E78 /* AuthenticationError_UBC.js */; };
 		381634311E4C322300B76E78 /* AuthenticationError_KPU.js in Resources */ = {isa = PBXBuildFile; fileRef = 381634301E4C322300B76E78 /* AuthenticationError_KPU.js */; };
 		381634331E4C32A100B76E78 /* AuthenticationError_DC.js in Resources */ = {isa = PBXBuildFile; fileRef = 381634321E4C32A100B76E78 /* AuthenticationError_DC.js */; };
@@ -51,6 +53,8 @@
 /* Begin PBXFileReference section */
 		381101BD1E5BF25E00A628F9 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		381101BF1E5BF42E00A628F9 /* Siren.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siren.framework; path = Carthage/Build/iOS/Siren.framework; sourceTree = "<group>"; };
+		381101C21E5C050000A628F9 /* OnePasswordExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OnePasswordExtension.framework; path = Carthage/Build/iOS/OnePasswordExtension.framework; sourceTree = "<group>"; };
+		381101C41E5C05FA00A628F9 /* SchoolCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolCollectionViewController.swift; sourceTree = "<group>"; };
 		3816342E1E4C318100B76E78 /* AuthenticationError_UBC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = AuthenticationError_UBC.js; path = JavaScript/AuthenticationError_UBC.js; sourceTree = "<group>"; };
 		381634301E4C322300B76E78 /* AuthenticationError_KPU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = AuthenticationError_KPU.js; path = JavaScript/AuthenticationError_KPU.js; sourceTree = "<group>"; };
 		381634321E4C32A100B76E78 /* AuthenticationError_DC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = AuthenticationError_DC.js; path = JavaScript/AuthenticationError_DC.js; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				381101C31E5C050000A628F9 /* OnePasswordExtension.framework in Frameworks */,
 				381101C01E5BF42E00A628F9 /* Siren.framework in Frameworks */,
 				38A83E4D1E5955E80056056C /* Crashlytics.framework in Frameworks */,
 				38A83E4C1E5955E80056056C /* Fabric.framework in Frameworks */,
@@ -109,6 +114,7 @@
 		382599EA1E4199FB00349582 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				381101C21E5C050000A628F9 /* OnePasswordExtension.framework */,
 				381101BF1E5BF42E00A628F9 /* Siren.framework */,
 			);
 			name = Frameworks;
@@ -168,6 +174,7 @@
 				389F9ED81E41332B00EF6F88 /* AppDelegate.swift */,
 				387A1E441E4ACE8800650D32 /* WebView.swift */,
 				382599A41E41671600349582 /* SignInViewController.swift */,
+				381101C41E5C05FA00A628F9 /* SchoolCollectionViewController.swift */,
 				385CB88E1E5A529E0074594C /* AutoFillInfoForDebug.plist */,
 				38E9BFE01E568D08005B786D /* AccountManager.swift */,
 				382599B01E41911400349582 /* SettingsViewController.swift */,
@@ -292,6 +299,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Siren.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/OnePasswordExtension.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -342,6 +350,7 @@
 				382599B11E41911400349582 /* SettingsViewController.swift in Sources */,
 				389F9EE11E41332B00EF6F88 /* RenewPass.xcdatamodeld in Sources */,
 				382599A91E4172B400349582 /* KeychainHelper.swift in Sources */,
+				381101C51E5C05FA00A628F9 /* SchoolCollectionViewController.swift in Sources */,
 				382599A51E41671600349582 /* SignInViewController.swift in Sources */,
 				382599AF1E417E0500349582 /* Schools.swift in Sources */,
 				387A1E471E4ADAA000650D32 /* RenewPassError.swift in Sources */,

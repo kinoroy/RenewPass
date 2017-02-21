@@ -85,7 +85,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         
         DispatchQueue.main.async {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let signInViewController = storyboard.instantiateViewController(withIdentifier: "signInViewController")
+            let signInViewController = storyboard.instantiateViewController(withIdentifier: "schoolCollectionNavigationController")
             
             self.present(signInViewController, animated: true) {
                 
