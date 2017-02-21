@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>!!!WARNING!!!</key>
-	<string>RUN &quot;git update-index --assume-unchanged DebugUserInfo.plist&quot; BEFORE MODIFYING THIS FILE</string>
+	<string>RUN &quot;git update-index --assume-unchanged AutoFillInfoForDebug.plist&quot; BEFORE MODIFYING THIS FILE</string>
 	<key>Username</key>
-	<string>Your Username Here</string>
+	<string>Username here will be autofilled on debug builds</string>
 	<key>Password</key>
-	<string>Your Password Here</string>
+	<string>Password here will be autofilled on debug builds</string>
 	<key>School Code</key>
 	<integer>0</integer>
 </dict>
