@@ -225,25 +225,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tZc-hL-TeB" userLabel="usernameField">
-                                <rect key="frame" x="67" y="159" width="237" height="30"/>
+                                <rect key="frame" x="67" y="115" width="237" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zg6-tS-2TD">
-                                <rect key="frame" x="67" y="110" width="237" height="21"/>
+                                <rect key="frame" x="67" y="66" width="237" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="taO-Ri-113" userLabel="passwordField">
-                                <rect key="frame" x="67" y="281" width="237" height="30"/>
+                                <rect key="frame" x="67" y="237" width="237" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SR3-jJ-oOj">
-                                <rect key="frame" x="67" y="234" width="237" height="21"/>
+                                <rect key="frame" x="67" y="190" width="237" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -255,27 +255,37 @@
                                     <action selector="clickSubmitButton:" destination="0Me-Ry-yaI" eventType="touchUpInside" id="XJe-20-B46"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Onn-zN-tWM">
+                                <rect key="frame" x="319" y="239" width="81" height="27"/>
+                                <state key="normal" title="Button" image="onepassword-button"/>
+                                <connections>
+                                    <action selector="callOnePass:" destination="0Me-Ry-yaI" eventType="touchUpInside" id="YIS-EO-hJH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="top" secondItem="tZc-hL-TeB" secondAttribute="bottom" constant="45" id="3Qd-T7-3eY"/>
-                            <constraint firstItem="taO-Ri-113" firstAttribute="centerX" secondItem="gzZ-uo-uwt" secondAttribute="centerX" id="8vp-wE-oZo"/>
-                            <constraint firstItem="tZc-hL-TeB" firstAttribute="top" secondItem="Zg6-tS-2TD" secondAttribute="bottom" constant="28" id="AOH-Am-epn"/>
-                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="trailing" secondItem="taO-Ri-113" secondAttribute="trailing" id="JaP-q6-0e8"/>
-                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="top" secondItem="Ivi-4v-xed" secondAttribute="bottom" constant="46" id="NME-Zu-oFZ"/>
-                            <constraint firstItem="tZc-hL-TeB" firstAttribute="trailing" secondItem="SR3-jJ-oOj" secondAttribute="trailing" id="Ug2-1W-AFl"/>
-                            <constraint firstItem="taO-Ri-113" firstAttribute="top" secondItem="SR3-jJ-oOj" secondAttribute="bottom" constant="26" id="VVz-Yp-EHi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Zg6-tS-2TD" secondAttribute="trailing" constant="55" id="Xux-Yl-BVQ"/>
-                            <constraint firstItem="gzZ-uo-uwt" firstAttribute="centerY" secondItem="aMK-Hf-lhW" secondAttribute="centerY" id="dha-wj-sgR"/>
-                            <constraint firstItem="tZc-hL-TeB" firstAttribute="leading" secondItem="SR3-jJ-oOj" secondAttribute="leading" id="eMC-eW-M2U"/>
-                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="trailing" secondItem="tZc-hL-TeB" secondAttribute="trailing" id="f8K-Su-6FW"/>
-                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="leading" secondItem="aMK-Hf-lhW" secondAttribute="leadingMargin" constant="51" id="ggf-oM-FGn"/>
-                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="leading" secondItem="tZc-hL-TeB" secondAttribute="leading" id="vs5-ge-KAR"/>
-                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="leading" secondItem="taO-Ri-113" secondAttribute="leading" id="yRu-fL-JWI"/>
+                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="leading" secondItem="aMK-Hf-lhW" secondAttribute="leadingMargin" constant="51" id="1sM-hv-Mwx"/>
+                            <constraint firstItem="tZc-hL-TeB" firstAttribute="top" secondItem="Zg6-tS-2TD" secondAttribute="bottom" constant="28" id="1xI-WU-twT"/>
+                            <constraint firstItem="taO-Ri-113" firstAttribute="top" secondItem="SR3-jJ-oOj" secondAttribute="bottom" constant="26" id="4pf-sa-OxG"/>
+                            <constraint firstItem="Onn-zN-tWM" firstAttribute="leading" secondItem="taO-Ri-113" secondAttribute="trailing" constant="15" id="52T-RF-Z7E"/>
+                            <constraint firstItem="taO-Ri-113" firstAttribute="centerX" secondItem="gzZ-uo-uwt" secondAttribute="centerX" id="B1r-Cl-yXz"/>
+                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="leading" secondItem="tZc-hL-TeB" secondAttribute="leading" id="EP9-st-Dhx"/>
+                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="top" secondItem="tZc-hL-TeB" secondAttribute="bottom" constant="45" id="FQW-fh-YVn"/>
+                            <constraint firstItem="taO-Ri-113" firstAttribute="centerY" secondItem="Onn-zN-tWM" secondAttribute="centerY" id="KT5-uS-L9A"/>
+                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="trailing" secondItem="taO-Ri-113" secondAttribute="trailing" id="Sy9-dD-t1s"/>
+                            <constraint firstItem="tZc-hL-TeB" firstAttribute="trailing" secondItem="SR3-jJ-oOj" secondAttribute="trailing" id="V2J-iY-BdY"/>
+                            <constraint firstItem="gzZ-uo-uwt" firstAttribute="centerY" secondItem="aMK-Hf-lhW" secondAttribute="centerY" id="azV-cR-zN8"/>
+                            <constraint firstItem="SR3-jJ-oOj" firstAttribute="leading" secondItem="taO-Ri-113" secondAttribute="leading" id="b0k-n9-nSZ"/>
+                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="top" secondItem="Ivi-4v-xed" secondAttribute="bottom" constant="46" id="eqD-5I-PcW"/>
+                            <constraint firstItem="tZc-hL-TeB" firstAttribute="leading" secondItem="SR3-jJ-oOj" secondAttribute="leading" id="f8k-uM-8IK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zg6-tS-2TD" secondAttribute="trailing" constant="55" id="fEd-U8-IVD"/>
+                            <constraint firstItem="Zg6-tS-2TD" firstAttribute="trailing" secondItem="tZc-hL-TeB" secondAttribute="trailing" id="fMi-1y-JeX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1Fc-eO-aE9"/>
                     <connections>
+                        <outlet property="onePassButton" destination="Onn-zN-tWM" id="fWU-VO-khS"/>
                         <outlet property="passwordField" destination="taO-Ri-113" id="TU0-yu-Asy"/>
                         <outlet property="usernameField" destination="tZc-hL-TeB" id="Cdv-cC-YFZ"/>
                         <outlet property="usernameLabel" destination="Zg6-tS-2TD" id="6XG-BP-RfP"/>
@@ -323,6 +333,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="onepassword-button" width="27" height="27"/>
         <image name="requestButton" width="100" height="100"/>
         <image name="settings" width="25" height="25"/>
     </resources>

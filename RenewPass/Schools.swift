@@ -135,6 +135,31 @@ public class School {
         }
     }
     
+    var urlString:String {
+        switch self.school {
+        case .SFU:
+            return "https://cas.sfu.ca"
+        case .UBC:
+            return "https://shibboleth2.id.ubc.ca"
+        case .BCIT:
+            return "https://compass.bcit.ca"
+        case .VCC:
+            return "https://fs.vcc.ca"
+            //case .NVIT:
+        //return "NVIT"
+        case .KPU:
+            return "https://auth.kpu.ca"
+        case .EC:
+            return "https://idp.ecuad.ca"
+        case .DC:
+            return "https://federation.douglascollege.ca"
+        case .LC:
+            return "https://federation.langara.ca"
+        case .CU:
+            return "https://fs.capilanou.ca"
+        }
+    }
+    
     // MARK: - Initialization
     
     init(school:Schools) {

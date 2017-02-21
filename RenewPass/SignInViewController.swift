@@ -18,6 +18,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     var accounts:[NSManagedObject]!
     @IBOutlet weak var usernameLabel: UILabel!
     var schoolSelected:UIButton!
+    @IBOutlet weak var onePassButton: UIButton!
+    
     
     
     // MARK: - Life Cycle
@@ -36,6 +38,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         self.usernameLabel.text = school.userNameLabel
         self.usernameField.placeholder = school.userNamePlaceHolder
         
+        // Hide the Onepass button if there are no password managers enabled.
+        self.onePassButton.isHidden = false//!(OnePasswordExtension.shared().isAppExtensionAvailable())
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,8 +54,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 let userDataFile = try? Data(contentsOf: userDataPListURL) {
                 if let userDataDict = try? PropertyListSerialization.propertyList(from: userDataFile, options: [], format: nil) as? [String: Any] {
                     
-                    self.usernameField.text = userDataDict?["Username"] as? String ?? ""
-                    self.passwordField.text = userDataDict?["Password"] as? String ?? ""
+                    let username = userDataDict?["Username"] as? String ?? ""
+                    let password = userDataDict?["Password"] as? String ?? ""
+                    
+                    if !username.isEmpty && !password.isEmpty {
+                        self.usernameField.text = username
+                        self.passwordField.text = password
+                    }
     
                 }
             }
@@ -85,6 +95,21 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
     }
 
+    // MARK: - 1Password
+    
+    @IBAction func callOnePass(_ sender: Any) {
+        
+        let school = School(school: Schools(rawValue: Int16(schoolSelected.tag))!)
+        
+        OnePasswordExtension.shared().findLogin(forURLString: school.urlString, for: self, sender: sender, completion: { (loginDictionary, error) -> Void in
+            if loginDictionary == nil {
+                return
+            }
+            
+            self.usernameField.text = loginDictionary?[AppExtensionUsernameKey] as? String
+            self.passwordField.text = loginDictionary?[AppExtensionPasswordKey] as? String
+        })
+    }
     
 
     // MARK: - Status Bar
