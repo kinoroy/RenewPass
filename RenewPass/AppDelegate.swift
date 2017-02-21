@@ -12,6 +12,7 @@ import os.log
 import Fabric
 import Crashlytics
 import UserNotifications
+import Siren
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,7 +31,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the background task interval to be 2 weeks/1210000 secconds
         let minimumBackgroundFetchInterval:TimeInterval = TimeInterval(exactly: 1210000.00)!
         UIApplication.shared.setMinimumBackgroundFetchInterval(minimumBackgroundFetchInterval)
-            
+        
+        // Check version with Siren
+        let siren = Siren.sharedInstance
+        
+        // Siren will ask users to update
+        siren.alertType = .option
+        
+        /*
+         Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version
+         checks.
+         */
+        siren.checkVersion(checkType: .immediately)
+        
+        /*// Setup Siren loging on debug builds
+        #if DEBUG
+            siren.debugEnabled = true
+        #endif*/
+        
         return true
     }
 
@@ -50,6 +68,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        /*
+         Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version
+         checks.
+         */
+        Siren.sharedInstance.checkVersion(checkType: .daily)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

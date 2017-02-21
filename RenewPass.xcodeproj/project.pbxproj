@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		381101BE1E5BF25E00A628F9 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 381101BD1E5BF25E00A628F9 /* Cartfile */; };
+		381101C01E5BF42E00A628F9 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381101BF1E5BF42E00A628F9 /* Siren.framework */; };
 		3816342F1E4C318100B76E78 /* AuthenticationError_UBC.js in Resources */ = {isa = PBXBuildFile; fileRef = 3816342E1E4C318100B76E78 /* AuthenticationError_UBC.js */; };
 		381634311E4C322300B76E78 /* AuthenticationError_KPU.js in Resources */ = {isa = PBXBuildFile; fileRef = 381634301E4C322300B76E78 /* AuthenticationError_KPU.js */; };
 		381634331E4C32A100B76E78 /* AuthenticationError_DC.js in Resources */ = {isa = PBXBuildFile; fileRef = 381634321E4C32A100B76E78 /* AuthenticationError_DC.js */; };
@@ -20,7 +22,7 @@
 		382599A91E4172B400349582 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599A81E4172B400349582 /* KeychainHelper.swift */; };
 		382599AF1E417E0500349582 /* Schools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599AE1E417E0500349582 /* Schools.swift */; };
 		382599B11E41911400349582 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599B01E41911400349582 /* SettingsViewController.swift */; };
-		385CB88F1E5A529E0074594C /* DebugUserInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 385CB88E1E5A529E0074594C /* DebugUserInfo.plist */; };
+		385CB88F1E5A529E0074594C /* AutoFillInfoForDebug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 385CB88E1E5A529E0074594C /* AutoFillInfoForDebug.plist */; };
 		385EE1C21E47E01000E83373 /* AuthenticationError_SFU.js in Resources */ = {isa = PBXBuildFile; fileRef = 385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */; };
 		387A1E451E4ACE8800650D32 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387A1E441E4ACE8800650D32 /* WebView.swift */; };
 		387A1E471E4ADAA000650D32 /* RenewPassError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387A1E461E4ADAA000650D32 /* RenewPassError.swift */; };
@@ -47,6 +49,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		381101BD1E5BF25E00A628F9 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		381101BF1E5BF42E00A628F9 /* Siren.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siren.framework; path = Carthage/Build/iOS/Siren.framework; sourceTree = "<group>"; };
 		3816342E1E4C318100B76E78 /* AuthenticationError_UBC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = AuthenticationError_UBC.js; path = JavaScript/AuthenticationError_UBC.js; sourceTree = "<group>"; };
 		381634301E4C322300B76E78 /* AuthenticationError_KPU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = AuthenticationError_KPU.js; path = JavaScript/AuthenticationError_KPU.js; sourceTree = "<group>"; };
 		381634321E4C32A100B76E78 /* AuthenticationError_DC.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = AuthenticationError_DC.js; path = JavaScript/AuthenticationError_DC.js; sourceTree = "<group>"; };
@@ -60,10 +64,7 @@
 		382599A81E4172B400349582 /* KeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		382599AE1E417E0500349582 /* Schools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schools.swift; sourceTree = "<group>"; };
 		382599B01E41911400349582 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		382599EB1E4199FB00349582 /* WKZombie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WKZombie.framework; path = Carthage/Build/iOS/WKZombie.framework; sourceTree = "<group>"; };
-		382599EC1E4199FB00349582 /* hpple.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = hpple.framework; path = Carthage/Build/iOS/hpple.framework; sourceTree = "<group>"; };
-		382599FA1E4267F400349582 /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/iOS/Kanna.framework; sourceTree = "<group>"; };
-		385CB88E1E5A529E0074594C /* DebugUserInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DebugUserInfo.plist; sourceTree = "<group>"; };
+		385CB88E1E5A529E0074594C /* AutoFillInfoForDebug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AutoFillInfoForDebug.plist; sourceTree = "<group>"; };
 		385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = AuthenticationError_SFU.js; path = JavaScript/AuthenticationError_SFU.js; sourceTree = "<group>"; };
 		387A1E441E4ACE8800650D32 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		387A1E461E4ADAA000650D32 /* RenewPassError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenewPassError.swift; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				381101C01E5BF42E00A628F9 /* Siren.framework in Frameworks */,
 				38A83E4D1E5955E80056056C /* Crashlytics.framework in Frameworks */,
 				38A83E4C1E5955E80056056C /* Fabric.framework in Frameworks */,
 			);
@@ -107,9 +109,7 @@
 		382599EA1E4199FB00349582 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				382599FA1E4267F400349582 /* Kanna.framework */,
-				382599EB1E4199FB00349582 /* WKZombie.framework */,
-				382599EC1E4199FB00349582 /* hpple.framework */,
+				381101BF1E5BF42E00A628F9 /* Siren.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -145,6 +145,7 @@
 		389F9ECC1E41332B00EF6F88 = {
 			isa = PBXGroup;
 			children = (
+				381101BD1E5BF25E00A628F9 /* Cartfile */,
 				38A83E4A1E5955E80056056C /* Fabric.framework */,
 				38A83E4B1E5955E80056056C /* Crashlytics.framework */,
 				389F9ED71E41332B00EF6F88 /* RenewPass */,
@@ -167,7 +168,7 @@
 				389F9ED81E41332B00EF6F88 /* AppDelegate.swift */,
 				387A1E441E4ACE8800650D32 /* WebView.swift */,
 				382599A41E41671600349582 /* SignInViewController.swift */,
-				385CB88E1E5A529E0074594C /* DebugUserInfo.plist */,
+				385CB88E1E5A529E0074594C /* AutoFillInfoForDebug.plist */,
 				38E9BFE01E568D08005B786D /* AccountManager.swift */,
 				382599B01E41911400349582 /* SettingsViewController.swift */,
 				382599A61E41675100349582 /* RenewViewController.swift */,
@@ -196,6 +197,7 @@
 				389F9ED31E41332B00EF6F88 /* Resources */,
 				385EE1C31E47E38500E83373 /* Update Build Number */,
 				38A83E491E5955A80056056C /* Crashlytics */,
+				381101C11E5BF47300A628F9 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -253,8 +255,9 @@
 			files = (
 				381634331E4C32A100B76E78 /* AuthenticationError_DC.js in Resources */,
 				389F9EE61E41332B00EF6F88 /* LaunchScreen.storyboard in Resources */,
-				385CB88F1E5A529E0074594C /* DebugUserInfo.plist in Resources */,
+				385CB88F1E5A529E0074594C /* AutoFillInfoForDebug.plist in Resources */,
 				389F9EE31E41332B00EF6F88 /* Assets.xcassets in Resources */,
+				381101BE1E5BF25E00A628F9 /* Cartfile in Resources */,
 				381634351E4C34E400B76E78 /* AuthenticationError_CU.js in Resources */,
 				387A1E4D1E4C0C4200650D32 /* Authenticate_DC.js in Resources */,
 				381634311E4C322300B76E78 /* AuthenticationError_KPU.js in Resources */,
@@ -282,6 +285,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		381101C11E5BF47300A628F9 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Siren.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		385EE1C31E47E38500E83373 /* Update Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,6 +471,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RenewPass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -473,6 +492,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RenewPass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
