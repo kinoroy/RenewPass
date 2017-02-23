@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380C6FF31E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 380C6FF21E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist */; };
 		381101BE1E5BF25E00A628F9 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 381101BD1E5BF25E00A628F9 /* Cartfile */; };
 		381101C01E5BF42E00A628F9 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381101BF1E5BF42E00A628F9 /* Siren.framework */; };
 		381101C31E5C050000A628F9 /* OnePasswordExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381101C21E5C050000A628F9 /* OnePasswordExtension.framework */; };
@@ -24,7 +25,6 @@
 		382599A91E4172B400349582 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599A81E4172B400349582 /* KeychainHelper.swift */; };
 		382599AF1E417E0500349582 /* Schools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599AE1E417E0500349582 /* Schools.swift */; };
 		382599B11E41911400349582 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382599B01E41911400349582 /* SettingsViewController.swift */; };
-		385CB88F1E5A529E0074594C /* AutoFillInfoForDebug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 385CB88E1E5A529E0074594C /* AutoFillInfoForDebug.plist */; };
 		385EE1C21E47E01000E83373 /* AuthenticationError_SFU.js in Resources */ = {isa = PBXBuildFile; fileRef = 385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */; };
 		387A1E451E4ACE8800650D32 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387A1E441E4ACE8800650D32 /* WebView.swift */; };
 		387A1E471E4ADAA000650D32 /* RenewPassError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387A1E461E4ADAA000650D32 /* RenewPassError.swift */; };
@@ -51,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		380C6FF21E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AutoFillInfoForDebug.plist; sourceTree = "<group>"; };
 		381101BD1E5BF25E00A628F9 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		381101BF1E5BF42E00A628F9 /* Siren.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siren.framework; path = Carthage/Build/iOS/Siren.framework; sourceTree = "<group>"; };
 		381101C21E5C050000A628F9 /* OnePasswordExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OnePasswordExtension.framework; path = Carthage/Build/iOS/OnePasswordExtension.framework; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		382599A81E4172B400349582 /* KeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		382599AE1E417E0500349582 /* Schools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schools.swift; sourceTree = "<group>"; };
 		382599B01E41911400349582 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		385CB88E1E5A529E0074594C /* AutoFillInfoForDebug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AutoFillInfoForDebug.plist; sourceTree = "<group>"; };
 		385EE1C11E47E01000E83373 /* AuthenticationError_SFU.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = AuthenticationError_SFU.js; path = JavaScript/AuthenticationError_SFU.js; sourceTree = "<group>"; };
 		387A1E441E4ACE8800650D32 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		387A1E461E4ADAA000650D32 /* RenewPassError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenewPassError.swift; sourceTree = "<group>"; };
@@ -152,6 +152,7 @@
 		389F9ECC1E41332B00EF6F88 = {
 			isa = PBXGroup;
 			children = (
+				380C6FF21E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist */,
 				381101CC1E5C149B00A628F9 /* RenewPass-Bridging-Header.h */,
 				381101BD1E5BF25E00A628F9 /* Cartfile */,
 				38A83E4A1E5955E80056056C /* Fabric.framework */,
@@ -177,7 +178,6 @@
 				387A1E441E4ACE8800650D32 /* WebView.swift */,
 				382599A41E41671600349582 /* SignInViewController.swift */,
 				381101C41E5C05FA00A628F9 /* SchoolCollectionViewController.swift */,
-				385CB88E1E5A529E0074594C /* AutoFillInfoForDebug.plist */,
 				38E9BFE01E568D08005B786D /* AccountManager.swift */,
 				382599B01E41911400349582 /* SettingsViewController.swift */,
 				382599A61E41675100349582 /* RenewViewController.swift */,
@@ -265,7 +265,6 @@
 			files = (
 				381634331E4C32A100B76E78 /* AuthenticationError_DC.js in Resources */,
 				389F9EE61E41332B00EF6F88 /* LaunchScreen.storyboard in Resources */,
-				385CB88F1E5A529E0074594C /* AutoFillInfoForDebug.plist in Resources */,
 				389F9EE31E41332B00EF6F88 /* Assets.xcassets in Resources */,
 				381101BE1E5BF25E00A628F9 /* Cartfile in Resources */,
 				381634351E4C34E400B76E78 /* AuthenticationError_CU.js in Resources */,
@@ -280,6 +279,7 @@
 				3816342F1E4C318100B76E78 /* AuthenticationError_UBC.js in Resources */,
 				388C42F61E46B05300BD1A56 /* CheckUPass.js in Resources */,
 				381634391E4C383800B76E78 /* AuthenticationError_BCIT.js in Resources */,
+				380C6FF31E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist in Resources */,
 				38D41DC61E55951E00A773C0 /* Renew.js in Resources */,
 				3816343D1E4C39B500B76E78 /* AuthenticationError_VCC.js in Resources */,
 				385EE1C21E47E01000E83373 /* AuthenticationError_SFU.js in Resources */,

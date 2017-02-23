@@ -62,13 +62,12 @@ class SchoolCollectionViewController: UICollectionViewController {
         
         let schoolObj = School(school: Schools.orderedSchools[indexPath.row])
         let unSelectedimage = UIImage(named: "\(schoolObj.shortName)_unchecked")
-        let selectedimage = UIImage(named: "\(schoolObj.shortName)_checked")
         
         let frame = CGRect(x: 0 , y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
         
         let button = UIButton(frame: frame)
         button.setImage(unSelectedimage, for: .normal)
-        button.setImage(selectedimage, for: .selected)
+        //button.setImage(selectedimage, for: .selected)
         button.tag = Int(schoolObj.school.rawValue)
         button.addTarget(self, action: #selector(schoolSelected), for: .touchUpInside)
         
@@ -80,6 +79,13 @@ class SchoolCollectionViewController: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = self.collectionView?.cellForItem(at: indexPath)
+        DispatchQueue.main.async {
+            cell?.subviews[0].alpha = 0.5
+        }
+    }
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking

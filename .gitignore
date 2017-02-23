@@ -12,3 +12,6 @@ profile
 # Carthage
 Carthage
 Cartfile
+
+#Debug user info
+AutoFillInfoForDebug.plist
