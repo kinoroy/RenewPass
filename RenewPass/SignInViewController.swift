@@ -46,9 +46,17 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         
         /* If you're running a debug build, the login screen can auto-populate your testing login,
+         create a PLIST called "AutoFillInfoForDebug.plist" with the following key-value pairs:
+         <key>Username</key>
+         <string>Your Username Here</string>
+         <key>Password</key>
+         <string>Your Password Here</string>
+         <key>School Code</key>
+         <integer>The integer that represents your school enum (see Schools.swift for your school code) </integer>
          put your username, password and school code (School code is the raw value of your school enum in Schools.swift), into DebugUserInfo.plist.
          
-         !!!! WARNING: BEFORE MODIFYING DEBUGUSERINFO.PLIST YOU MUST RUN "git update-index --assume-unchanged DebugUserInfo.plist" TO PREVENT YOUR LOGIN INFO FROM BEING SENT TO THE REPO !!!! */
+         WARNING: GITIGNORE THIS FILE IMMEDIATELY, TO PREVENT ACCIDENTLY COMMITING YOUR LOGIN INFO TO THE REPO */
+        
         #if DEBUG
             if let userDataPListURL = Bundle.main.url(forResource: "AutoFillInfoForDebug", withExtension: "plist"),
                 let userDataFile = try? Data(contentsOf: userDataPListURL) {
