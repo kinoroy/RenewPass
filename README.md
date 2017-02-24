@@ -1,3 +1,7 @@
+# RenewPass
+
+[<img align="left" src="RenewPass/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" hspace="20">](#logo)
+
 This is the iOS version of RenewPass, an open-source, cross-platform project that keeps you riding! 🚎🚆
 
 The Android version is developed and maintained by Coffeeboys: https://github.com/Coffeeboys/RenewPass
