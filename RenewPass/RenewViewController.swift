@@ -48,6 +48,8 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // Reset the reload button image
+        self.reloadButton.setImage(#imageLiteral(resourceName: "requestButton"), for: .normal)
         // Checks if there is login data stored. If not, asks the user for login data by showing the login screen.
         if needToShowLoginScreen() {
             showLoginScreen()
@@ -75,7 +77,6 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
                 }
             }
         }
-        
     }
 
     // MARK: - Navigation
@@ -119,6 +120,8 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     // MARK: - Actions
     
     @IBAction func renewButtonTouchUpInside(_ sender: Any) {
+        // Reset the reload button image
+        self.reloadButton.setImage(#imageLiteral(resourceName: "requestButton"), for: .normal)
         numUpass = nil
         reloadButton.isEnabled = false
         shouldContinueReloadAnimation = true
@@ -136,12 +139,13 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             if error != nil {
                 if error == RenewPassError.alreadyHasLatestUPassError {
                     os_log("Already has the latest UPass", log: .default, type: .debug)
+                    self.reloadButton.setImage(#imageLiteral(resourceName: "Checkmark"), for: .normal)
                 } else {
                     Answers.logCustomEvent(withName: "RenewPassError", customAttributes: ["Error":"\(error!.title)","School":self.school.shortName])
                 }
             } else {
                 self.statusLabel.text = "Sweet! You've snagged the latest UPass."
-                
+                self.reloadButton.setImage(#imageLiteral(resourceName: "Checkmark"), for: .normal)
             }
             self.webview.removeFromSuperview()
         }
@@ -343,6 +347,8 @@ extension UIView {
         if let delegate: CAAnimationDelegate = completionDelegate as? CAAnimationDelegate {
             rotateAnimation.delegate = delegate
         }
-        self.layer.add(rotateAnimation, forKey: nil)
+        DispatchQueue.main.async {
+            self.layer.add(rotateAnimation, forKey: nil)
+        }
     }
 }
