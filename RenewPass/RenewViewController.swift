@@ -142,6 +142,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
                     self.reloadButton.setImage(#imageLiteral(resourceName: "Checkmark"), for: .normal)
                 } else {
                     Answers.logCustomEvent(withName: "RenewPassError", customAttributes: ["Error":"\(error!.title)","School":self.school.shortName])
+                    self.reloadButton.setImage(#imageLiteral(resourceName: "Error"), for: .normal)
                 }
             } else {
                 self.statusLabel.text = "Sweet! You've snagged the latest UPass."
