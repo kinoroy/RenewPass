@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// An enum representing all of the possible errors that can be thrown in the program
 enum RenewPassError: Error {
     
     case authenticationFailedError
@@ -19,7 +20,9 @@ enum RenewPassError: Error {
     
 }
 
+/// An extension providing 
 extension RenewPassError: CustomStringConvertible {
+    /// A title for the error which will be displayed in the status label on the renew screen
     var title: String {
         switch self {
             
@@ -38,6 +41,7 @@ extension RenewPassError: CustomStringConvertible {
             
         }
     }
+    /// An extended description of the error. Not currently displayed to the user anywhere in the app.
     var description: String {
         switch self {
             

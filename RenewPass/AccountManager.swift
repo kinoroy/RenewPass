@@ -96,6 +96,7 @@ class AccountManager {
     }
     
     /// Deletes the users account information from CoreData and their password from keychain
+    /// - Returns: A boolean which is true is the deletion was sucessful, false otherwise
     static public func deleteAccount() -> Bool {
         
         // Get the app delegate
