@@ -20,6 +20,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     var webview:WebView!
     var username:String!
     var school:School!
+    var jsGenerator:JSGenerator!
     var completionHandlers:[(RenewPassError?) -> Void] = []
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
@@ -76,6 +77,9 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
                 UserDefaults.standard.set(true, forKey: "hasAskedUserForNotifAuth")
                 }
             }
+            
+            //Js generator object
+            jsGenerator = JSGenerator()
         }
     }
 
@@ -150,7 +154,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     func selectSchool(school:Int16) {
         
         statusLabel.text = "Selecting school"
-        webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "SelectSchool"))
+        webview.stringByEvaluatingJavaScript(from: jsGenerator.getJavaScript(filename: "SelectSchool"))
 
     }
     
@@ -165,12 +169,12 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         let authenticateFileName = "Authenticate_\(schoolObj.shortName)"
         let authErrorFileName = "AuthenticationError_\(schoolObj.shortName)"
         
-        let result = webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: authErrorFileName))
+        let result = webview.stringByEvaluatingJavaScript(from: jsGenerator.getJavaScript(filename: authErrorFileName))
         if result == "failure" {
             throw RenewPassError.authenticationFailedError
         }
         
-        webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: authenticateFileName))
+        webview.stringByEvaluatingJavaScript(from: jsGenerator.getJavaScript(filename: authenticateFileName))
         
         
     }
@@ -187,7 +191,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             throw RenewPassError.authenticationFailedError
         }
         
-        let result = webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "CheckUPass"))
+        let result = webview.stringByEvaluatingJavaScript(from: jsGenerator.getJavaScript(filename: "CheckUPass"))
        
         guard result != "null" else {
             throw RenewPassError.alreadyHasLatestUPassError
@@ -197,7 +201,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         
         statusLabel.text = "Renewing UPass"
         
-        webview.stringByEvaluatingJavaScript(from: getJavaScript(filename: "Renew"))
+        webview.stringByEvaluatingJavaScript(from: jsGenerator.getJavaScript(filename: "Renew"))
         
     }
     
@@ -212,22 +216,6 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             }
         }
         
-    }
-
-
-    func getJavaScript(filename: String) -> String {
-        let path = Bundle.main.path(forResource: filename, ofType: "js")
-        let url = URL(fileURLWithPath: path!)
-        do {
-            var js = try String(contentsOf: url, encoding: String.Encoding.utf8)
-            js = js.replacingOccurrences(of: "\n", with: "")
-            js = js.replacingOccurrences(of: "storedUsername", with: username)
-            js = js.replacingOccurrences(of: "storedPassword", with: KeychainSwift().get("accountPassword")! as String)
-            js = js.replacingOccurrences(of: "_SCHOOL_ID_", with: "\(getSchoolID(school: school.school))")
-            return js
-        } catch {
-            fatalError("Could not read the JavaScript file \"\(filename).js\"")
-        }
     }
     
     // MARK: - Webview
