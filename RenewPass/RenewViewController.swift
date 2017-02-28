@@ -274,7 +274,10 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             self.view.addSubview(webview)
         }
         
-        // Get the login credentials 
+        // Get the login credentials
+        if account == nil {
+            account = AccountManager.loadAccount()
+        }
         
         guard let username = account.username as String! else {
             completionHandlers[0](RenewPassError.unknownError)
