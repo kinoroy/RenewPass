@@ -18,11 +18,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     /// The password field of the login screen
     @IBOutlet weak var passwordField: UITextField!
-    // The label which describes the type of input for the username field
+    /// The label which describes the type of input for the username field
     @IBOutlet weak var usernameLabel: UILabel!
-    // The button which represents the school the user chose in the school selection view
+    /// The button which represents the school the user chose in the school selection view
     var schoolSelected:UIButton!
-    // A button which brings up a list of password managers
+    /// A button which brings up a list of password managers
     @IBOutlet weak var onePassButton: UIButton!
     
     

@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import os.log
 
 class AccountManager {
     
@@ -61,6 +62,38 @@ class AccountManager {
         return true
     }
     
+    /// Loads the account object with username and school values from CoreData
+    /// - Returns: An optional NSManagedObject representing the account, will be nil if the account couldn't be loaded
+    static public func loadAccount() -> NSManagedObject? {
+        
+        // Get the app delegate
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        
+        // Get the managed context for CoreData
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        // Create a fetch request for CoreData
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Account")
+        
+        // Attempt to execute the fetch request on the managed context
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            guard results.count > 0 else {
+                return nil
+            }
+            guard let account = results[0] as? NSManagedObject else {
+                return nil
+            }
+            
+            return account
+        } catch {
+            os_log("Could not fetch account information", log: .default, type: .error)
+            return nil
+        }
+        
+    }
     
     
 }

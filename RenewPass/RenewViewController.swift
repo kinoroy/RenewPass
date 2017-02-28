@@ -16,7 +16,7 @@ import UserNotifications
 class RenewViewController: UIViewController, CAAnimationDelegate {
     
     // MARK: - Proporties
-    var accounts:[NSManagedObject]!
+    var account:NSManagedObject!
     var webview:WebView!
     var username:String!
     var school:School!
@@ -99,22 +99,15 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     ///     Returns: A boolean describing whether to show the login screen or not
     func needToShowLoginScreen() -> Bool {
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Account")
-        
-        do {
-            let results =
-                try managedContext.fetch(fetchRequest)
-            accounts = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
+        // If the account can not be loaded or doesn't exist, we have to show the login screen
+        guard let account = AccountManager.loadAccount() as NSManagedObject! else {
+            return true
         }
         
-        return accounts.isEmpty
+        // Get the account object
+        self.account = account
         
+        return false
     }
     
     // MARK: - Actions
@@ -293,24 +286,10 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             self.view.addSubview(webview)
         }
         
-        //Get auth values
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        // Get the login credentials 
+        username = account.value(forKey: "username") as! String!
         
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Account")
-        
-        do {
-            let results =
-                try managedContext.fetch(fetchRequest)
-            accounts = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-        username = accounts[0].value(forKey: "username") as! String!
-        
-        let schoolRaw:Int16 = accounts[0].value(forKey: "SchoolRaw") as! Int16
+        let schoolRaw:Int16 = account.value(forKey: "SchoolRaw") as! Int16
         
         school = School(school: Schools(rawValue: schoolRaw)!)
         
