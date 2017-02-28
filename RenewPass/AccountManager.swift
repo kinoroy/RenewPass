@@ -95,4 +95,47 @@ class AccountManager {
         
     }
     
+    /// Deletes the users account information from CoreData and their password from keychain
+    static public func deleteAccount() -> Bool {
+        
+        // Get the app delegate
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return false
+        }
+        
+        // Get the managed context for CoreData
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        // Create a fetch request for CoreData
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Account")
+        
+        // Attempt to delete the account object
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            guard results.count > 0 else {
+                return false
+            }
+            guard let account = results[0] as? Account else {
+                return false
+            }
+            
+            managedContext.delete(account)
+        } catch {
+            os_log("Could not delete account information", log: .default, type: .error)
+            return false
+        }
+        
+        // Save the CoreData state
+        appDelegate.saveContext()
+        
+        // Delete password from keychain
+        let keychain = KeychainSwift()
+        guard keychain.delete("accountPassword") else {
+            os_log("Could not delete password from keychain", log: .default, type: .error)
+            return false
+        }
+        
+        return true
+    }
+    
 }

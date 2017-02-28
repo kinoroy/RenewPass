@@ -54,31 +54,8 @@ class SettingsViewController: UIViewController {
     
     @IBAction func clickResetAccountButton(_ sender: Any) {
         
-        // Delete account from core data 
-        
-        let appDelegate =
-            UIApplication.shared.delegate as! AppDelegate
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Account")
-        
-        var accounts:[NSManagedObject]!
-        do {
-            accounts = try managedContext.fetch(fetchRequest) as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-        for account in accounts {
-            managedContext.delete(account)
-        }
-        
-        appDelegate.saveContext()
-        
-        // Delete password from keychain 
-        let keychain = KeychainSwift()
-        keychain.delete("accountPassword")
+        // Delete account data and password data
+        _ = AccountManager.deleteAccount()
         
         // Sends user back to login screen immediately
         _ = navigationController?.popViewController(animated: true)
