@@ -39,7 +39,7 @@ class AccountManager {
         }
         
         // Get the account object from the core data entity
-        let account = NSManagedObject(entity: entity,
+        let account = Account(entity: entity,
                                       insertInto: managedContext)
         
         // Insert the given credentials into the account object
@@ -63,8 +63,8 @@ class AccountManager {
     }
     
     /// Loads the account object with username and school values from CoreData
-    /// - Returns: An optional NSManagedObject representing the account, will be nil if the account couldn't be loaded
-    static public func loadAccount() -> NSManagedObject? {
+    /// - Returns: An optional Account NSManagedObject representing the account, will be nil if the account couldn't be loaded
+    static public func loadAccount() -> Account? {
         
         // Get the app delegate
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -83,7 +83,7 @@ class AccountManager {
             guard results.count > 0 else {
                 return nil
             }
-            guard let account = results[0] as? NSManagedObject else {
+            guard let account = results[0] as? Account else {
                 return nil
             }
             
@@ -94,6 +94,5 @@ class AccountManager {
         }
         
     }
-    
     
 }

@@ -16,7 +16,7 @@ import UserNotifications
 class RenewViewController: UIViewController, CAAnimationDelegate {
     
     // MARK: - Proporties
-    var account:NSManagedObject!
+    var account:Account!
     var webview:WebView!
     var username:String!
     var school:School!
@@ -100,7 +100,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     func needToShowLoginScreen() -> Bool {
         
         // If the account can not be loaded or doesn't exist, we have to show the login screen
-        guard let account = AccountManager.loadAccount() as NSManagedObject! else {
+        guard let account = AccountManager.loadAccount() as Account! else {
             return true
         }
         
@@ -287,12 +287,22 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         }
         
         // Get the login credentials 
-        username = account.value(forKey: "username") as! String!
         
-        let schoolRaw:Int16 = account.value(forKey: "SchoolRaw") as! Int16
+        guard let username = account.username as String! else {
+            completionHandlers[0](RenewPassError.unknownError)
+            return
+        }
         
-        school = School(school: Schools(rawValue: schoolRaw)!)
+        self.username = username
         
+        guard let schoolRaw = account.schoolRaw as Int16! else {
+            completionHandlers[0](RenewPassError.unknownError)
+            return
+        }
+        
+        self.school = School(school: Schools(rawValue: schoolRaw)!)
+        
+        // If the fetch started due to user interaction, as opposed to in the background, start the renew process now
         if !didStartFetchFromBackground {
             selectSchool(school: getSchoolID(school: school.school))
         }
