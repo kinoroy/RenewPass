@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		380C6FF31E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 380C6FF21E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist */; };
 		381101BE1E5BF25E00A628F9 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 381101BD1E5BF25E00A628F9 /* Cartfile */; };
-		381101C01E5BF42E00A628F9 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381101BF1E5BF42E00A628F9 /* Siren.framework */; };
 		381101C31E5C050000A628F9 /* OnePasswordExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381101C21E5C050000A628F9 /* OnePasswordExtension.framework */; };
 		381101C51E5C05FA00A628F9 /* SchoolCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381101C41E5C05FA00A628F9 /* SchoolCollectionViewController.swift */; };
 		3816342F1E4C318100B76E78 /* AuthenticationError_UBC.js in Resources */ = {isa = PBXBuildFile; fileRef = 3816342E1E4C318100B76E78 /* AuthenticationError_UBC.js */; };
@@ -103,7 +102,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				381101C31E5C050000A628F9 /* OnePasswordExtension.framework in Frameworks */,
-				381101C01E5BF42E00A628F9 /* Siren.framework in Frameworks */,
 				38A83E4D1E5955E80056056C /* Crashlytics.framework in Frameworks */,
 				38A83E4C1E5955E80056056C /* Fabric.framework in Frameworks */,
 			);
@@ -301,7 +299,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Siren.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/OnePasswordExtension.framework",
 			);
 			name = Carthage;
