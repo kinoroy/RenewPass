@@ -16,16 +16,11 @@ import UserNotifications
 class RenewViewController: UIViewController, CAAnimationDelegate {
     
     // MARK: - Proporties
-    var account:Account!
-    //var webview:WebView!
-    var username:String!
-    var school:School!
+
     var renewService:RenewService!
-    var completionHandlers:[(RenewPassError?) -> Void] = []
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     var numUpass:String?
-    var didStartFetchFromBackground:Bool = false
     var shouldContinueReloadAnimation:Bool = false
 
     // MARK: - Life Cycle
@@ -75,7 +70,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             //RenewService Object
             renewService = RenewService()
             
-            if !didStartFetchFromBackground {
+            if !renewService.didStartFetchFromBackground {
                 //webview = WebView(frame: self.view.frame)
                 
                 let url = URL(string: "https://upassbc.translink.ca")
@@ -106,12 +101,9 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     func needToShowLoginScreen() -> Bool {
         
         // If the account can not be loaded or doesn't exist, we have to show the login screen
-        guard let account = AccountManager.loadAccount() as Account! else {
+        guard (AccountManager.loadAccount() as Account!) != nil else {
             return true
         }
-        
-        // Get the account object
-        self.account = account
         
         return false
     }
@@ -140,7 +132,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
                     os_log("Already has the latest UPass", log: .default, type: .debug)
                     self.reloadButton.setImage(#imageLiteral(resourceName: "Checkmark"), for: .normal)
                 } else {
-                    Answers.logCustomEvent(withName: "RenewPassError", customAttributes: ["Error":"\(error!.title)","School":self.school.shortName])
+                    Answers.logCustomEvent(withName: "RenewPassError", customAttributes: ["Error":"\(error!.title)","School":self.renewService.school.shortName])
                     self.reloadButton.setImage(#imageLiteral(resourceName: "Error"), for: .normal)
                 }
             } else {
@@ -168,7 +160,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
                     statusLabel.text = "Click away!"
                 }
                 
-                if didStartFetchFromBackground {
+                if renewService.didStartFetchFromBackground {
                     renewService.selectSchool(school: getSchoolID(school: renewService.school.school))
                 }
             } else if currentURL.contains(renewService.school.authPageURLIdentifier) { // School authentication screen
