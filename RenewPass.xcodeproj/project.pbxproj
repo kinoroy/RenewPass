@@ -45,6 +45,7 @@
 		389F9EE61E41332B00EF6F88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 389F9EE41E41332B00EF6F88 /* LaunchScreen.storyboard */; };
 		38A3D6411E654CB600440D38 /* RotateUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A3D6401E654CB600440D38 /* RotateUIView.swift */; };
 		38A3D6431E654DE900440D38 /* JSGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A3D6421E654DE900440D38 /* JSGenerator.swift */; };
+		38A751261E67F0F400B030C6 /* RenewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A751251E67F0F400B030C6 /* RenewService.swift */; };
 		38A83E4C1E5955E80056056C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A83E4A1E5955E80056056C /* Fabric.framework */; };
 		38A83E4D1E5955E80056056C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A83E4B1E5955E80056056C /* Crashlytics.framework */; };
 		38D41DC61E55951E00A773C0 /* Renew.js in Resources */ = {isa = PBXBuildFile; fileRef = 38D41DC51E55951E00A773C0 /* Renew.js */; };
@@ -94,6 +95,7 @@
 		389F9EE71E41332B00EF6F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38A3D6401E654CB600440D38 /* RotateUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateUIView.swift; sourceTree = "<group>"; };
 		38A3D6421E654DE900440D38 /* JSGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSGenerator.swift; sourceTree = "<group>"; };
+		38A751251E67F0F400B030C6 /* RenewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenewService.swift; sourceTree = "<group>"; };
 		38A83E4A1E5955E80056056C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		38A83E4B1E5955E80056056C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		38D41DC51E55951E00A773C0 /* Renew.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Renew.js; path = JavaScript/Renew.js; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		389F9ED71E41332B00EF6F88 /* RenewPass */ = {
 			isa = PBXGroup;
 			children = (
+				38A751251E67F0F400B030C6 /* RenewService.swift */,
 				38A3D6401E654CB600440D38 /* RotateUIView.swift */,
 				38A3D6421E654DE900440D38 /* JSGenerator.swift */,
 				389F9ED81E41332B00EF6F88 /* AppDelegate.swift */,
@@ -368,6 +371,7 @@
 				381101C51E5C05FA00A628F9 /* SchoolCollectionViewController.swift in Sources */,
 				382599A51E41671600349582 /* SignInViewController.swift in Sources */,
 				38A3D6411E654CB600440D38 /* RotateUIView.swift in Sources */,
+				38A751261E67F0F400B030C6 /* RenewService.swift in Sources */,
 				382599AF1E417E0500349582 /* Schools.swift in Sources */,
 				387A1E471E4ADAA000650D32 /* RenewPassError.swift in Sources */,
 			);

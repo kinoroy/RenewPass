@@ -17,10 +17,10 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     
     // MARK: - Proporties
     var account:Account!
-    var webview:WebView!
+    //var webview:WebView!
     var username:String!
     var school:School!
-    var jsGenerator:JSGenerator!
+    var renewService:RenewService!
     var completionHandlers:[(RenewPassError?) -> Void] = []
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
@@ -36,16 +36,10 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         
         NotificationCenter.default.addObserver(forName: Notification.Name("webViewDidFinishLoad"), object: nil, queue: nil, using: webViewDidFinishLoad)
         NotificationCenter.default.addObserver(forName: Notification.Name("webViewDidFailLoadWithError"), object: nil, queue: nil, using: webViewDidFailLoadWithError)
+        NotificationCenter.default.addObserver(forName: Notification.Name("statusLabelDidChange"), object: nil, queue: nil, using: statusLabelDidChange)
         
         self.reloadButton.isEnabled = false
         
-        if !didStartFetchFromBackground {
-            webview = WebView(frame: self.view.frame)
-            
-            let url = URL(string: "https://upassbc.translink.ca")
-            let urlRequest = URLRequest(url: url!)
-            webview.loadRequest(urlRequest)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,8 +72,16 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
                 }
             }
             
-            //Js generator object
-            jsGenerator = JSGenerator()
+            //RenewService Object
+            renewService = RenewService()
+            
+            if !didStartFetchFromBackground {
+                //webview = WebView(frame: self.view.frame)
+                
+                let url = URL(string: "https://upassbc.translink.ca")
+                let urlRequest = URLRequest(url: url!)
+                renewService.webview.loadRequest(urlRequest)
+            }
         }
     }
 
@@ -126,12 +128,12 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         
         statusLabel.text = "Selecting School"
         
-        fetch() { (error) in
+        renewService.fetch() { (error) in
             self.shouldContinueReloadAnimation = false
             
             let url = URL(string: "https://upassbc.translink.ca")
             let urlRequest = URLRequest(url: url!)
-            self.webview.loadRequest(urlRequest)
+            self.renewService.webview.loadRequest(urlRequest)
             
             if error != nil {
                 if error == RenewPassError.alreadyHasLatestUPassError {
@@ -145,83 +147,17 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
                 self.statusLabel.text = "Sweet! You've snagged the latest UPass."
                 self.reloadButton.setImage(#imageLiteral(resourceName: "Checkmark"), for: .normal)
             }
-            self.webview.removeFromSuperview()
+            self.renewService.webview.removeFromSuperview()
         }
         
         
     }
     
-    func selectSchool(school:Int16) {
-        
-        statusLabel.text = "Selecting school"
-        webview.stringByEvaluatingJavaScript(from: jsGenerator.getJavaScript(filename: "SelectSchool"))
-
-    }
-    
-    func authenticate(school:Int16) throws {
-        
-        statusLabel.text = "Authenticating"
-        guard let schoolEnum = Schools(rawValue: school) else {
-            throw RenewPassError.schoolNotFoundError
-        }
-        let schoolObj = School(school: schoolEnum)
-        
-        let authenticateFileName = "Authenticate_\(schoolObj.shortName)"
-        let authErrorFileName = "AuthenticationError_\(schoolObj.shortName)"
-        
-        let result = webview.stringByEvaluatingJavaScript(from: jsGenerator.getJavaScript(filename: authErrorFileName))
-        if result == "failure" {
-            throw RenewPassError.authenticationFailedError
-        }
-        
-        webview.stringByEvaluatingJavaScript(from: jsGenerator.getJavaScript(filename: authenticateFileName))
-        
-        
-    }
-    
-    func checkUpass() throws {
-        
-        guard !((webview.request?.url?.absoluteString.contains("upassadfs"))!) else {
-            return
-        }
-        
-        statusLabel.text = "Checking UPass"
-        
-        guard !(webview.request?.url?.absoluteString.contains(school.authPageURLIdentifier))! else {
-            throw RenewPassError.authenticationFailedError
-        }
-        
-        let result = webview.stringByEvaluatingJavaScript(from: jsGenerator.getJavaScript(filename: "CheckUPass"))
-       
-        guard result != "null" else {
-            throw RenewPassError.alreadyHasLatestUPassError
-        }
-        
-        numUpass = result
-        
-        statusLabel.text = "Renewing UPass"
-        
-        webview.stringByEvaluatingJavaScript(from: jsGenerator.getJavaScript(filename: "Renew"))
-        
-    }
-    
-    func verifyRenew() throws {
-        
-        if numUpass != nil {
-            if let postRenewNumUpass = webview.stringByEvaluatingJavaScript(from: "document.querySelectorAll(\".status\").length")  {
-                guard Int(postRenewNumUpass)! > Int(numUpass!)! else {
-                    throw RenewPassError.verificationFailed
-                }
-                completionHandlers[0](nil)
-            }
-        }
-        
-    }
     
     // MARK: - Webview
     func webViewDidFinishLoad(notification:Notification) {
         //let webView = notification.object as! UIWebView
-        guard let currentURL = webview.request?.url?.absoluteString else {
+        guard let currentURL = renewService.webview.request?.url?.absoluteString else {
             fatalError("Webview did not load a URL")
         }
         
@@ -233,71 +169,35 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
                 }
                 
                 if didStartFetchFromBackground {
-                    selectSchool(school: getSchoolID(school: school.school))
+                    renewService.selectSchool(school: getSchoolID(school: renewService.school.school))
                 }
-            } else if currentURL.contains(school.authPageURLIdentifier) { // School authentication screen
-                try authenticate(school: getSchoolID(school: school.school))
+            } else if currentURL.contains(renewService.school.authPageURLIdentifier) { // School authentication screen
+                try renewService.authenticate(school: getSchoolID(school: renewService.school.school))
             } else if currentURL.contains("fs") { // post-auth Upass site
                 if numUpass == nil {
-                    try checkUpass()
+                    try renewService.checkUpass()
                 } else {
-                    try verifyRenew()
+                    try renewService.verifyRenew()
                 }
                 
             }
         } catch let error as RenewPassError {
             statusLabel.text = error.title
-            completionHandlers[0](error)
+            renewService.completionHandlers[0](error)
         } catch {
             statusLabel.text = "Unknown Error"
-            completionHandlers[0](RenewPassError.unknownError)
+            renewService.completionHandlers[0](RenewPassError.unknownError)
         }
         
     }
     
     func webViewDidFailLoadWithError(notification:Notification) {
-        completionHandlers[0](RenewPassError.webViewFailedError)
+        renewService.completionHandlers[0](RenewPassError.webViewFailedError)
     }
     
-    func fetch(completion: @escaping (_ error:RenewPassError?) -> Void) {
-        completionHandlers.append(completion)
-        
-        if didStartFetchFromBackground {
-            webview = WebView(frame: self.view.frame)
-
-            let url = URL(string: "https://upassbc.translink.ca")
-            let urlRequest = URLRequest(url: url!)
-            webview.loadRequest(urlRequest)
-        }
-        
-        if UserDefaults.standard.bool(forKey: "showWebview") {
-            self.view.addSubview(webview)
-        }
-        
-        // Get the login credentials
-        if account == nil {
-            account = AccountManager.loadAccount()
-        }
-        
-        guard let username = account.username as String! else {
-            completionHandlers[0](RenewPassError.unknownError)
-            return
-        }
-        
-        self.username = username
-        
-        guard let schoolRaw = account.schoolRaw as Int16! else {
-            completionHandlers[0](RenewPassError.unknownError)
-            return
-        }
-        
-        self.school = School(school: Schools(rawValue: schoolRaw)!)
-        
-        // If the fetch started due to user interaction, as opposed to in the background, start the renew process now
-        if !didStartFetchFromBackground {
-            selectSchool(school: getSchoolID(school: school.school))
-        }
-        
+    // status label
+    func statusLabelDidChange(notification:Notification) {
+        statusLabel.text = renewService.statusLabel
     }
     
     // MARK: - Status Bar
