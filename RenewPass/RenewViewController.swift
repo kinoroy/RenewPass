@@ -74,6 +74,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             
             if !RenewService.didStartFetchFromBackground {
                 //webview = WebView(frame: self.view.frame)
+                statusLabel.text = "Connecting to Translink. Just a moment."
                 
                 let url = URL(string: "https://upassbc.translink.ca")
                 let urlRequest = URLRequest(url: url!)
@@ -158,7 +159,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         do {
             if currentURL == "https://upassbc.translink.ca/" {
                 reloadButton.isEnabled = true
-                if statusLabel.text == "Connecting to Translink. Just a moment." {
+                if statusLabel.text == "Connecting to Translink. Just a moment." || statusLabel.text == "Couldn't connect to UPassBC, check your connection." {
                     statusLabel.text = "Click away!"
                 }
                 
@@ -186,7 +187,11 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     }
     
     func webViewDidFailLoadWithError(notification:Notification) {
-        renewService.completionHandlers[0](RenewPassError.webViewFailedError)
+        if renewService.completionHandlers.count > 0 {
+            renewService.completionHandlers[0](RenewPassError.webViewFailedError)
+        } else {
+            statusLabel.text = "Couldn't connect to UPassBC, check your connection."
+        }
     }
     
     // status label
