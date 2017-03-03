@@ -129,18 +129,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         os_log("Performing a background fetch", log: .default, type: .debug)
+        RenewService.didStartFetchFromBackground = true
         if let navigationViewController = self.window?.rootViewController as! UINavigationController? {
-            let renewService = RenewService()!
-            renewService.didStartFetchFromBackground = true
-            renewService.fetch() {
+            //let renewService = RenewService()!
+            let rVC = navigationViewController.viewControllers[0] as! RenewViewController
+            rVC.renewService = RenewService()!
+            rVC.renewService.fetch() {
                 (error) in
-                renewService.didStartFetchFromBackground = false // Resets the fetch value
+                RenewService.didStartFetchFromBackground = false // Resets the fetch value
                 if error != nil {
                     
                     if error == RenewPassError.alreadyHasLatestUPassError {
                         os_log("Already has the latest UPass", log: .default, type: .debug)
                     } else {
-                        Answers.logCustomEvent(withName: "RenewPassError", customAttributes: ["Error":"\(error!.title)","School":renewService.school.shortName])
+                        Answers.logCustomEvent(withName: "RenewPassError", customAttributes: ["Error":"\(error!.title)","School":rVC.renewService.school.shortName])
                     }
                     completionHandler(UIBackgroundFetchResult.noData)
 

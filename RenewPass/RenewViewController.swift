@@ -68,9 +68,11 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             }
             
             //RenewService Object
-            renewService = RenewService()
+            if !RenewService.didStartFetchFromBackground {
+                renewService = RenewService()
+            }
             
-            if !renewService.didStartFetchFromBackground {
+            if !RenewService.didStartFetchFromBackground {
                 //webview = WebView(frame: self.view.frame)
                 
                 let url = URL(string: "https://upassbc.translink.ca")
@@ -160,7 +162,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
                     statusLabel.text = "Click away!"
                 }
                 
-                if renewService.didStartFetchFromBackground {
+                if RenewService.didStartFetchFromBackground {
                     renewService.selectSchool(school: getSchoolID(school: renewService.school.school))
                 }
             } else if currentURL.contains(renewService.school.authPageURLIdentifier) { // School authentication screen

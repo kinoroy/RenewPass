@@ -26,7 +26,7 @@ class RenewService {
     
     var completionHandlers:[(RenewPassError?) -> Void] = []
     
-    var didStartFetchFromBackground:Bool = false
+    static var didStartFetchFromBackground:Bool = false
     
     var account:Account!
     
@@ -61,7 +61,7 @@ class RenewService {
     func fetch(completion: @escaping (_ error:RenewPassError?) -> Void) {
         completionHandlers.append(completion)
         
-        if didStartFetchFromBackground {
+        if RenewService.didStartFetchFromBackground {
             //webview = WebView()
             
             let url = URL(string: "https://upassbc.translink.ca")
@@ -93,7 +93,7 @@ class RenewService {
         self.school = School(school: Schools(rawValue: schoolRaw)!)
         
         // If the fetch started due to user interaction, as opposed to in the background, start the renew process now
-        if !didStartFetchFromBackground {
+        if !RenewService.didStartFetchFromBackground {
             selectSchool(school: getSchoolID(school: school.school))
         }
         
