@@ -11,7 +11,6 @@ import CoreData
 import WebKit
 import os.log
 import Crashlytics
-import UserNotifications
 
 class RenewViewController: UIViewController, CAAnimationDelegate {
     
@@ -46,25 +45,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         } else {
             // If the user has not been prompted to enable notifications, ask them now.
             if !UserDefaults.standard.bool(forKey: "hasAskedUserForNotifAuth") {
-                let alert = UIAlertController(title: "Notifications", message: "RenewPass will try every month to renew your UPass in the background and notify you if successful. That cool?", preferredStyle: .alert)
-                let OKAction = UIAlertAction(title: "Yeah!", style: .default, handler: {
-                    (alert:UIAlertAction) -> Void in
-                    UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) {
-                        (granted, error) in
-                        if granted {
-                            Answers.logCustomEvent(withName: "approvesNotifications", customAttributes: nil)
-                        }
-                    }
-                })
-                let NOAction = UIAlertAction(title: "No", style: .cancel, handler: {
-                (alert:UIAlertAction) -> Void in
-                    Answers.logCustomEvent(withName: "deniesNotifications", customAttributes: nil)
-                } )
-                alert.addAction(OKAction)
-                alert.addAction(NOAction)
-                self.present(alert, animated: true) {
-                UserDefaults.standard.set(true, forKey: "hasAskedUserForNotifAuth")
-                }
+                Notifications.requestNotificationAuthorization(viewControllerToPresent: self)
             }
             
             //RenewService Object

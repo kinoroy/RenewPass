@@ -78,28 +78,7 @@ class SettingsViewController: UIViewController {
     
     internal func requestNotifAuth() {
         
-        let alert = UIAlertController(title: "Notifications", message: "RenewPass will try every month to renew your UPass in the background and notify you if successful. That cool?", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "Yeah!", style: .default, handler: {
-            (alert:UIAlertAction) -> Void in
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) {
-                (granted, error) in
-                if granted {
-                    Answers.logCustomEvent(withName: "approvesNotifications", customAttributes: nil)
-                    DispatchQueue.main.async {
-                        // Disable and hide the notification button from settings 
-                        self.enableNotifButton.isEnabled = false
-                        self.enableNotifButton.isHidden = true
-                    }
-                }
-            }
-        })
-        let NOAction = UIAlertAction(title: "No", style: .cancel, handler: {
-            (alert:UIAlertAction) -> Void in
-            Answers.logCustomEvent(withName: "deniesNotifications", customAttributes: nil)
-        } )
-        alert.addAction(OKAction)
-        alert.addAction(NOAction)
-        self.present(alert, animated: true)
+        Notifications.requestNotificationAuthorization(viewControllerToPresent: self)
         
     }
     
