@@ -8,30 +8,34 @@
 
 import Foundation
 
+/// A class representing functions and variables that work to execute the UPass renewal
 class RenewService {
     
     // MARK: - Proporties 
+    
+    /// A string representing the text that the status label should show in RenewViewController
     var statusLabel:String = "" {
         didSet
         {
+            // When the status label text is set, alert the view controller so the change can be displayed to the user
             NotificationCenter.default.post(name: Notification.Name("statusLabelDidChange"), object: nil)
         }
     }
-    
+    /// A string containing an integer which represents the number of UPasses the user has before the renewal attempt
     var numUpass:String?
-    
+    /// The webview object where the UPassBC website is loaded
     var webview:WebView
-    
+    /// The JSGenerator object which generates javascript to inject and run in the webview
     var jsGenerator:JSGenerator
-    
+    /// An array of completion handlers representing completion handlers for the fetch call
     var completionHandlers:[(RenewPassError?) -> Void] = []
-    
+    /// A boolean representing whether the user started the fetch in-app, or the system started the fetch in background
     static var didStartFetchFromBackground:Bool = false
-    
+    /// An account object representing the users credentials (excluding pass)
     var account:Account!
-    
+    /// A string representing the user's username
     var username:String!
-    
+    /// A school object representing the user's school
     var school:School!
     
     // MARK: - Initialization
@@ -94,15 +98,15 @@ class RenewService {
         
         // If the fetch started due to user interaction, as opposed to in the background, start the renew process now
         if !RenewService.didStartFetchFromBackground {
-            selectSchool(school: getSchoolID(school: school.school))
+            selectSchool()
         }
         
     }
 
     
     // MARK: - Private Methods
-
-    func selectSchool(school:Int16) {
+    
+    func selectSchool() {
         
         statusLabel = "Selecting school"
         webview.stringByEvaluatingJavaScript(from: jsGenerator.getJavaScript(filename: "SelectSchool"))

@@ -153,7 +153,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
                 }
                 
                 if RenewService.didStartFetchFromBackground {
-                    renewService.selectSchool(school: getSchoolID(school: renewService.school.school))
+                    renewService.selectSchool()
                 }
             } else if currentURL.contains(renewService.school.authPageURLIdentifier) { // School authentication screen
                 try renewService.authenticate(school: getSchoolID(school: renewService.school.school))
