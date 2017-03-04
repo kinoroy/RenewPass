@@ -17,6 +17,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     // MARK: - Proporties
 
     var renewService:RenewService!
+    private var reachability:Reachability = Reachability()!
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     var numUpass:String?
@@ -31,6 +32,13 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         NotificationCenter.default.addObserver(forName: Notification.Name("webViewDidFinishLoad"), object: nil, queue: nil, using: webViewDidFinishLoad)
         NotificationCenter.default.addObserver(forName: Notification.Name("webViewDidFailLoadWithError"), object: nil, queue: nil, using: webViewDidFailLoadWithError)
         NotificationCenter.default.addObserver(forName: Notification.Name("statusLabelDidChange"), object: nil, queue: nil, using: statusLabelDidChange)
+        // Reachability
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged), name: ReachabilityChangedNotification, object: reachability)
+        do {
+            try reachability.startNotifier()
+        } catch {
+            os_log("Unable to start reachability", log: .default, type: .debug)
+        }
         
         self.reloadButton.isEnabled = false
         
@@ -196,4 +204,31 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
         }
     }
     
+    // MARK: - Reachability 
+    /// Called when the ReachabilityChangedNotificiation is posted. Enables or disables the app based on the users internet connection
+    /// - Parameters:
+    ///     - notification: the notification object that the function was called for
+    func reachabilityChanged(notification:Notification) {
+        
+        // Get the reachability object
+        let reachability = notification.object as! Reachability
+        
+        // Determine if the network is reachable
+        if reachability.isReachable && renewService != nil {
+            // If the renew service is not yet active, don't do anything
+            guard renewService != nil else {
+                return
+            }
+            // Re-attempt connection to Translink
+            statusLabel.text = "Connecting to Translink. Just a moment."
+            let url = URL(string: "https://upassbc.translink.ca")
+            let urlRequest = URLRequest(url: url!)
+            self.renewService.webview.loadRequest(urlRequest)
+        } else { // No connection
+            // Disable the app
+            statusLabel.text = "Couldn't connect to UPassBC, check your connection."
+            reloadButton.isEnabled = false
+        }
+        
+    }
 }

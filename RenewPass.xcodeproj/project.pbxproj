@@ -50,6 +50,7 @@
 		38A83E4D1E5955E80056056C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A83E4B1E5955E80056056C /* Crashlytics.framework */; };
 		38C664151E6A083E00D96E79 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C664141E6A083E00D96E79 /* Notifications.swift */; };
 		38D41DC61E55951E00A773C0 /* Renew.js in Resources */ = {isa = PBXBuildFile; fileRef = 38D41DC51E55951E00A773C0 /* Renew.js */; };
+		38D87E9D1E6A89E800DB7F7D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D87E9C1E6A89E800DB7F7D /* Reachability.swift */; };
 		38E9BFE11E568D08005B786D /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E9BFE01E568D08005B786D /* AccountManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		38A83E4B1E5955E80056056C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		38C664141E6A083E00D96E79 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		38D41DC51E55951E00A773C0 /* Renew.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Renew.js; path = JavaScript/Renew.js; sourceTree = "<group>"; };
+		38D87E9C1E6A89E800DB7F7D /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		38E9BFE01E568D08005B786D /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +182,7 @@
 		389F9ED71E41332B00EF6F88 /* RenewPass */ = {
 			isa = PBXGroup;
 			children = (
+				38D87E9C1E6A89E800DB7F7D /* Reachability.swift */,
 				38A751251E67F0F400B030C6 /* RenewService.swift */,
 				38A3D6401E654CB600440D38 /* RotateUIView.swift */,
 				38A3D6421E654DE900440D38 /* JSGenerator.swift */,
@@ -377,6 +380,7 @@
 				38A3D6411E654CB600440D38 /* RotateUIView.swift in Sources */,
 				38A751261E67F0F400B030C6 /* RenewService.swift in Sources */,
 				382599AF1E417E0500349582 /* Schools.swift in Sources */,
+				38D87E9D1E6A89E800DB7F7D /* Reachability.swift in Sources */,
 				387A1E471E4ADAA000650D32 /* RenewPassError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
