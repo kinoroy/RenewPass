@@ -62,6 +62,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             }
             
             if !RenewService.didStartFetchFromBackground {
+                reloadButton.isEnabled = false
                 //webview = WebView(frame: self.view.frame)
                 statusLabel.text = "Connecting to Translink. Just a moment."
                 
