@@ -21,13 +21,9 @@ Supported schools (beta testers needed!):
 - Langara
 - CapU
 
-How do I get RenewPass? 📲 (Currently requires iOS 10.2 or above)
+How do I get RenewPass? 📲 
 
-You can download the source-code, compile and sign it using an Apple ID, and side-load it into your device (Note: self-singed apps expire every 7 days unless you have an approved Apple Developer Account),
-
-OR 
-
-You can sign up to recieve beta builds straight to your iOS device through Apple's beta distrubution service TestFlight. Sign up here: https://renewpass.herokuapp.com (Note: beta builds distributed through TestFlight expire 60 days after their release)
+[<img src= "https://devimages.apple.com.edgekey.net/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg">](https://itunes.apple.com/ca/app/renewpass-renew-your-upass-in-one-tap/id1201127821?ls=1&mt=8)
 
 All feedback is welcome! ❤️ Feel free to submit an issue or open up a pull request.
 
