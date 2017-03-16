@@ -20,7 +20,6 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     private var reachability:Reachability = Reachability()!
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
-    var numUpass:String?
     var shouldContinueReloadAnimation:Bool = false
 
     // MARK: - Life Cycle
@@ -106,7 +105,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     @IBAction func renewButtonTouchUpInside(_ sender: Any) {
         // Reset the reload button image
         self.reloadButton.setImage(#imageLiteral(resourceName: "requestButton"), for: .normal)
-        numUpass = nil
+        renewService.numUpass = nil
         reloadButton.isEnabled = false
         shouldContinueReloadAnimation = true
         reloadButton.rotate360Degrees(completionDelegate: self)
@@ -159,7 +158,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             } else if currentURL.contains(renewService.school.authPageURLIdentifier) { // School authentication screen
                 try renewService.authenticate(school: getSchoolID(school: renewService.school.school))
             } else if currentURL.contains("fs") { // post-auth Upass site
-                if numUpass == nil {
+                if renewService.numUpass == nil {
                     try renewService.checkUpass()
                 } else {
                     try renewService.verifyRenew()
