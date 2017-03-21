@@ -28,7 +28,7 @@ How do I get RenewPass? 📲
 All feedback is welcome! ❤️ Feel free to submit an issue or open up a pull request.
 
 Disclaimer: 
-THIS IS BETA SOFTWARE, IT MAY NOT FUNCTION CORRECTLY, OR AT ALL. RENEWPASS MAKES USE OF SERVICES WHICH MAY BE INACCESSIBLE OR UNAVAILABLE AT ANY TIME AND CAN NOT MAKE ANY GUARANTEES REGARDING FUNCTIONALITY. RENEWPASS IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF ANY KIND. 
+RENEWPASS MAKES USE OF SERVICES WHICH MAY BE INACCESSIBLE OR UNAVAILABLE AT ANY TIME AND CAN NOT MAKE ANY GUARANTEES REGARDING FUNCTIONALITY. RENEWPASS IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF ANY KIND. 
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">RenewPass</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://kino.codes" property="cc:attributionName" rel="cc:attributionURL">Kino Roy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
