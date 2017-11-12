@@ -129,6 +129,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		385BE54C1EF36E9700EBECC4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				38A83E4B1E5955E80056056C /* Crashlytics.framework */,
+				38A83E4A1E5955E80056056C /* Fabric.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		385EE1C41E47E59B00E83373 /* JavaScript */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,8 +172,7 @@
 				380C6FF21E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist */,
 				381101CC1E5C149B00A628F9 /* RenewPass-Bridging-Header.h */,
 				381101BD1E5BF25E00A628F9 /* Cartfile */,
-				38A83E4A1E5955E80056056C /* Fabric.framework */,
-				38A83E4B1E5955E80056056C /* Crashlytics.framework */,
+				385BE54C1EF36E9700EBECC4 /* Frameworks */,
 				389F9ED71E41332B00EF6F88 /* RenewPass */,
 				389F9ED61E41332B00EF6F88 /* Products */,
 				382599EA1E4199FB00349582 /* Frameworks */,
