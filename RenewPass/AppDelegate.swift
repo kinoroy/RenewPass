@@ -27,10 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Fabric.sharedSDK().debug = true
         #endif
         Fabric.with([Crashlytics.self])
-
-        // Set the background task interval to be 2 weeks/1210000 secconds
-        let minimumBackgroundFetchInterval:TimeInterval = TimeInterval(exactly: 1210000.00)!
-        UIApplication.shared.setMinimumBackgroundFetchInterval(minimumBackgroundFetchInterval)
         
         // Check version with Siren
         //let siren = Siren.sharedInstance
@@ -127,7 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    /*func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         os_log("Performing a background fetch", log: .default, type: .debug)
         RenewService.didStartFetchFromBackground = true
         if let navigationViewController = self.window?.rootViewController as! UINavigationController? {
@@ -169,6 +165,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Crashlytics.sharedInstance().recordError(RenewPassError.unknownError)
             completionHandler(UIBackgroundFetchResult.failed)
         }
-    }
+    }*/
 }
 
