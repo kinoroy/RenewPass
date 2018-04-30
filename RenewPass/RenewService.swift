@@ -11,6 +11,15 @@ import Foundation
 /// A class representing functions and variables that work to execute the UPass renewal
 class RenewService {
     
+    private static var sharedInstance:RenewService!
+    
+    static func getInstance() -> RenewService {
+        if (sharedInstance == nil) {
+            sharedInstance = RenewService()
+        }
+        return sharedInstance;
+    }
+    
     // MARK: - Proporties 
     
     /// A string representing the text that the status label should show in RenewViewController
@@ -40,7 +49,7 @@ class RenewService {
     
     // MARK: - Initialization
     
-    init?() {
+    private init?() {
         // Webview object
         webview = WebView()
         //Js generator object
@@ -50,7 +59,7 @@ class RenewService {
         self.jsGenerator = jsGenerator
     }
     
-    init?(webViewFrame:CGRect) {
+    private init?(webViewFrame:CGRect) {
         // Webview object
         webview = WebView(frame: webViewFrame)
         //Js generator object

@@ -12,6 +12,9 @@ import os.log
 import Fabric
 import Crashlytics
 import UserNotifications
+import AWSCore
+import AWSSNS
+import AWSCognito
 //import Siren
 
 @UIApplicationMain
@@ -48,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if DEBUG
             siren.debugEnabled = true
         #endif*/
+        // Logging
+        AWSDDLog.sharedInstance.logLevel = AWSDDLogLevel.verbose
         
         return true
     }
@@ -130,45 +135,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         os_log("Performing a background fetch", log: .default, type: .debug)
         RenewService.didStartFetchFromBackground = true
-        if let navigationViewController = self.window?.rootViewController as! UINavigationController? {
-            //let renewService = RenewService()!
-            let rVC = navigationViewController.viewControllers[0] as! RenewViewController
-            rVC.renewService = RenewService()!
-            rVC.renewService.fetch() {
-                (error) in
-                RenewService.didStartFetchFromBackground = false // Resets the fetch value
-                if error != nil {
-                    
-                    if error == RenewPassError.alreadyHasLatestUPassError {
-                        os_log("Already has the latest UPass", log: .default, type: .debug)
-                    } else {
-                        Answers.logCustomEvent(withName: "RenewPassError", customAttributes: ["Error":"\(error!.title)","School":rVC.renewService.school.shortName])
-                    }
-                    completionHandler(UIBackgroundFetchResult.noData)
-
+        //let renewService = RenewService()!
+        let renewService = RenewService.getInstance()
+        renewService.fetch() {
+            (error) in
+            RenewService.didStartFetchFromBackground = false // Resets the fetch value
+            if error != nil {
+                
+                if error == RenewPassError.alreadyHasLatestUPassError {
+                    os_log("Already has the latest UPass", log: .default, type: .debug)
                 } else {
-                    os_log("We got the latest UPass!", log: .default, type: .debug)
-                    let notificationContent = UNMutableNotificationContent()
-                    notificationContent.title = "You've Snagged the Latest UPass!"
-                    notificationContent.body = "RenewPass successfully renewed your UPass for next month. Happy riding!"
-                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-                    
-                    let request = UNNotificationRequest(identifier: "newUPassFromBackground", content: notificationContent, trigger: trigger)
-                    UNUserNotificationCenter.current().add(request) {
-                        (error) in
-                        if error != nil {
-                            os_log("Unable to schedule renewal notification", log: .default, type: .error)
-                        }
-                    }
-                    completionHandler(UIBackgroundFetchResult.newData)
+                    Answers.logCustomEvent(withName: "RenewPassError", customAttributes: ["Error":"\(error!.title)","School":renewService.school.shortName])
                 }
+                completionHandler(UIBackgroundFetchResult.noData)
+
+            } else {
+                os_log("We got the latest UPass!", log: .default, type: .debug)
+                let notificationContent = UNMutableNotificationContent()
+                notificationContent.title = "You've Snagged the Latest UPass!"
+                notificationContent.body = "RenewPass successfully renewed your UPass for next month. Happy riding!"
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                
+                let request = UNNotificationRequest(identifier: "newUPassFromBackground", content: notificationContent, trigger: trigger)
+                UNUserNotificationCenter.current().add(request) {
+                    (error) in
+                    if error != nil {
+                        os_log("Unable to schedule renewal notification", log: .default, type: .error)
+                    }
+                }
+                completionHandler(UIBackgroundFetchResult.newData)
             }
-        } else {
-            os_log("There was an error renewing the UPass. (No root view controller)", log: .default, type: .debug)
-            print("Something went wrong! there was no root view controller")
-            Crashlytics.sharedInstance().recordError(RenewPassError.unknownError)
-            completionHandler(UIBackgroundFetchResult.failed)
         }
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenNoSpaces = deviceToken.base64EncodedString().replacingOccurrences(of: "", with: "")
+        
+        // Initialize the Amazon Cognito credentials provider
+        
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
+                                                                identityPoolId:"us-east-1:e5a72c13-00d3-42f2-85ab-17d582ab573b")
+        
+        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
+        
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        String cognitoId = credentialsProvider.identityId
+        
+        
     }
 }
 

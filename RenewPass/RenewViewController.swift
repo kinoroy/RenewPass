@@ -57,7 +57,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             
             //RenewService Object
             if !RenewService.didStartFetchFromBackground {
-                renewService = RenewService()
+                renewService = RenewService.getInstance()
             }
             
             if !RenewService.didStartFetchFromBackground {

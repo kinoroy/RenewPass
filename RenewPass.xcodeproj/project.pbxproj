@@ -52,7 +52,23 @@
 		38D41DC61E55951E00A773C0 /* Renew.js in Resources */ = {isa = PBXBuildFile; fileRef = 38D41DC51E55951E00A773C0 /* Renew.js */; };
 		38D87E9D1E6A89E800DB7F7D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D87E9C1E6A89E800DB7F7D /* Reachability.swift */; };
 		38E9BFE11E568D08005B786D /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E9BFE01E568D08005B786D /* AccountManager.swift */; };
+		5A85458E20968B80001ECC33 /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A85458D20968B7F001ECC33 /* AWSCognitoIdentityProvider.framework */; };
+		5A85458F20968B80001ECC33 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A85458D20968B7F001ECC33 /* AWSCognitoIdentityProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5A85459020968B80001ECC33 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5A85458F20968B80001ECC33 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		380C6FF21E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AutoFillInfoForDebug.plist; sourceTree = "<group>"; };
@@ -104,6 +120,8 @@
 		38D41DC51E55951E00A773C0 /* Renew.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Renew.js; path = JavaScript/Renew.js; sourceTree = "<group>"; };
 		38D87E9C1E6A89E800DB7F7D /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		38E9BFE01E568D08005B786D /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		5A85458B209684F6001ECC33 /* RenewPass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RenewPass.entitlements; sourceTree = "<group>"; };
+		5A85458D20968B7F001ECC33 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProvider.framework; path = Carthage/Build/iOS/AWSCognitoIdentityProvider.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +132,7 @@
 				381101C31E5C050000A628F9 /* OnePasswordExtension.framework in Frameworks */,
 				38A83E4D1E5955E80056056C /* Crashlytics.framework in Frameworks */,
 				38A83E4C1E5955E80056056C /* Fabric.framework in Frameworks */,
+				5A85458E20968B80001ECC33 /* AWSCognitoIdentityProvider.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +188,7 @@
 		389F9ECC1E41332B00EF6F88 = {
 			isa = PBXGroup;
 			children = (
+				5A85458D20968B7F001ECC33 /* AWSCognitoIdentityProvider.framework */,
 				380C6FF21E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist */,
 				381101CC1E5C149B00A628F9 /* RenewPass-Bridging-Header.h */,
 				381101BD1E5BF25E00A628F9 /* Cartfile */,
@@ -190,6 +210,7 @@
 		389F9ED71E41332B00EF6F88 /* RenewPass */ = {
 			isa = PBXGroup;
 			children = (
+				5A85458B209684F6001ECC33 /* RenewPass.entitlements */,
 				38D87E9C1E6A89E800DB7F7D /* Reachability.swift */,
 				38A751251E67F0F400B030C6 /* RenewService.swift */,
 				38A3D6401E654CB600440D38 /* RotateUIView.swift */,
@@ -236,6 +257,7 @@
 				385EE1C31E47E38500E83373 /* Update Build Number */,
 				38A83E491E5955A80056056C /* Crashlytics */,
 				381101C11E5BF47300A628F9 /* Carthage */,
+				5A85459020968B80001ECC33 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -263,6 +285,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -512,6 +537,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RenewPass/RenewPass.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7ZNE25EY4B;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -536,6 +562,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RenewPass/RenewPass.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7ZNE25EY4B;
 				FRAMEWORK_SEARCH_PATHS = (
