@@ -4,7 +4,7 @@
  */
 
 function checkForAuthError() {
-    if (document.querySelector("#fm1").querySelector("#errorBox") == null) {
+    if (document.querySelector(".alert-danger") == null) {
         return "success"
     } else {
         return "failure"

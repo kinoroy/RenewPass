@@ -4,7 +4,7 @@
  */
 
 function checkForAuthError() {
-    if (document.querySelector(".bs-callout") == null) {
+    if (document.querySelector(".errors") == null) {
         return "success"
     } else {
         return "failure"

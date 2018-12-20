@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		380C6FF31E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 380C6FF21E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist */; };
+		380E81D121CB5CAF00F377DD /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380E81D021CB5CAE00F377DD /* AWSCore.framework */; };
+		380E81D221CB5CAF00F377DD /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 380E81D021CB5CAE00F377DD /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		380E81D421CB5CEE00F377DD /* AWSSNS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380E81D321CB5CEE00F377DD /* AWSSNS.framework */; };
+		380E81D521CB5CEE00F377DD /* AWSSNS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 380E81D321CB5CEE00F377DD /* AWSSNS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		381101BE1E5BF25E00A628F9 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 381101BD1E5BF25E00A628F9 /* Cartfile */; };
 		381101C31E5C050000A628F9 /* OnePasswordExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381101C21E5C050000A628F9 /* OnePasswordExtension.framework */; };
 		381101C51E5C05FA00A628F9 /* SchoolCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381101C41E5C05FA00A628F9 /* SchoolCollectionViewController.swift */; };
@@ -64,6 +68,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				5A85458F20968B80001ECC33 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */,
+				380E81D521CB5CEE00F377DD /* AWSSNS.framework in Embed Frameworks */,
+				380E81D221CB5CAF00F377DD /* AWSCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,6 +78,8 @@
 
 /* Begin PBXFileReference section */
 		380C6FF21E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AutoFillInfoForDebug.plist; sourceTree = "<group>"; };
+		380E81D021CB5CAE00F377DD /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = Carthage/Build/iOS/AWSCore.framework; sourceTree = "<group>"; };
+		380E81D321CB5CEE00F377DD /* AWSSNS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSNS.framework; path = Carthage/Build/iOS/AWSSNS.framework; sourceTree = "<group>"; };
 		381101BD1E5BF25E00A628F9 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		381101BF1E5BF42E00A628F9 /* Siren.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siren.framework; path = Carthage/Build/iOS/Siren.framework; sourceTree = "<group>"; };
 		381101C21E5C050000A628F9 /* OnePasswordExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OnePasswordExtension.framework; path = Carthage/Build/iOS/OnePasswordExtension.framework; sourceTree = "<group>"; };
@@ -130,6 +138,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				381101C31E5C050000A628F9 /* OnePasswordExtension.framework in Frameworks */,
+				380E81D421CB5CEE00F377DD /* AWSSNS.framework in Frameworks */,
+				380E81D121CB5CAF00F377DD /* AWSCore.framework in Frameworks */,
 				38A83E4D1E5955E80056056C /* Crashlytics.framework in Frameworks */,
 				38A83E4C1E5955E80056056C /* Fabric.framework in Frameworks */,
 				5A85458E20968B80001ECC33 /* AWSCognitoIdentityProvider.framework in Frameworks */,
@@ -188,6 +198,8 @@
 		389F9ECC1E41332B00EF6F88 = {
 			isa = PBXGroup;
 			children = (
+				380E81D321CB5CEE00F377DD /* AWSSNS.framework */,
+				380E81D021CB5CAE00F377DD /* AWSCore.framework */,
 				5A85458D20968B7F001ECC33 /* AWSCognitoIdentityProvider.framework */,
 				380C6FF21E5ED7BF00CD3EBA /* AutoFillInfoForDebug.plist */,
 				381101CC1E5C149B00A628F9 /* RenewPass-Bridging-Header.h */,

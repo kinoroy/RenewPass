@@ -15,13 +15,16 @@ class Notifications {
     static func requestNotificationAuthorization(viewControllerToPresent: UIViewController) {
         
         
-        let alert = UIAlertController(title: "Notifications", message: "RenewPass will try every month to renew your UPass in the background and notify you if successful. That cool?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Notifications", message: "RenewPass will remind you when it's time to renew your UPass. That cool?", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "Yeah!", style: .default, handler: {
             (alert:UIAlertAction) -> Void in
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) {
                 (granted, error) in
                 if granted {
                     Answers.logCustomEvent(withName: "approvesNotifications", customAttributes: nil)
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
                 }
             }
         })

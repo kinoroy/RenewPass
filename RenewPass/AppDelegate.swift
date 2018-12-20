@@ -22,6 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    #if DEBUG
+        let SNSPlatformApplicationArn = "arn:aws:sns:us-east-1:081073680324:app/APNS_SANDBOX/RenewPass"
+    #else
+        let SNSPlatformApplicationArn = "arn:aws:sns:us-east-1:081073680324:app/APNS/RenewPass"
+    #endif
+    let SNSTopicArn = "arn:aws:sns:us-east-1:081073680324:renewPass"
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -30,10 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Fabric.sharedSDK().debug = true
         #endif
         Fabric.with([Crashlytics.self])
-
-        // Set the background task interval to be 2 weeks/1210000 secconds
-        let minimumBackgroundFetchInterval:TimeInterval = TimeInterval(exactly: 1210000.00)!
-        UIApplication.shared.setMinimumBackgroundFetchInterval(minimumBackgroundFetchInterval)
         
         // Check version with Siren
         //let siren = Siren.sharedInstance
@@ -53,6 +56,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif*/
         // Logging
         AWSDDLog.sharedInstance.logLevel = AWSDDLogLevel.verbose
+        
+        // Initialize the Amazon Cognito credentials provider
+        
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
+                                                                identityPoolId:"us-east-1:e5a72c13-00d3-42f2-85ab-17d582ab573b")
+        
+        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
+        
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            switch(settings.authorizationStatus) {
+            
+            case .notDetermined:
+                break
+            case .denied:
+                break
+            case .authorized, .provisional:
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+        }
         
         return true
     }
@@ -132,7 +158,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    /*func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         os_log("Performing a background fetch", log: .default, type: .debug)
         RenewService.didStartFetchFromBackground = true
         //let renewService = RenewService()!
@@ -166,27 +192,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 completionHandler(UIBackgroundFetchResult.newData)
             }
         }
-    }
+    }*/
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let tokenNoSpaces = deviceToken.base64EncodedString().replacingOccurrences(of: "", with: "")
         
-        // Initialize the Amazon Cognito credentials provider
+        var tokenNoSpaces = ""
+        for i in 0..<deviceToken.count {
+            tokenNoSpaces = tokenNoSpaces + String(format: "%02.2hhx", arguments: [deviceToken[i]])
+        }
+        print(tokenNoSpaces)
+        UserDefaults.standard.set(tokenNoSpaces, forKey: "deviceTokenForSNS")
         
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
-                                                                identityPoolId:"us-east-1:e5a72c13-00d3-42f2-85ab-17d582ab573b")
-        
-        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
-        
-        AWSServiceManager.default().defaultServiceConfiguration = configuration
-        
-        String cognitoId = credentialsProvider.identityId
-        
+        /// device endpoint ARN
+        let sns = AWSSNS.default()
+        let request = AWSSNSCreatePlatformEndpointInput()
+        request?.token = tokenNoSpaces
+        request?.platformApplicationArn = SNSPlatformApplicationArn
+        sns.createPlatformEndpoint(request!).continueWith(executor: AWSExecutor.mainThread(), block: { (task: AWSTask!) -> AnyObject! in
+            if task.error != nil {
+                print("Error: \(String(describing: task.error))")
+            } else {
+                let createEndpointResponse = task.result! as AWSSNSCreateEndpointResponse
+                if let endpointArnForSNS = createEndpointResponse.endpointArn {
+                    print("endpointArn: \(endpointArnForSNS)")
+                    if let subIn = AWSSNSSubscribeInput() {
+                        subIn.endpoint = endpointArnForSNS
+                        subIn.protocols = "application"
+                        subIn.topicArn = self.SNSTopicArn
+                        print("SUBSCRIBING TO TOPIC")
+                        sns.subscribe(subIn).continueWith(executor: AWSExecutor.mainThread(), block: { (task: AWSTask!) -> AnyObject!
+                            in
+                            if task.error != nil {
+                                print("Error: \(String(describing: task.error))")
+                            } else {
+                                print("Subbed to topic")
+                            }
+                            return nil
+                        })
+                    }
+                    UserDefaults.standard.set(endpointArnForSNS, forKey: "endpointArnForSNS")
+                }
+            }
+            
+            return nil
+        })
         
     }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(error.localizedDescription)
+    }
+
 }
 
