@@ -4,7 +4,7 @@
  */
 
 function checkForAuthError() {
-    if (document.querySelector("#loginForm").querySelector("#error").getAttribute("style") == "" || document.querySelector("#loginForm").querySelector("#error").getAttribute("style") == null) {
+    if (document.querySelector("#errorText").textContent == "") {
         /* The error message is visible */
         return "failure"
     } else {

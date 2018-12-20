@@ -4,7 +4,7 @@
  */
 
 function checkForAuthError() {
-    if (document.querySelector("#col2").querySelector("[color=red]") == null) {
+    if (document.querySelector('.login_error') == null) {
         return "success"
     } else {
         return "failure"

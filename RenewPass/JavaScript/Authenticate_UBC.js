@@ -7,6 +7,6 @@
  */
 
 var form = document.querySelector("[name=loginForm]");
-document.querySelector("#j_username").value = "storedUsername";
-document.querySelector("#password").value = "storedPassword";
+form.querySelector("#username").value = "storedUsername";
+form.querySelector("#password").value = "storedPassword";
 form.submit();

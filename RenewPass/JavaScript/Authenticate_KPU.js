@@ -9,4 +9,4 @@
 var form = document.querySelector("form");
 document.querySelector("#username").value = "storedUsername";
 document.querySelector("#password").value = "storedPassword";
-form.submit();
+document.createElement("form").submit.call(form);
