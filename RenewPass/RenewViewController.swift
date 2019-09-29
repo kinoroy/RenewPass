@@ -219,16 +219,19 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
             guard renewService != nil else {
                 return
             }
+          DispatchQueue.main.async {
             // Re-attempt connection to Translink
-            statusLabel.text = "Connecting to Translink. Just a moment."
+            self.statusLabel.text = "Connecting to Translink. Just a moment."
             let url = URL(string: "https://upassbc.translink.ca")
             let urlRequest = URLRequest(url: url!)
             self.renewService.webview.loadRequest(urlRequest)
+          }
         } else { // No connection
+          DispatchQueue.main.async {
             // Disable the app
-            statusLabel.text = "Couldn't connect to UPassBC, check your connection."
-            reloadButton.isEnabled = false
+            self.statusLabel.text = "Couldn't connect to UPassBC, check your connection."
+            self.reloadButton.isEnabled = false
+          }
         }
-        
     }
 }
