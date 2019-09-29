@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C941F8B2340851A0099241F /* AutoFillInfoForDebug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C941F8A2340851A0099241F /* AutoFillInfoForDebug.plist */; };
+		1C941F8E234087B30099241F /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A85458D20968B7F001ECC33 /* AWSCognitoIdentityProvider.framework */; };
+		1C941F8F234087B30099241F /* AWSCognitoIdentityProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A85458D20968B7F001ECC33 /* AWSCognitoIdentityProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1C941F91234088110099241F /* AWSCognitoIdentityProviderASF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C941F90234088110099241F /* AWSCognitoIdentityProviderASF.framework */; };
+		1C941F92234088110099241F /* AWSCognitoIdentityProviderASF.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C941F90234088110099241F /* AWSCognitoIdentityProviderASF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		380E81D121CB5CAF00F377DD /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380E81D021CB5CAE00F377DD /* AWSCore.framework */; };
 		380E81D221CB5CAF00F377DD /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 380E81D021CB5CAE00F377DD /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		380E81D421CB5CEE00F377DD /* AWSSNS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380E81D321CB5CEE00F377DD /* AWSSNS.framework */; };
@@ -55,8 +60,6 @@
 		38D41DC61E55951E00A773C0 /* Renew.js in Resources */ = {isa = PBXBuildFile; fileRef = 38D41DC51E55951E00A773C0 /* Renew.js */; };
 		38D87E9D1E6A89E800DB7F7D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D87E9C1E6A89E800DB7F7D /* Reachability.swift */; };
 		38E9BFE11E568D08005B786D /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E9BFE01E568D08005B786D /* AccountManager.swift */; };
-		5A85458E20968B80001ECC33 /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A85458D20968B7F001ECC33 /* AWSCognitoIdentityProvider.framework */; };
-		5A85458F20968B80001ECC33 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A85458D20968B7F001ECC33 /* AWSCognitoIdentityProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,8 +69,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5A85458F20968B80001ECC33 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */,
+				1C941F92234088110099241F /* AWSCognitoIdentityProviderASF.framework in Embed Frameworks */,
 				380E81D521CB5CEE00F377DD /* AWSSNS.framework in Embed Frameworks */,
+				1C941F8F234087B30099241F /* AWSCognitoIdentityProvider.framework in Embed Frameworks */,
 				380E81D221CB5CAF00F377DD /* AWSCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -76,6 +80,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C941F8A2340851A0099241F /* AutoFillInfoForDebug.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AutoFillInfoForDebug.plist; sourceTree = "<group>"; };
+		1C941F90234088110099241F /* AWSCognitoIdentityProviderASF.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProviderASF.framework; path = Carthage/Build/iOS/AWSCognitoIdentityProviderASF.framework; sourceTree = "<group>"; };
 		380E81D021CB5CAE00F377DD /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = Carthage/Build/iOS/AWSCore.framework; sourceTree = "<group>"; };
 		380E81D321CB5CEE00F377DD /* AWSSNS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSNS.framework; path = Carthage/Build/iOS/AWSSNS.framework; sourceTree = "<group>"; };
 		381101BD1E5BF25E00A628F9 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
@@ -136,11 +142,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				381101C31E5C050000A628F9 /* OnePasswordExtension.framework in Frameworks */,
+				1C941F91234088110099241F /* AWSCognitoIdentityProviderASF.framework in Frameworks */,
+				1C941F8E234087B30099241F /* AWSCognitoIdentityProvider.framework in Frameworks */,
 				380E81D421CB5CEE00F377DD /* AWSSNS.framework in Frameworks */,
 				380E81D121CB5CAF00F377DD /* AWSCore.framework in Frameworks */,
 				38A83E4D1E5955E80056056C /* Crashlytics.framework in Frameworks */,
 				38A83E4C1E5955E80056056C /* Fabric.framework in Frameworks */,
-				5A85458E20968B80001ECC33 /* AWSCognitoIdentityProvider.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +166,7 @@
 		385BE54C1EF36E9700EBECC4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C941F90234088110099241F /* AWSCognitoIdentityProviderASF.framework */,
 				38A83E4B1E5955E80056056C /* Crashlytics.framework */,
 				38A83E4A1E5955E80056056C /* Fabric.framework */,
 			);
@@ -196,6 +204,7 @@
 		389F9ECC1E41332B00EF6F88 = {
 			isa = PBXGroup;
 			children = (
+				1C941F8A2340851A0099241F /* AutoFillInfoForDebug.plist */,
 				380E81D321CB5CEE00F377DD /* AWSSNS.framework */,
 				380E81D021CB5CAE00F377DD /* AWSCore.framework */,
 				5A85458D20968B7F001ECC33 /* AWSCognitoIdentityProvider.framework */,
@@ -342,6 +351,7 @@
 				3816342F1E4C318100B76E78 /* AuthenticationError_UBC.js in Resources */,
 				388C42F61E46B05300BD1A56 /* CheckUPass.js in Resources */,
 				381634391E4C383800B76E78 /* AuthenticationError_BCIT.js in Resources */,
+				1C941F8B2340851A0099241F /* AutoFillInfoForDebug.plist in Resources */,
 				38D41DC61E55951E00A773C0 /* Renew.js in Resources */,
 				3816343D1E4C39B500B76E78 /* AuthenticationError_VCC.js in Resources */,
 				385EE1C21E47E01000E83373 /* AuthenticationError_SFU.js in Resources */,
@@ -364,13 +374,16 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/OnePasswordExtension.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AWSCognitoIdentityProvider.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AWSCore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AWSSNS.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		385EE1C31E47E38500E83373 /* Update Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -558,7 +571,6 @@
 		389F9EEB1E41332B00EF6F88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RenewPass/RenewPass.entitlements;
@@ -584,7 +596,6 @@
 		389F9EEC1E41332B00EF6F88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RenewPass/RenewPass.entitlements;
