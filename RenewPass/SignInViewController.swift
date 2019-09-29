@@ -65,7 +65,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         #if DEBUG
             if let userDataPListURL = Bundle.main.url(forResource: "AutoFillInfoForDebug", withExtension: "plist"),
                 let userDataFile = try? Data(contentsOf: userDataPListURL) {
-                if let userDataDict = try? PropertyListSerialization.propertyList(from: userDataFile, options: [], format: nil) as? [String: Any] {
+                if let userDataDict = ((try? PropertyListSerialization.propertyList(from: userDataFile, options: [], format: nil) as? [String: Any]) as [String : Any]??) {
                     
                     let username = userDataDict?["Username"] as? String ?? ""
                     let password = userDataDict?["Password"] as? String ?? ""

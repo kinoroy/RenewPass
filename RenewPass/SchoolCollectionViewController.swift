@@ -42,7 +42,7 @@ class SchoolCollectionViewController: UICollectionViewController {
         #if DEBUG
             if let userDataPListURL = Bundle.main.url(forResource: "AutoFillInfoForDebug", withExtension: "plist"),
                 let userDataFile = try? Data(contentsOf: userDataPListURL) {
-                if let userDataDict = try? PropertyListSerialization.propertyList(from: userDataFile, options: [], format: nil) as? [String: Any] {
+                if let userDataDict = ((try? PropertyListSerialization.propertyList(from: userDataFile, options: [], format: nil) as? [String: Any]) as [String : Any]??) {
                     
                     let matchingSchoolButtons = self.buttons.filter {$0.tag == userDataDict?["School Code"] as? Int ?? 1}
                     if matchingSchoolButtons.count > 0 { self.schoolSelected(sender: matchingSchoolButtons[0]) }

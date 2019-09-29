@@ -93,7 +93,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     func needToShowLoginScreen() -> Bool {
         
         // If the account can not be loaded or doesn't exist, we have to show the login screen
-        guard (AccountManager.loadAccount() as Account!) != nil else {
+        guard (AccountManager.loadAccount() as Account?) != nil else {
             return true
         }
         

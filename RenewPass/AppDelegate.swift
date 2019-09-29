@@ -212,7 +212,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let request = AWSSNSCreatePlatformEndpointInput()
         request?.token = tokenNoSpaces
         request?.platformApplicationArn = SNSPlatformApplicationArn
-        sns.createPlatformEndpoint(request!).continueWith(executor: AWSExecutor.mainThread(), block: { (task: AWSTask!) -> AnyObject! in
+        sns.createPlatformEndpoint(request!).continueWith(executor: AWSExecutor.mainThread(), block: { (task: AWSTask!) -> AnyObject? in
             if task.error != nil {
                 print("Error: \(String(describing: task.error))")
             } else {
@@ -224,7 +224,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         subIn.protocols = "application"
                         subIn.topicArn = self.SNSTopicArn
                         print("SUBSCRIBING TO TOPIC")
-                        sns.subscribe(subIn).continueWith(executor: AWSExecutor.mainThread(), block: { (task: AWSTask!) -> AnyObject!
+                        sns.subscribe(subIn).continueWith(executor: AWSExecutor.mainThread(), block: { (task: AWSTask!) -> AnyObject?
                             in
                             if task.error != nil {
                                 print("Error: \(String(describing: task.error))")

@@ -91,14 +91,14 @@ class RenewService {
             account = AccountManager.loadAccount()
         }
         
-        guard let username = account.username as String! else {
+        guard let username = account.username as String? else {
             completionHandlers[0](RenewPassError.unknownError)
             return
         }
         
         self.username = username
         
-        guard let schoolRaw = account.schoolRaw as Int16! else {
+        guard let schoolRaw = account.schoolRaw as Int16? else {
             completionHandlers[0](RenewPassError.unknownError)
             return
         }
