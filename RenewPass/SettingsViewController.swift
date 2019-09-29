@@ -76,7 +76,7 @@ class SettingsViewController: UIViewController {
     
     // MARK: - Internal methods 
     
-    internal func requestNotifAuth() {
+    @objc internal func requestNotifAuth() {
         
         Notifications.requestNotificationAuthorization(viewControllerToPresent: self)
         

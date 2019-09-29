@@ -208,7 +208,7 @@ class RenewViewController: UIViewController, CAAnimationDelegate {
     /// Called when the ReachabilityChangedNotificiation is posted. Enables or disables the app based on the users internet connection
     /// - Parameters:
     ///     - notification: the notification object that the function was called for
-    func reachabilityChanged(notification:Notification) {
+    @objc func reachabilityChanged(notification:Notification) {
         
         // Get the reachability object
         let reachability = notification.object as! Reachability

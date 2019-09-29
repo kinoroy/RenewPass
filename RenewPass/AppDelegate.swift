@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let SNSTopicArn = "arn:aws:sns:us-east-1:081073680324:renewPass"
     
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Setup Crashlytics 
         #if DEBUG

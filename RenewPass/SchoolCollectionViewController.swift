@@ -118,7 +118,7 @@ class SchoolCollectionViewController: UICollectionViewController {
     
     // MARK: - Private methods
     
-    func schoolSelected(sender: UIButton) {
+    @objc func schoolSelected(sender: UIButton) {
         // If there is any current school selected, de-select it
         if selectedButton != nil {
             selectedButton?.isSelected = false
